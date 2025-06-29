@@ -1,0 +1,653 @@
+
+Try your hand at these practice  to test your knowledge of Apache Spark:
+Question 1:
+What is a task in Spark?
+A.	 The unit of work performed for each data partition within a task is the slots
+B.	 A task is the second-smallest entity that can be executed within Spark
+C.	 Tasks featuring wide dependencies can be combined into a single task
+D.	 A task is the smallest component that can be executed within Spark
+Question 2:
+What is the role of an executor in Spark?
+A.	 The executor’s role is to request the transformation of operations into a directed acyclic 
+graph (DAG)
+B.	 There can only be one executor within a Spark environment
+C.	 Executors are tasked with executing the assignments provided to them by the driver
+D.	 The executor schedules queries for execution
+Question 3:
+Which of the following is one of the tasks of Adaptive Query Execution in Spark?
+
+
+A.	 Adaptive Query Execution collects runtime statistics during query execution to optimize 
+query plans
+B.	 Adaptive Query Execution is responsible for distributing tasks to executors
+C.	 Adaptive Query Execution is responsible for wide operations in Spark
+D.	 Adaptive Query Execution is responsible for fault tolerance in Spark
+Question 4:
+Which is the lowest level in Spark’s execution hierarchy?
+A.	 Task
+B.	 Slot
+C.	 Job
+D.	 Stage
+Question 5:
+Which one of these operations is an action?
+A.	 DataFrame.count()
+B.	 DataFrame.filter()
+C.	 DataFrame.select()
+D.	 DataFrame.groupBy()
+Question 6:
+Which of the following describes the characteristics of the DataFrame API?
+A.	 The DataFrame API is based on resilient distributed dataset (RDD) at the backend
+B.	 The DataFrame API is available in Scala, but it is not available in Python
+C.	 The DataFrame API does not have data manipulation functions
+D.	 The DataFrame API is used for distributing tasks in executors
+
+
+Question 7:
+Which of the following statements is accurate about executors?
+A.	 Slots are not a part of an executor
+B.	 Executors are able to run tasks in parallel via slots
+C.	 Executors are always equal to tasks
+D.	 An executor is responsible for distributing tasks for a job
+Question 8:
+Which of the following statements is accurate about the Spark driver?
+A.	 There are multiple drivers in a Spark application
+B.	 Slots are a part of a driver
+C.	 Drivers execute tasks in parallel
+D.	 It is the responsibility of the Spark driver to transform operations into DAG computations
+Question 9:
+Which one of these operations is a wide transformation?
+A.	 DataFrame.show()
+B.	 DataFrame.groupBy()
+C.	 DataFrame.repartition()
+D.	 DataFrame.select()
+E.	 DataFrame.filter()
+Question 10:
+Which of the following statements is correct about lazy evaluation?
+A.	 Execution is triggered by transformations
+B.	 Execution is triggered by actions
+C.	 Statements are executed as they appear in the code
+D.	 Spark distributes tasks to different executors
+
+
+Question 11:
+Which of the following is true about DAGs in Spark?
+A.	 DAGs are lazily evaluated
+B.	 DAGs can be scaled horizontally in Spark
+C.	 DAGs are responsible for processing partitions in an optimized and distributed fashion
+D.	 DAG is comprised of tasks that can run in parallel
+Question 12:
+Which of the following statements is true about Spark’s fault tolerance mechanism?
+A.	 Spark achieves fault tolerance via DAGs
+B.	 It is the responsibility of the executor to enable fault tolerance in Spark
+C.	 Because of fault tolerance, Spark can recompute any failed RDD
+D.	 Spark builds a fault-tolerant layer on top of the legacy RDD data system, which by itself 
+is not fault tolerant
+Question 13:
+What is the core of Spark’s fault-tolerant mechanism?
+A.	 RDD is at the core of Spark, which is fault tolerant by design
+B.	 Data partitions, since data can be recomputed
+C.	 DataFrame is at the core of Spark since it is immutable
+D.	 Executors ensure that Spark remains fault tolerant
+Question 14:
+What is accurate about jobs in Spark?
+A.	 Different stages in a job may be executed in parallel
+B.	 Different stages in a job cannot be executed in parallel
+C.	 A task consists of many jobs
+D.	 A stage consists of many jobs
+
+
+Question 15:
+What is accurate about a shuffle in Spark?
+A.	 In a shuffle, data is sent to multiple partitions to be processed
+B.	 In a shuffle, data is sent to a single partition to be processed
+C.	 A shuffle is an action that triggers evaluation in Spark
+D.	 In a shuffle, all data remains in memory to be processed
+Question 16:
+What is accurate about the cluster manager in Spark?
+A.	 The cluster manager is responsible for managing resources for Spark
+B.	 The cluster manager is responsible for working with executors directly
+C.	 The cluster manager is responsible for creating query plans
+D.	 The cluster manager is responsible for optimizing DAGs
+Question 17:
+The following code block needs to take the sum and average of the salary column for each department 
+in the df DataFrame. Then, it should calculate the sum and maximum value for the bonus column:
+df.___1___ ("department").___2___ (sum("salary").alias("sum_salary"), 
+___3___ ("salary").alias("avg_salary"), sum("bonus").alias("sum_
+bonus"), ___4___("bonus").alias("max_bonus") )
+Choose the answer that correctly fills the blanks in the code block to accomplish this:
+A.	
+i.	
+groupBy
+ii.	 agg
+iii.	 avg
+iv.	 max
+
+
+B.	
+i.	
+filter
+ii.	 agg
+iii.	 avg
+iv.	 max
+C.	
+i.	
+groupBy
+ii.	 avg
+iii.	 agg
+iv.	 max
+D.	
+i.	
+groupBy
+ii.	 agg
+iii.	 avg
+iv.	 avg
+Question 18:
+The following code block contains an error. The code block needs to join the salaryDf DataFrame 
+with the bigger employeeDf DataFrame on the employeeID column:
+salaryDf.join(employeeDf, "employeeID", how="broadcast")
+Identify the error:
+A.	 Instead of join, the code should use innerJoin
+B.	 broadcast is not a join type in Spark for joining two DataFrames
+C.	 salaryDf and employeeDf should be swapped
+D.	 In the how parameter, crossJoin should be used instead of broadcast
+
+
+Question 19:
+Which of the following code blocks shuffles the df DataFrame to have 20 partitions instead of 
+5 partitions?
+A.	 df.repartition(5)
+B.	 df.repartition(20)
+C.	 df.coalesce(20)
+D.	 df.coalesce(5)
+Question 20:
+Which of the following operations will trigger evaluation?
+A.	 df.filter()
+B.	 df.distinct()
+C.	 df.intersect()
+D.	 df.join()
+E.	 df.count()
+Question 21:
+Which of the following code blocks returns unique values for the age and name columns in the df 
+DataFrame in its respective columns where all values are unique in these columns?
+A.	 df.select('age').join(df.select('name'), 
+col(state)==col('name'), 'inner').show()
+B.	 df.select(col('age'), col('name')).agg({'*': 'count'}).show()
+C.	 df.select('age', 'name').distinct().show()
+D.	 df.select('age').unionAll(df.select('name')).distinct().show()
+
+
+Question 22:
+Which of the following code blocks returns the count of the total number of rows in the df DataFrame?
+A.	 df.count()
+B.	 df.select(col('state'), col('department')).agg({'*': 'count'}).
+show()
+C.	 df.select('state', 'department').distinct().show()
+D.	 df.select('state').union(df.select('department')).distinct().
+show()
+Question 23:
+The following code block contains an error. The code block should save the df DataFrame at the 
+filePath path as a new parquet file:
+df.write.mode("append").parquet(filePath)
+Identify the error:
+A.	 The code block should have overwrite instead of append as an option
+B.	 The code should be write.parquet instead of write.mode
+C.	 The df.write operation cannot be called directly from the DataFrame
+D.	 The first part of the code should be df.write.mode(append)
+Question 24:
+Which of the following code blocks adds a salary_squared column to the df DataFrame that 
+is the square of the salary column?
+A.	 df.withColumnRenamed("salary_squared", pow(col("salary"), 2))
+B.	 df.withColumn("salary_squared", col("salary"*2))
+C.	 df.withColumn("salary_squared", pow(col("salary"), 2))
+D.	 df.withColumn("salary_squared", square(col("salary")))
+
+
+Question 25:
+Which of the following code blocks performs a join in which the small salaryDf DataFrame is sent to 
+all executors so that it can be joined with the employeeDf DataFrame on the employeeSalaryID 
+and EmployeeID columns, respectively?
+A.	 employeeDf.join(salaryDf, "employeeDf.employeeID == salaryDf.
+employeeSalaryID", "inner")
+B.	 employeeDf.join(salaryDf, "employeeDf.employeeID == salaryDf.
+employeeSalaryID", "broadcast")
+C.	 employeeDf.join(broadcast(salaryDf), employeeDf.employeeID 
+== salaryDf.employeeSalaryID)
+D.	 salaryDf.join(broadcast(employeeDf), employeeDf.employeeID 
+== salaryDf.employeeSalaryID)
+Question 26:
+Which of the following code blocks performs an outer join between the salarydf DataFrame and 
+the employeedf DataFrame, using the employeeID and salaryEmployeeID columns as 
+join keys respectively?
+A.	 Salarydf.join(employeedf, "outer", salarydf.employeedf == 
+employeeID.salaryEmployeeID)
+B.	 salarydf.join(employeedf, employeeID == salaryEmployeeID)
+C.	 salarydf.join(employeedf, salarydf.salaryEmployeeID == 
+employeedf.employeeID, "outer")
+D.	 salarydf.join(employeedf, salarydf.employeeID == employeedf.
+salaryEmployeeID, "outer")
+Question 27:
+Which of the following pieces of code would print the schema of the df DataFrame?
+A.	 df.rdd.printSchema
+B.	 df.rdd.printSchema()
+C.	 df.printSchema
+D.	 df.printSchema()
+
+
+Question 28:
+Which of the following code blocks performs a left join between the salarydf DataFrame and the 
+employeedf DataFrame, using the employeeID column?
+A.	 salaryDf.join(employeeDf, salaryDf["employeeID"] == 
+employeeDf["employeeID"], "outer")
+B.	 salaryDf.join(employeeDf, salaryDf["employeeID"] == 
+employeeDf["employeeID"], "left")
+C.	 salaryDf.join(employeeDf, salaryDf["employeeID"] == 
+employeeDf["employeeID"], "inner")
+D.	 salaryDf.join(employeeDf, salaryDf["employeeID"] == 
+employeeDf["employeeID"], "right")
+Question 29:
+Which of the following code blocks aggregates the bonus column of the df DataFrame in ascending 
+order with nulls being last?
+A.	 df.agg(asc_nulls_last("bonus").alias("bonus_agg"))
+B.	 df.agg(asc_nulls_first("bonus").alias("bonus_agg"))
+C.	 df.agg(asc_nulls_last("bonus", asc).alias("bonus_agg"))
+D.	 df.agg(asc_nulls_first("bonus", asc).alias("bonus_agg"))
+Question 30:
+The following code block contains an error. The code block should return a DataFrame by joining 
+the employeeDf and salaryDf DataFrames on the employeeID and employeeSalaryID 
+columns, respectively, excluding the bonus and department columns from the employeeDf 
+DataFrame and the salary column from the salaryDf DataFrame in the final DataFrame.
+employeeDf.groupBy(salaryDf, employeeDf.employeeID == salaryDf.
+employeeSalaryID, "inner").delete("bonus", "department", "salary")
+Identify the error:
+A.	 groupBy should be replaced with the innerJoin operator
+B.	 groupBy should be replaced with a join operator and delete should be replaced 
+with drop
+
+
+C.	 groupBy should be replaced with the crossJoin operator and delete should be 
+replaced with withColumn
+D.	 groupBy should be replaced with a join operator and delete should be replaced 
+with withColumnRenamed
+Question 31:
+Which of the following code blocks reads a /loc/example.csv CSV file as a df DataFrame?
+A.	 df = spark.read.csv("/loc/example.csv")
+B.	 df = spark.mode("csv").read("/loc/example.csv")
+C.	 df = spark.read.path("/loc/example.csv")
+D.	 df = spark.read().csv("/loc/example.csv")
+Question 32:
+Which of the following code blocks reads a parquet file at the my_path location using a schema file 
+named my_schema?
+A.	 spark.read.schema(my_schema).format("parquet").load(my_path)
+B.	 spark.read.schema("my_schema").format("parquet").load(my_path)
+C.	 spark.read.schema(my_schema).parquet(my_path)
+D.	 spark.read.parquet(my_path).schema(my_schema)
+Question 33:
+We want to find the number of records in the resulting DataFrame when we join the employeedf 
+and salarydf DataFrames on the employeeID and employeeSalaryID columns respectively. 
+Which code blocks should be executed to achieve this?
+1.	
+.filter(~isnull(col(department)))
+2.	
+.count()
+3.	
+employeedf.join(salarydf, col("employeedf.
+employeeID")==col("salarydf.employeeSalaryID"))
+4.	
+employeedf.join(salarydf, employeedf. employeeID ==salarydf. 
+employeeSalaryID, how='inner')
+5.	
+.filter(col(department).isnotnull())
+
+
+6.	
+.sum(col(department))
+A.	 3, 1, 6
+B.	 3, 1, 2
+C.	 4, 2
+D.	 3, 5, 2
+Question 34:
+Which of the following code blocks returns a copy of the df DataFrame where the name of the state 
+column has been changed to stateID?
+A.	 df.withColumnRenamed("state", "stateID")
+B.	 df.withColumnRenamed("stateID", "state")
+C.	 df.withColumn("state", "stateID")
+D.	 df.withColumn("stateID", "state")
+Question 35:
+Which of the following code blocks returns a copy of the df DataFrame where the salary column 
+has been converted to integer?
+A.	 df.col("salary").cast("integer"))
+B.	 df.withColumn("salary", col("salary").castType("integer"))
+C.	 df.withColumn("salary", col("salary").convert("integerType()"))
+D.	 df.withColumn("salary", col("salary").cast("integer"))
+Question 36:
+Which of the following code blocks splits a df DataFrame in half with the exact same values even 
+when the code is run multiple times?
+A.	 df.randomSplit([0.5, 0.5], seed=123)
+B.	 df.split([0.5, 0.5], seed=123)
+C.	 df.split([0.5, 0.5])
+D.	 df.randomSplit([0.5, 0.5])
+
+
+Question 37:
+Which of the following code blocks sorts the df DataFrame by two columns, salary and department, 
+where salary is in ascending order and department is in descending order?
+A.	 df.sort("salary", asc("department"))
+B.	 df.sort("salary", desc(department))
+C.	 df.sort(col(salary)).desc(col(department))
+D.	 df.sort("salary", desc("department"))
+Question 38:
+Which of the following code blocks calculates the average of the bonus column from the salaryDf 
+DataFrame and adds that in a new column called average_bonus?
+A.	 salaryDf.avg("bonus").alias("average_bonus"))
+B.	 salaryDf.agg(avg("bonus").alias("average_bonus"))
+C.	 salaryDf.agg(sum("bonus").alias("average_bonus"))
+D.	 salaryDf.agg(average("bonus").alias("average_bonus"))
+Question 39:
+Which of the following code blocks saves the df DataFrame in the /FileStore/file.csv 
+location as a CSV file and throws an error if a file already exists in the location?
+A.	 df.write.mode("error").csv("/FileStore/file.csv")
+B.	 df.write.mode.error.csv("/FileStore/file.csv")
+C.	 df.write.mode("exception").csv("/FileStore/file.csv")
+D.	 df.write.mode("exists").csv("/FileStore/file.csv")
+Question 40:
+Which of the following code blocks reads the my_csv.csv CSV file located at /my_path/ into 
+a DataFrame?
+A.	 spark.read().mode("csv").path("/my_path/my_csv.csv")
+B.	 spark.read.format("csv").path("/my_path/my_csv.csv")
+
+
+C.	 spark.read("csv", "/my_path/my_csv.csv")
+D.	 spark.read.csv("/my_path/my_csv.csv")
+Question 41:
+Which of the following code blocks displays the top 100 rows of the df DataFrame, where the salary 
+column is present, in descending order?
+A.	 df.sort(asc(value)).show(100)
+B.	 df.sort(col("value")).show(100)
+C.	 df.sort(col("value").desc()).show(100)
+D.	 df.sort(col("value").asc()).print(100)
+Question 42:
+Which of the following code blocks creates a DataFrame that shows the mean of the salary column 
+of the salaryDf DataFrame based on the department and state columns, where age is greater 
+than 35 and the returned DataFrame should be sorted in ascending order by the employeeID 
+column such that there are no nulls in that column?
+1.	
+salaryDf.filter(col("age") > 35)
+2.	
+.filter(col("employeeID")
+3.	
+.filter(col("employeeID").isNotNull())
+4.	
+.groupBy("department")
+5.	
+.groupBy("department", "state")
+6.	
+.agg(avg("salary").alias("mean_salary"))
+7.	
+.agg(average("salary").alias("mean_salary"))
+8.	
+.orderBy("employeeID")
+A.	 1, 2, 5, 6, 8
+B.	 1, 3, 5, 6, 8
+C.	 1, 3, 6, 7, 8
+D.	 1, 2, 4, 6, 8
+
+
+Question 43:
+The following code block contains an error. The code block should return a new DataFrame without 
+the employee and salary columns and with an additional fixed_value column, which has 
+a value of 100.
+df.withColumnRenamed(fixed_value).drop('employee', 'salary')
+Identify the error:
+A.	 withcolumnRenamed should be replaced with withcolumn and the lit() function 
+should be used to fill the 100 value
+B.	 withcolumnRenamed should be replaced with withcolumn
+C.	 employee and salary should be swapped in a drop function
+D.	 The lit() function call is missing
+Question 44:
+Which of the following code blocks returns the basic statistics for numeric and string columns of the 
+df DataFrame?
+A.	 df.describe()
+B.	 df.detail()
+C.	 df.head()
+D.	 df.explain()
+Question 45:
+Which of the following code blocks returns the top 5 rows of the df DataFrame?
+A.	 df.select(5)
+B.	 df.head(5)
+C.	 df.top(5)
+D.	 df.show()
+
+
+Question 46:
+Which of the following code blocks creates a new DataFrame with the department, age, and 
+salary columns from the df DataFrame?
+A.	 df.select("department", "age", "salary")
+B.	 df.drop("department", "age", "salary")
+C.	 df.filter("department", "age", "salary")
+D.	 df.where("department", "age", "salary")
+Question 47:
+Which of the following code blocks creates a new DataFrame with three columns, department, 
+age, and max_salary, which has the maximum salary for each employee from each department 
+and each age group from the df DataFrame?
+df.___1___ (["department", "age"]).___2___ (___3___ ("salary").
+alias("max_salary"))
+Identify the correct answer:
+A.	
+i.	
+filter
+ii.	 agg
+iii.	 max
+B.	
+i.	
+groupBy
+ii.	 agg
+iii.	 max
+C.	
+i.	
+filter
+ii.	 agg
+iii.	 sum
+
+
+D.	
+i.	
+groupBy
+ii.	 agg
+iii.	 sum
+Question 48:
+The following code block contains an error. The code block should return a new DataFrame, filtered 
+by the rows, where the salary column is greater than or equal to 1000 in the df DataFrame.
+df.filter(F(salary) >= 1000)
+Identify the error:
+A.	 Instead of filter(), where() should be used
+B.	 The F(salary) operation should be replaced with F.col("salary")
+C.	 Instead of >=, the > operator should be used
+D.	 The argument to the where method should be "salary > 1000"
+Question 49:
+Which of the following code blocks returns a copy of the df DataFrame where the department 
+column has been renamed business_unit?
+A.	 df.withColumn(["department", "business_unit"])
+B.	 itemsDf.withColumn("department").alias("business_unit")
+C.	 itemsDf.withColumnRenamed("department", "business_unit")
+D.	 itemsDf.withColumnRenamed("business_unit", "department")
+Question 50:
+Which of the following code blocks returns a DataFrame with the total count of employees in each 
+department from the df DataFrame?
+A.	 df.groupBy("department").agg(count("*").alias("total_
+employees"))
+
+
+B.	 df.filter("department").agg(count("*").alias("total_
+employees"))
+C.	 df.groupBy("department").agg(sum("*").alias("total_employees"))
+D.	 df.filter("department").agg(sum("*").alias("total_employees"))
+Question 51:
+Which of the following code blocks returns a DataFrame with the employee column from the df 
+DataFrame case to the string type?
+A.	 df.withColumn("employee", col("employee").cast_type("string"))
+B.	 df.withColumn("employee", col("employee").cast("string"))
+C.	 df.withColumn("employee", col("employee").cast_
+type("stringType()"))
+D.	 df.withColumnRenamed("employee", col("employee").
+cast("string"))
+Question 52:
+Which of the following code blocks returns a DataFrame with a new fixed_value column, which 
+has Z in all rows in the df DataFrame?
+A.	 df.withColumn("fixed_value", F.lit("Z"))
+B.	 df.withColumn("fixed_value", F("Z"))
+C.	 df.withColumnRenamed("fixed_value", F.lit("Z"))
+D.	 df.withColumnRenamed("fixed_value", lit("Z"))
+Question 53:
+Which of the following code blocks returns a new DataFrame with a new upper_string column, 
+which is the capitalized version of the employeeName column in the df DataFrame?
+A.	 df.withColumnRenamed('employeeName', upper(df.upper_string))
+B.	 df.withColumnRenamed('upper_string', upper(df.employeeName))
+C.	 df.withColumn('upper_string', upper(df.employeeName))
+D.	 df.withColumn(' employeeName', upper(df.upper_string))
+
+
+Question 54:
+The following code block contains an error. The code block is supposed to capitalize the employee 
+names using a udf:
+capitalize_udf = udf(lambda x: x.upper(), StringType())
+df_with_capitalized_names = df.withColumn("capitalized_name", 
+capitalize("employee"))
+Identify the error:
+A.	 The capitalize_udf function should be called instead of capitalize
+B.	 The udf function, capitalize_udf, is not capitalizing correctly
+C.	 Instead of StringType(), IntegerType() should be used
+D.	 Instead of d f . w i t h C o l u m n ( " c a p i t a l i z e d _ n a m e " , 
+capitalize("employee")), it should use df.withColumn("employee", 
+capitalize("capitalized_name"))
+Question 55:
+The following code block contains an error. The code block is supposed to sort the df DataFrame 
+by salary in ascending order. Then, it should sort based on the bonus column, putting nulls last.
+df.orderBy ('salary', asc_nulls_first(col('bonus')))
+Identify the error:
+A.	 The salary column should be sorted in descending order and desc_nulls_last 
+should be used instead of asc_nulls_first. Moreover, it should be wrapped in a 
+col() operator.
+B.	 The salary column should be wrapped by the col() operator.
+C.	 The bonus column should be sorted in a descending way, putting nulls last.
+D.	 The bonus column should be sorted by desc_nulls_first() instead.
+Question 56:
+The following code block contains an error. The code block needs to group the df DataFrame based 
+on the department column and calculate the total salary and average salary for each department.
+df.filter("department").agg(sum("salary").alias("sum_salary"), 
+avg("salary").alias("avg_salary"))
+
+
+Identify the error:
+A.	 The avg method should also be called through the agg function
+B.	 Instead of filter, groupBy should be used
+C.	 The agg method syntax is incorrect
+D.	 Instead of filtering on department, the code should filter on salary
+Question 57:
+Which code block will write the df DataFrame as a parquet file on the filePath path partitioning 
+it on the department column?
+A.	 df.write.partitionBy("department").parquet(filePath)
+B.	 df.write.partition("department").parquet(filePath)
+C.	 df.write.parquet("department").partition(filePath)
+D.	 df.write.coalesce("department").parquet(filePath)
+Question 58:
+The df DataFrame contains columns [employeeID, salary, department]. Which of 
+the following pieces of code would return the df DataFrame with only columns [employeeID, 
+salary]?
+A.	 df.drop("department")
+B.	 df.select(col(employeeID))
+C.	 df.drop("department", "salary")
+D.	 df.select("employeeID", "department")
+Question 59:
+Which of the following code blocks returns a new DataFrame with the same columns as the df 
+DataFrame, except for the salary column?
+A.	 df.drop(col("salary"))
+B.	 df.delete(salary)
+C.	 df.drop(salary)
+D.	 df.delete("salary")
+
+
+Question 60:
+The following code block contains an error. The code block should return the df DataFrame with 
+employeeID renamed as employeeIdColumn.
+df.withColumnRenamed("employeeIdColumn", "employeeID")
+Identify the error:
+A.	 Instead of withColumnRenamed, the withColumn method should be used
+B.	 Instead of withColumnRenamed, the withColumn method should be used and the 
+"employeeIdColumn" argument should be swapped with the "employeeID" argument
+C.	 The "employeeIdColumn" and "employeeID" arguments should be swapped
+D.	 withColumnRenamed is not a method for DataFrames
+Answers
+1.	
+D
+2.	
+C
+3.	
+A
+4.	
+A
+5.	
+A
+6.	
+A
+7.	
+B
+8.	
+D
+9.	
+C
+10.	 B
+11.	 C
+12.	 C
+13.	 A
+14.	 B
+15.	 A
+16.	 A
+17.	 A
+18.	 B
+19.	 B
+
+
+20.	 E
+21.	 C
+22.	 A
+23.	 A
+24.	 C
+25.	 C
+26.	 D
+27.	 D
+28.	 B
+29.	 A
+30.	 B
+31.	 A
+32.	 A
+33.	 C
+34.	 A
+35.	 D
+36.	 A
+37.	 D
+38.	 B
+39.	 A
+40.	 D
+41.	 C
+42.	 B
+43.	 A
+44.	 A
+45.	 B
+46.	 A
+47.	 B
+48.	 B
+49.	 C
+50.	 A
+51.	 B
+
+
+52.	 A
+53.	 C
+54.	 A
+55.	 A
+56.	 B
+57.	 A
+58.	 A
+59.	 A
+60.	 C
+

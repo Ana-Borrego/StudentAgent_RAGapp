@@ -1,0 +1,2372 @@
+;query;node_id;position_node;node_content;node_score;chunk_size
+0;What does collect() function do in pyspark?;fd6b8eb0-b153-466e-b595-c9ac21fcb9d9;1;"0 |string_test_3|
++-------+-------+-------+-------------+
+Now, let’s take a look at the collect statement.
+Collecting the data
+A collect statement is used when we want to get all the data that is being processed in different clusters 
+back to the driver. When using a collect statement, we need to make sure that the driver has enough 
+memory to hold the processed data. If the driver doesn’t have enough memory to hold the data, we 
+will get out-of-memory errors.
+This is how you show the collect statement:
+data_df.collect()
+This statement will then show result as follows:
+[Row(col_1=100, col_2=200.0, col_3='string_test_1', col_4=datetime.
+date(2023, 1, 1), col_5=datetime.datetime(2023, 1, 1, 12, 0)),
+
+Collecting the data
+
+ Row(col_1=200, col_2=300.0, col_3='string_test_2', col_4=datetime.
+date(2023, 2, 1), col_5=datetime.datetime(2023, 1, 2, 12, 0)),
+ Row(col_1=300, col_2=400.0, col_3='string_test_3', col_4=datetime.";0.5789967044305022;300
+1;What does collect() function do in pyspark?;1de351d3-d995-48ea-bdbd-be905cc5224d;2;"SQL Queries in Spark
+
+The resulting data are stored in the “filtered_data” variable and displayed using the show() method.
+In this section, we explored the process of executing SQL queries and applying transformations using 
+Spark SQL. We learned about the syntax for executing SQL queries and demonstrated practical examples 
+of executing queries, filtering data, performing aggregations, and sorting data. By leveraging the 
+expressive power of SQL and the flexibility of Spark SQL, you can efficiently analyze and manipulate 
+structured data for a wide range of data analysis tasks.
+Grouping and aggregating data – grouping data based on 
+specific columns and performing aggregate functions
+In Spark SQL, grouping and aggregating data are common operations that are performed to gain 
+insights and summarize information from large datasets. This section will explore how to group data 
+based on specific columns and perform various aggregate functions using Spark SQL. We will walk 
+through code examples that demonstrate the capabilities of Spark SQL in this regard.
+Grouping data
+When we want to group data based on specific columns, we can utilize the GROUP BY clause in 
+SQL queries. Let’s consider an example where we have a DataFrame of employees with the columns 
+department and salary.";0.5153409078501269;300
+2;What does collect() function do in pyspark?;0a659628-ee44-437a-8497-192a55f19d96;3;"It is an immutable distributed 
+collection of objects that represent a set of records. RDDs are distributed across a number of servers, 
+and they are computed in parallel across multiple cluster nodes. RDDs can be generated with code. 
+When we read data from an external storage location into Spark, RDDs hold that data. This data can 
+be shared across multiple clusters and can be computed in parallel, thus giving Spark a very efficient 
+way of running computations on RDD data. RDDs are loaded in memory for processing; therefore, 
+loading to and from memory computations is not required, unlike Hadoop.
+RDDs are fault-tolerant. This means that if there are failures, RDDs have the ability to self-recover. 
+Spark achieves that by distributing these RDDs to different worker nodes while keeping in view what 
+task is performed by which worker node. This handling of worker nodes is done by the Spark driver. 
+We will discuss this in detail in upcoming chapters.
+RDDs give a lot of power to Spark in terms of resilience and fault-tolerance. This capability, along with 
+other features, makes Spark the tool of choice for any production-grade applications.
+
+Understanding Apache Spark and Its Applications
+
+Multiple language support
+Spark supports multiple languages for development such as Java, R, Scala, and Python. This gives 
+users the flexibility to use any language of choice to build applications in Spark.";0.5084732343686763;300
+3;What does collect() function do in pyspark?;24260b74-c2ae-4677-a3ae-25213cb486ff;4;"date(2023, 1, 1), col_5=datetime.datetime(2023, 1, 1, 12, 0))]
+In this example, we’re only returning the first element of the DataFrame by giving 1 as an argument 
+value to the head() function. Therefore, only one row is returned in the result.
+Now, let’s take a look at how we can count the number of rows in a DataFrame.
+Counting the number of rows of data
+When we just need to count the number of rows in a DataFrame, we would use the following:
+data_df.count()
+As a result, you will see the total count of rows in a DataFrame:
+
+In PySpark, several methods are available for retrieving data from a DataFrame or RDD, each with 
+its own characteristics and use cases. Here’s a summary of the major differences between take, collect, 
+show, head, and tail that we used earlier in this section for data retrieval.
+take(n)
+This function returns an array containing the first n elements from the DataFrame or RDD
+•	 It is useful for quickly inspecting a small subset of the data
+•	 It performs a lazy evaluation, meaning it only computes the required number of elements
+collect()
+This function retrieves all elements from the DataFrame or RDD and returns them as a list
+•	 It should be used with caution as it brings all data to the driver node,";0.5051734234802826;300
+4;What does collect() function do in pyspark?;6f3cc38b-75b9-4611-ba39-a741866ffa85;5;"This would return a DataFrame or RDD when it is triggered by an action.
+Actions and computation execution
+Actions (for example, collect, count, and saveAsTextFile) prompt the execution of 
+transformations on RDDs. Execution is triggered by actions only, not by transformations. When an 
+action is called, this is when Spark starts execution on the DAG it created during the analysis phase of 
+code. With the DAG created, Spark creates multiple query plans based on its internal optimizations. 
+Then, it executes the plan that is the most efficient and cost-effective. We will discuss query plans 
+later in this book.
+Here are some of the operations that can be classified as actions:
+•	 show()
+•	 take()
+•	 count()
+•	 collect()
+•	 save()
+•	 foreach()
+•	 first()
+
+Spark Architecture and Transformations
+
+All of these operations would result in Spark triggering code execution and thus operations are run.
+Let’s take a look at the following code to understand these concepts better:
+# Python
+>>> df = spark.read.text(""{path_to_data_file}"")
+>>> names_df = df.select(col(""firstname""),col(""lastname""))
+>>> names_df.show()
+In the preceding code, until line 2, nothing would be executed. On line 3, an action is triggered and 
+thus it triggers the whole code execution.";0.4997278158200282;300
+5;What is the role of the Driver component?;17da1914-6e56-40dc-9263-f34e4ef05611;1;"Now that you understand the execution hierarchy, let’s discuss each of Spark’s components in detail.
+Spark components
+Let’s dive into the inner workings of each Spark component to understand how each of them plays a 
+crucial role in empowering efficient distributed data processing.
+Spark driver
+The Spark driver is the core of the intelligent and efficient computations in Spark. Spark follows an 
+architecture that is commonly known as the master-worker architecture in network topology. Consider 
+the Spark driver as a master and Spark executors as slaves. The driver has control and knowledge of 
+all the executors at any given time. It is the responsibility of the driver to know how many executors 
+are present and if any executor has failed so that it can fall back on its alternative. The Spark driver 
+also maintains communication with executors all the time. The driver runs on the master node of a 
+machine or cluster. When a Spark application starts running, the driver keeps up with all the required 
+information that is needed to run the application successfully.
+As shown in Figure 3.1, the driver node contains SparkSession, which is the entry point of the 
+Spark application. Previously, this was known as the SparkContext object, but in Spark 2.0, 
+SparkSession handles all contexts to start execution. The application’s main method runs on the 
+driver to coordinate the whole application.";0.5346182773643599;300
+6;What is the role of the Driver component?;238a0477-93a5-44e7-8e55-2dcd3b9a33c4;2;"The application’s main method runs on the 
+driver to coordinate the whole application. It runs on its own Java Virtual Machine (JVM). Spark 
+driver can run as an independent process or it can run on one of the worker nodes, depending on 
+the architecture.
+
+Spark Architecture and Transformations
+
+The Spark driver is responsible for dividing the application into smaller entities for execution. These 
+entities are known as tasks. You will learn more about tasks in the upcoming sections of this chapter. 
+The Spark driver also decides what data the executor will work on and what tasks are run on which 
+executor. These tasks are scheduled to run on the executor nodes with the help of the cluster manager. 
+This information that is driven by the driver enables fault tolerance. Since the driver has all the 
+information about the number of available workers and the tasks that are running on each of them 
+alongside data in case a worker fails, that task can be reassigned to a different cluster. Even if a task is 
+taking too long to run, it can be assigned to another executor if that gets free. In that case, whichever 
+executor returns the task earlier would prevail. The Spark driver also maintains metadata about the 
+Resilient Distributed Dataset (RDD) and its partitions.
+It is the responsibility of the Spark driver to design the complete execution map.";0.5131978603454662;300
+7;What is the role of the Driver component?;8839c43c-3368-4961-ae25-9d4d384c381b;3;"It is the responsibility of the Spark driver to design the complete execution map. It determines which 
+tasks run on which executors, as well as how the data is distributed across these executors. This is 
+done by creating RDDs internally. Based on this distribution of data, the operations that are required 
+are determined, such as transformations and actions that are defined in the program. A DAG is 
+created based on these decisions. The Spark driver optimizes the logical plan (DAG) and finds the 
+best possible execution strategy for the DAG, in addition to determining the most optimal location for 
+the execution of a particular task. These executions are done in parallel. The executors simply follow 
+these commands without doing any optimization on their end.
+For performance considerations, it is optimal to have the Spark driver work close to the executor. This 
+reduces the latency by a great deal. This means that there would be less delay in the response time of 
+the processes. Another point to note here is that this is true for the data as well. The executor reading 
+the data close to it would have better performance than otherwise. Ideally, the driver and worker nodes 
+should be run in the same local area network (LAN) for the best performance.
+The Spark driver also creates a web UI for the execution details. This UI is very helpful in determining 
+the performance of the application.";0.43254985752966774;300
+8;What is the role of the Driver component?;08c32b8d-a5b1-4b35-b118-bc48ee607e48;4;"•	 Apache YARN (Hadoop’s resource manager): Integrated with Spark, YARN enables Spark 
+applications to share Hadoop’s cluster resources efficiently.
+•	 Apache Mesos (resource sharing platform): Mesos offers efficient resource sharing across 
+multiple applications, allowing Spark to run alongside other frameworks.
+We will talk more about deployment modes later in this chapter.
+Spark executors
+Spark executors are the processes that run on the worker node and execute tasks sent by the driver. 
+The data is stored in memory primarily but can also be written to disk storage closest to them. Driver 
+launches the executors based on the DAG that Spark generates for its execution. Once the tasks have 
+finished executing, executors send the results back to the driver.
+Since the driver is the main controller of the Spark application, if an executor fails or takes too long to 
+execute a task, the driver can choose to send that task over to other available executors. This ensures 
+reliability and fault tolerance in Spark. We will read more about this later in this chapter.
+It is the responsibility of the executor to read data from external sources that are needed to run the 
+tasks. It can also write its partitioned data to the disk as needed. All processing for a task is done by 
+the executor.";0.39851925551371786;300
+9;What is the role of the Driver component?;33092705-5e17-40e3-afb2-8c575e9ca842;5;"To understand 
+Spark’s unique approach, we will have to understand its basic architecture. A deep dive into Spark’s 
+architecture and its components will give you an idea of how Spark achieves its ground-breaking 
+processing speeds for big data analytics.
+In this chapter, you will learn about the following broader topics:
+•	 Spark architecture and execution hierarchy
+•	 Different Spark components
+•	 The roles of the Spark driver and Spark executor
+•	 Different deployment modes in Spark
+•	 Transformations and actions as Spark operations
+By the end of this chapter, you will have valuable insights into Spark’s inner workings and know how 
+to apply this knowledge effectively for your certification test.
+Spark architecture
+In the previous chapters, we discussed that Apache Spark is an open source, distributed computing 
+framework designed for big data processing and analytics. Its architecture is built to handle various 
+workloads efficiently, offering speed, scalability, and fault tolerance. Understanding the architecture 
+of Spark is crucial for comprehending its capabilities in processing large volumes of data.
+
+Spark Architecture and Transformations
+
+The components of Spark architecture work in collaboration to process data efficiently. The following 
+major components are involved:
+•	 Spark driver
+•	 SparkContext
+•	 Cluster manager
+•	 Worker node
+•	 Spark executor
+•	 Task
+Before we talk about any of these components, it’s important to understand their execution hierarchy 
+to know how each component interacts when a Spark program starts.";0.39174991451413493;300
+10;What does a 'broadcast join' mean?;f07924be-079b-485a-be2b-ccf1f7569135;1;"In this 
+approach, the smaller DataFrame is broadcast to all worker nodes, eliminating the need for shuffling 
+data across the network. A broadcast join is a specific optimization technique that can be applied 
+when one of the DataFrames is small enough to fit in memory. In this case, the small DataFrame is 
+broadcast to all worker nodes, avoiding costly shuffling.
+Let’s look at some of the key characteristics of broadcast joins:
+•	 Small DataFrame broadcast: The smaller DataFrame is broadcast to all worker nodes, ensuring 
+that it is available locally
+•	 Reduced network overhead: Broadcast joins significantly reduce network and disk I/O because 
+they avoid data shuffling
+•	 Ideal for dimension tables: Broadcast joins are commonly used when joining a fact table with 
+smaller dimension tables, such as in data warehousing scenarios
+•	 Efficient for small-to-large joins: They are efficient for joins where one DataFrame is significantly 
+smaller than the other
+Use case
+Broadcast joins are useful when you’re joining a large DataFrame with a much smaller one, such as 
+joining a fact table with dimension tables in a data warehouse.
+Broadcast hash joins
+A specific type of broadcast join is the broadcast hash join. In this variant, the smaller DataFrame is 
+broadcast as a hash table to all worker nodes, which allows for efficient lookups in the larger DataFrame.";0.6087464942377431;300
+11;What does a 'broadcast join' mean?;e480a2a0-459a-41c9-b6e2-a6e9c620c397;2;"Despite all the data-related challenges that users need to be aware of, there are certain types of joins 
+that Spark has available in its internal working that we can utilize for better performance. We’ll take 
+a look at these next.
+
+Advanced Operations and Optimizations in Spark
+
+Shuffle and broadcast joins
+Apache Spark offers two fundamental approaches for performing join operations: shuffle joins and 
+broadcast joins. Each method has its advantages and use cases, and understanding when to use them 
+is crucial for optimizing your Spark applications. Note that these joins are done by Spark automatically 
+to join different datasets together. You can enforce some of the join types in your code but Spark takes 
+care of the execution.
+Shuffle joins
+Shuffle joins are a common method for joining large datasets in distributed computing environments. 
+These joins redistribute data across partitions, ensuring that matching keys end up on the same worker 
+nodes. Spark performs shuffle joins efficiently thanks to its underlying execution engine.
+Here are some of the key characteristics of shuffle joins:
+•	 Data redistribution: Shuffle joins redistribute data to ensure that rows with matching keys are 
+co-located on the same worker nodes. This process may require substantial network and disk I/O.
+•	 Suitable for large datasets: Shuffle joins are well-suited for joining large DataFrames with 
+comparable sizes.
+•	 Replicating data: During a shuffle join, data may be temporarily replicated on worker nodes 
+to facilitate efficient joins.";0.5233050386986453;300
+12;What does a 'broadcast join' mean?;d03877b9-62aa-499c-83b2-f4bf5080a6e3;3;"Use case
+Broadcast hash joins are suitable for scenarios where one DataFrame is small enough to be broadcast, 
+and you need to perform equality-based joins.
+
+Advanced Operations and Optimizations in Spark
+
+In this section, we discussed two fundamental join techniques in Spark – shuffle joins and broadcast 
+joins – including specific variants, such as the broadcast hash join and the shuffle sort-merge join. 
+Choosing the right join method depends on the size of your DataFrames, data distribution, and network 
+considerations, and it’s essential to make informed decisions to optimize your Spark applications. In 
+the next section, we will cover different types of transformations that exist in Spark.
+Narrow and wide transformations in Apache Spark
+As discussed in Chapter 3, transformations are the core operations for processing data. Transformations 
+are categorized into two main types: narrow transformations and wide transformations. Understanding 
+the distinction between these two types of transformations is essential for optimizing the performance 
+of your Spark applications.
+Narrow transformations
+Narrow transformations are operations that do not require data shuffling or extensive data movement 
+across partitions. They can be executed on a single partition without the need to communicate with other 
+partitions. This inherent locality makes narrow transformations highly efficient and faster to execute.
+The following are some of the key characteristics of narrow transformations:
+•	 Single-partition processing: Narrow transformations operate on a single partition of the data 
+independently, which minimizes communication overhead.";0.5188343010744968;300
+13;What does a 'broadcast join' mean?;cdbbfd6a-2bcd-4f90-9b0f-07725748cdb7;4;"servers"",""localhost:9092"") .option(""subscribe"", ""topic2"") .load()
+ joinedStream =stream1.join(stream2, ""common_key"")
+In this example, two Kafka streams, stream1 and stream2, are read from different topics. The 
+join method is then applied to perform the join operation, based on the common_key field shared 
+by both streams.
+Stream-static joins
+Stream-static joins, also known as stream-batch joins, involve joining a streaming data source to a 
+static or reference dataset. The static dataset typically represents reference data, such as configuration 
+data or dimension tables, that remains constant over time.
+Stream-static joins are useful for enriching streaming data with additional information or attributes 
+from the static dataset. For example, you might join a stream of user activity events with a static user 
+profile table to enrich each event with user-related details.
+To perform a stream-static join in Structured Streaming, you can load the static dataset as a static 
+DataFrame and then use the join method to perform the join with the streaming DataFrame. Since 
+the static dataset does not change, the join operation can be performed using the default “right outer 
+join” mode.";0.5041575650630841;300
+14;What does a 'broadcast join' mean?;8bf2de9b-4372-4272-b36e-fd26a87967bc;5;"Stream-stream joins
+Stream-stream joins, also known as stream-stream co-grouping or stream-stream correlation, 
+involve joining two or more streaming data sources based on a common key or condition. In this 
+type of join, each incoming event from the streams is matched with events from other streams that 
+share the same key or satisfy the specified condition.
+Stream-stream joins enable real-time data correlation and enrichment, making it possible to combine 
+multiple streams of data to gain deeper insights and perform complex analytics. However, stream-
+stream joins present unique challenges compared to batch or stream-static joins, due to the unbounded 
+nature of streaming data and potential event-time skew.
+One common approach to stream-stream joins is the use of windowing operations. By defining 
+overlapping or tumbling windows on the streams, events within the same window can be joined based 
+on their keys. Careful consideration of window size, watermarking, and event time characteristics is 
+necessary to ensure accurate and meaningful joins.
+Here’s an example of a stream-stream join using Structured Streaming:
+stream1 = spark.readStream.format(""kafka"")
+.option(""kafka.bootstrap.servers"", ""localhost:9092"") 
+.option(""subscribe"", ""topic1"") .load()
+
+Different joins in Structured Streaming
+
+stream2 = spark.readStream.format(""kafka"").option(""kafka.bootstrap.";0.4959411065014457;300
+15;How does persist() differ from cache() in PySpark?;dd84ecdd-f6e3-4445-b2ee-ac1e72db928e;1;"The following key concepts are related to data persistence:
+•	 Storage levels: Spark offers multiple storage levels for data, ranging from memory-only to 
+disk, depending on your needs. Each storage level comes with its trade-offs in terms of speed 
+and durability.
+•	 Lazy evaluation: Spark follows a lazy evaluation model, meaning transformations are not 
+executed until an action is called. Data persistence ensures that the intermediate results are 
+available for reuse without recomputation.
+•	 Caching versus persistence: Caching is a specific form of data persistence that stores data in 
+memory, while persistence encompasses both in-memory and on-disk storage.
+Caching data
+Caching is a form of data persistence that stores DataFrames, RDDs, or datasets in memory for fast 
+access. It is an essential optimization technique that improves the performance of Spark applications, 
+particularly when dealing with iterative algorithms or repeated computations.
+To cache a DataFrame or an RDD, you can use the .cache() or .persist() method while 
+specifying the storage level:
+•	 Memory-only: This option stores data in memory but does not replicate it for fault tolerance. 
+Use .cache() or .persist(StorageLevel.MEMORY_ONLY).
+•	 Memory-only, serialized: This option stores data in memory in a serialized form, reducing 
+memory usage. Use .persist(StorageLevel.MEMORY_ONLY_SER).";0.6780142093574273;300
+16;How does persist() differ from cache() in PySpark?;8185a3a1-a935-480d-98e4-3fe055dde094;2;"Use .persist(StorageLevel.MEMORY_ONLY_SER).
+•	 Memory and disk: This option stores data in memory and spills excess data to disk when 
+memory is full. Use .persist(StorageLevel.MEMORY_AND_DISK).
+
+Persisting and caching in Apache Spark
+
+•	 Disk-only: This option stores data only on disk, avoiding memory usage. 
+Use .persist(StorageLevel.DISK_ONLY).
+Caching is particularly beneficial in the following scenarios:
+•	 Iterative algorithms: Caching is vital for iterative algorithms such as machine learning, graph 
+processing, and optimization problems, where the same data is used repeatedly
+•	 Multiple actions: When a DataFrame is used for multiple actions, caching it after the first 
+action can improve performance
+•	 Avoiding recomputation: Caching helps avoid recomputing the same data when multiple 
+transformations depend on it
+•	 Interactive queries: In interactive data exploration or querying, caching frequently used 
+intermediate results can speed up ad hoc analysis
+Unpersisting data
+Caching consumes memory, and in a cluster environment, it’s essential to manage memory efficiently. 
+You can release cached data from memory using the .unpersist() method. This method allows 
+you to specify whether to release the data immediately or only when it is no longer needed.";0.6685588145754704;300
+17;How does persist() differ from cache() in PySpark?;89a9b0da-4025-4619-830c-85ad18af91c0;3;"Here’s an example of unpersisting data:
+# Cache a DataFrame
+df.cache()
+# Unpersist the cached DataFrame
+df.unpersist()
+Best practices
+To use caching and persistence effectively in your Spark applications, consider the following best practices:
+•	 Cache only what’s necessary: Caching consumes memory, so cache only the data that is 
+frequently used or costly to compute
+•	 Monitor memory usage: Regularly monitor memory usage to avoid running out of memory 
+or excessive disk spills
+•	 Automate unpersistence: If you have limited memory resources, automate the unpersistence 
+of less frequently used data to free up memory for more critical operations
+•	 Consider serialization: Depending on your use case, consider using serialized storage levels 
+to reduce memory overhead
+
+Advanced Operations and Optimizations in Spark
+
+In this section, we explored the concepts of persistence and caching in Apache Spark. Caching and 
+persistence are powerful techniques for optimizing performance in Spark applications, particularly when 
+dealing with iterative algorithms or scenarios where the same data is used repeatedly. Understanding when 
+and how to use these techniques can significantly improve the efficiency of your data processing workflows.
+In the next section, we’ll learn how repartition and coalesce work in Spark.
+Repartitioning and coalescing in Apache Spark
+Efficient data partitioning plays a crucial role in optimizing data processing workflows in Apache 
+Spark.";0.6444986139870605;300
+18;How does persist() differ from cache() in PySpark?;622b5dd7-bd15-40a3-ae55-9b79dcbb75a4;4;"•	 Tuning cluster resources: Adjust cluster configurations, such as the number of executors and 
+memory allocation, to meet the demands of wide transformations.
+•	 Profiling and monitoring: Regularly profile and monitor your Spark applications to identify 
+performance bottlenecks, especially in the case of wide transformations.
+In this section, we explored the concepts of narrow and wide transformations in Apache Spark. 
+Understanding when and how to use these transformations is critical for optimizing the performance 
+of your Spark applications, especially when dealing with large datasets and complex operations.
+In the next section, we will cover the persist and cache operations in Spark.
+
+Advanced Operations and Optimizations in Spark
+
+Persisting and caching in Apache Spark
+In Apache Spark, optimizing the performance of your data processing operations is essential, especially 
+when working with large datasets and complex workflows. Caching and persistence are techniques that 
+allow you to store intermediate or frequently used data in memory or on disk, reducing the need for 
+recomputation and enhancing overall performance. This section explores the concepts of persisting 
+and caching in Spark.
+Understanding data persistence
+Data persistence is the process of storing the intermediate or final results of Spark transformations 
+in memory or on disk. By persisting data, you reduce the need to recompute it from the source data, 
+thereby improving query performance.";0.5301247459584221;300
+19;How does persist() differ from cache() in PySpark?;32d42d1c-00cd-464f-a919-01a57d9ba2d8;5;"While this works great for programming paradigms, with big data and 
+parallel processing, we need to shift to a look-ahead kind of model. Spark is well known for its parallel 
+processing capabilities. To achieve even better performance, Spark doesn’t execute code as it reads it, 
+but once the code is there and we submit a Spark statement to execute, the first step is that Spark builds 
+a logical map of the queries. Once that map is built, then it plans what the best path of execution is. 
+You will read more about its intricacies in the Spark architecture chapters. Once the plan is established, 
+only then will the execution begin. Once the execution begins, even then, Spark holds off executing 
+all statements until it hits an “action” statement. There are two types of statements in Spark:
+•	 Transformations
+•	 Actions
+You will learn more about the different types of Spark statements in detail in Chapter 3, where we 
+discuss Spark architecture. Here are a few advantages of lazy evaluation:
+•	 Efficiency
+•	 Code manageability
+•	 Query and resource optimization
+•	 Reduced complexities
+Resilient datasets/fault tolerance
+Spark’s foundation is built on resilient distributed datasets (RDDs). It is an immutable distributed 
+collection of objects that represent a set of records.";0.4319322590644151;300
+20;What does collect() function do in pyspark?;d870c719-6f6e-4197-be5f-9ae757bc4418;1;"let’s take a look at the collect statement.
+Collecting the data
+A collect statement is used when we want to get all the data that is being processed in different clusters 
+back to the driver. When using a collect statement, we need to make sure that the driver has enough 
+memory to hold the processed data. If the driver doesn’t have enough memory to hold the data, we 
+will get out-of-memory errors.
+This is how you show the collect statement:
+data_df.collect()
+This statement will then show result as follows:
+[Row(col_1=100, col_2=200.0, col_3='string_test_1', col_4=datetime.
+date(2023, 1, 1), col_5=datetime.datetime(2023, 1, 1, 12, 0)),
+
+Collecting the data
+
+ Row(col_1=200, col_2=300.0, col_3='string_test_2', col_4=datetime.
+date(2023, 2, 1), col_5=datetime.datetime(2023, 1, 2, 12, 0)),
+ Row(col_1=300, col_2=400.0, col_3='string_test_3', col_4=datetime.
+date(2023, 3, 1), col_5=datetime.datetime(2023, 1, 3, 12, 0))]
+There are a few ways to avoid out-of-memory errors. We will explore some of the options that avoid 
+out-of-memory errors such as take, tail, and head statements. These statements return only a subset 
+of the data and not all of the data in a DataFrame, therefore, they are very useful to inspect the data 
+without having to lead all the data in driver memory.
+Now, let’s take a look at the take statement.
+Using take
+A take statement takes an argument for a number of elements to return from the top of a DataFrame. 
+We will see how it is used in the following code example:
+data_df.take(1)
+As a result, you will see a DataFrame with its top row:
+[Row(col_1=100, col_2=200.0, col_3='string_test_1', col_4=datetime.";0.5427709696082023;500
+21;What does collect() function do in pyspark?;bcac242b-bfdd-4f49-b205-a2f3706f139f;2;"Spark SQL is designed to scale horizontally across a cluster of machines. It can handle large datasets 
+by partitioning them across multiple machines and processing them in parallel.
+Seamless integration with existing infrastructure
+Spark SQL integrates seamlessly with existing Apache Spark infrastructure and tools. It provides 
+interoperability with other Spark components, such as Spark Streaming for real-time data processing 
+and Spark MLlib for machine learning tasks. Furthermore, Spark SQL integrates with popular storage 
+systems and data formats, including Parquet, Avro, ORC, and Hive, making it compatible with a wide 
+range of data sources.
+Advanced analytics capabilities
+Spark SQL extends traditional SQL capabilities by using advanced analytics features. It supports window 
+functions, which enable users to perform complex analytical operations, such as ranking, aggregation 
+over sliding windows, and cumulative aggregations. The integration with machine learning libraries 
+in Spark allows for the seamless integration of predictive analytics and data science workflows.
+
+Getting started with Spark SQL
+
+Ease of use
+Spark SQL provides a simple programming interface that allows users to query data using SQL-like 
+syntax. This makes it easy for users who are familiar with SQL to get started with Spark SQL.
+Integration with Apache Spark
+Spark SQL is an integral part of the Apache Spark framework and works seamlessly with other Spark 
+components. It leverages Spark’s core functionalities, such as fault tolerance, data parallelism, and 
+distributed computing, to provide scalable and efficient data processing. Spark SQL can read data from 
+a variety of sources, including distributed file systems (such as HDFS), object stores (like Amazon S3), 
+and relational databases (via JDBC). It also integrates with external systems such as Hive, allowing 
+users to leverage existing Hive metadata and queries.
+Now let’s take a look at some basic constructs of Spark SQL.
+Key concepts – DataFrames and datasets
+Spark SQL introduces two fundamental abstractions for working with structured data: DataFrames 
+and Datasets.
+DataFrames
+DataFrames represent distributed collections of data organized into named columns. They provide 
+a higher-level interface for working with structured data and offer rich APIs for data manipulation, 
+filtering, aggregation, and querying. DataFrames are immutable and lazily evaluated, enabling optimized 
+execution plans through Spark’s Catalyst optimizer. They can be created from various data sources, 
+including structured files (CSV, JSON, and Parquet), Hive tables, and existing RDDs.";0.5083996785270996;500
+22;What does collect() function do in pyspark?;5763ad2f-2038-4acc-afbd-4c7e558df9fd;3;"PySpark provides us with the dropDuplicates() 
+function to do this. Here’s the code to illustrate this:
+new_salary_data = salary_data.dropDuplicates().show()
+Here is the result:
++--------+----------+------+
+|Employee|Department|Salary|
++--------+----------+------+
+|    John| Field-eng|  3500|
+| Michael| Field-eng|  4500|
+|   Maria|   Finance|  3500|
+|    John|     Sales|  3000|
+|   Kelly|   Finance|  3500|
+|    Kate|   Finance|  3000|
+|   Kiran|     Sales|  2200|
++--------+----------+------+
+We see in this example that employees named Michael are only shown once in the resulting DataFrame 
+after we apply the dropDuplicates() function to the original DataFrame. This name and its 
+corresponding values exist in the original DataFrame twice.
+Now that we have learned about different data filtering techniques, we will now see how we can 
+aggregate data in Pyspark DataFrames.
+Using aggregates in a DataFrame
+Some of the methods available in Spark for aggregating data are as follows:
+•	 agg
+•	 avg
+•	 count
+•	 max
+•	 mean
+•	 min
+•	 pivot
+•	 sum
+
+Spark DataFrames and their Operations
+
+We will see some of them in action in the following code examples.
+Average (avg)
+In the following example, we see how to use aggregate functions in Spark. We will start by calculating 
+the average of all the values in a column:
+from pyspark.sql.functions import countDistinct, avg
+salary_data.select(avg('Salary')).show()
+Here is the result:
++-----------+
+|avg(Salary)|
++-----------+
+|     3520.0|
++-----------+
+This example calculates the average of the salary column of the salary_data DataFrame.";0.5061986301829333;500
+23;What does collect() function do in pyspark?;ea5e2109-5627-40b0-86bd-86b98f4e13b3;4;"Let’s take a look at the following code to understand these concepts better:
+# Python
+>>> df = spark.read.text(""{path_to_data_file}"")
+>>> names_df = df.select(col(""firstname""),col(""lastname""))
+>>> names_df.show()
+In the preceding code, until line 2, nothing would be executed. On line 3, an action is triggered and 
+thus it triggers the whole code execution. Therefore, if you give the wrong data path in line 1 or the 
+wrong column names in line 2, Spark will not detect this until it runs line 3. This is a different paradigm 
+than most other programming paradigms. This is what we call lazy evaluation in Spark.
+Actions bring about computation and collect results to be sent to the driver program.
+Now that we’ve covered the basics of transformations and actions in Spark, let’s move on to understanding 
+the two types of transformations it offers.
+Types of transformations
+Apache Spark’s transformations are broadly categorized into narrow and wide transformations, each 
+serving distinct purposes in the context of distributed data processing.
+Narrow transformations
+Narrow transformations, also known as local transformations, operate on individual partitions of 
+data without shuffling or redistributing data across partitions. These transformations enable Spark to 
+process data within a single partition independently. In narrow transformations, Spark will work with 
+a single input partition and a single output partition. This means that these types of transformations 
+would result in an operation that can be performed on a single partition. The data doesn’t have to be 
+taken from multiple partitions or written back to multiple partitions. This results in operations that 
+don’t require shuffle.";0.4975931790753525;500
+24;What does collect() function do in pyspark?;d1f31502-16ca-459a-a2e2-4c0add98d69c;5;"The sorted data are stored in the sorted_data variable and displayed using the show() method.
+Combining aggregations
+We can also combine different aggregations in one SQL command, such as in the following code example:
+# Sort the data based on the salary column in descending order
+filtered_data = spark.sql(""SELECT Employee, Department, Salary, Age 
+FROM employees WHERE age > 30 AND Salary > 3000 ORDER BY Salary DESC"")
+# Display the results
+filtered_data.show()
+The output will be the following:
++--------+----------+------+---+
+|Employee|Department|Salary|Age|
++--------+----------+------+---+
+|  Robert|     Sales|  4000| 38|
+|   Kelly|   Finance|  3500| 35|
+|    John| Field-eng|  3500| 40|
++--------+----------+------+---+
+In this example, we combine different transformations to the employees table using Spark SQL. 
+First, we select those employees whose age is greater than 30 and who have a salary greater than 
+3,000. The ORDER BY clause is used to specify the sorting criteria; in this case, the salary column 
+in descending order.
+
+SQL Queries in Spark
+
+The resulting data are stored in the “filtered_data” variable and displayed using the show() method.
+In this section, we explored the process of executing SQL queries and applying transformations using 
+Spark SQL. We learned about the syntax for executing SQL queries and demonstrated practical examples 
+of executing queries, filtering data, performing aggregations, and sorting data. By leveraging the 
+expressive power of SQL and the flexibility of Spark SQL, you can efficiently analyze and manipulate 
+structured data for a wide range of data analysis tasks.
+Grouping and aggregating data – grouping data based on 
+specific columns and performing aggregate functions
+In Spark SQL, grouping and aggregating data are common operations that are performed to gain 
+insights and summarize information from large datasets. This section will explore how to group data 
+based on specific columns and perform various aggregate functions using Spark SQL. We will walk 
+through code examples that demonstrate the capabilities of Spark SQL in this regard.";0.49046569046473965;500
+25;What is the role of the Driver component?;18e8ae1e-f1c2-41b1-8751-b04f5ac89cfd;1;"The driver runs on the master node of a 
+machine or cluster. When a Spark application starts running, the driver keeps up with all the required 
+information that is needed to run the application successfully.
+As shown in Figure 3.1, the driver node contains SparkSession, which is the entry point of the 
+Spark application. Previously, this was known as the SparkContext object, but in Spark 2.0, 
+SparkSession handles all contexts to start execution. The application’s main method runs on the 
+driver to coordinate the whole application. It runs on its own Java Virtual Machine (JVM). Spark 
+driver can run as an independent process or it can run on one of the worker nodes, depending on 
+the architecture.
+
+Spark Architecture and Transformations
+
+The Spark driver is responsible for dividing the application into smaller entities for execution. These 
+entities are known as tasks. You will learn more about tasks in the upcoming sections of this chapter. 
+The Spark driver also decides what data the executor will work on and what tasks are run on which 
+executor. These tasks are scheduled to run on the executor nodes with the help of the cluster manager. 
+This information that is driven by the driver enables fault tolerance. Since the driver has all the 
+information about the number of available workers and the tasks that are running on each of them 
+alongside data in case a worker fails, that task can be reassigned to a different cluster. Even if a task is 
+taking too long to run, it can be assigned to another executor if that gets free. In that case, whichever 
+executor returns the task earlier would prevail. The Spark driver also maintains metadata about the 
+Resilient Distributed Dataset (RDD) and its partitions.
+It is the responsibility of the Spark driver to design the complete execution map. It determines which 
+tasks run on which executors, as well as how the data is distributed across these executors. This is 
+done by creating RDDs internally. Based on this distribution of data, the operations that are required 
+are determined, such as transformations and actions that are defined in the program. A DAG is 
+created based on these decisions. The Spark driver optimizes the logical plan (DAG) and finds the 
+best possible execution strategy for the DAG, in addition to determining the most optimal location for 
+the execution of a particular task.";0.5391824673120991;500
+26;What is the role of the Driver component?;ef0fe95b-4d95-4d14-8d62-4c689e304db4;2;"These executions are done in parallel. The executors simply follow 
+these commands without doing any optimization on their end.
+For performance considerations, it is optimal to have the Spark driver work close to the executor. This 
+reduces the latency by a great deal. This means that there would be less delay in the response time of 
+the processes. Another point to note here is that this is true for the data as well. The executor reading 
+the data close to it would have better performance than otherwise. Ideally, the driver and worker nodes 
+should be run in the same local area network (LAN) for the best performance.
+The Spark driver also creates a web UI for the execution details. This UI is very helpful in determining 
+the performance of the application. In cases where troubleshooting is required and some bottlenecks 
+need to be identified in the Spark process, this UI is very helpful.
+SparkSession
+SparkSession is the main point of entry and interaction with Spark. As discussed earlier, in the 
+previous versions of Spark, SparkContext used to play this role, but in Spark 2.0, SparkSession 
+can be created for this purpose. The Spark driver creates a SparkSession object to interact with 
+the cluster manager and get resource allocation through it.
+In the lifetime of the application, SparkSession is also used to interact with all the underlying Spark 
+APIs. We talked about different Spark APIs in Chapter 2 namely, SparkSQL, Spark Streaming, MLlib, 
+and GraphX. All of these APIs use SparkSession from its core to interact with the Spark application.
+SparkSession keeps track of Spark executors throughout the application’s execution.
+
+Spark components
+
+Cluster manager
+Spark is a distributed framework, which requires it to have access to computing resources. This access is 
+governed and controlled by a process known as the cluster manager. It is the responsibility of the cluster 
+manager to allocate computing resources for the Spark application when the application execution 
+starts. These resources become available at the request of the application master. In the Apache Spark 
+ecosystem, the application master plays a crucial role in managing and coordinating the execution 
+of Spark applications within a distributed cluster environment. It’s an essential component that’s 
+responsible for negotiating resources, scheduling tasks, and monitoring the application’s execution.";0.43257156007737885;500
+27;What is the role of the Driver component?;2f2778d8-9943-44a6-8cfa-22b36ec03277;3;"Execution hierarchy
+Let’s look at the execution flow of a Spark application with the help of the architecture depicted in 
+Figure 3.1:
+Figure 3.1: Spark architecture
+
+Spark components
+
+These steps outline the flow from submitting a Spark job to freeing up resources when the job is completed:
+1.	
+Spark executions start with a user submitting a spark-submit request to the Spark engine. This 
+will create a Spark application. Once an action is performed, it will result in a job being created.
+2.	
+This request will initiate communication with the cluster manager. In turn, the cluster manager 
+initializes the Spark driver to execute the main() method of the Spark application. To execute 
+this method, SparkSession is created.
+3.	
+The driver starts communicating with the cluster manager and asks for resources to start 
+planning for execution.
+4.	
+The cluster manager then starts the executors, which can communicate with the driver directly.
+5.	
+The driver creates a logical plan, known as a directed acyclic graph (DAG), and physical plan 
+for execution based on the total number of tasks required to be executed.
+6.	
+The driver also divides data to be run on each executor, along with tasks.
+7.	
+Once each task finishes running, the driver gets the results.
+8.	
+When the program finishes running, the main() method exits and Spark frees all executors 
+and driver resources.
+Now that you understand the execution hierarchy, let’s discuss each of Spark’s components in detail.
+Spark components
+Let’s dive into the inner workings of each Spark component to understand how each of them plays a 
+crucial role in empowering efficient distributed data processing.
+Spark driver
+The Spark driver is the core of the intelligent and efficient computations in Spark. Spark follows an 
+architecture that is commonly known as the master-worker architecture in network topology. Consider 
+the Spark driver as a master and Spark executors as slaves. The driver has control and knowledge of 
+all the executors at any given time. It is the responsibility of the driver to know how many executors 
+are present and if any executor has failed so that it can fall back on its alternative. The Spark driver 
+also maintains communication with executors all the time. The driver runs on the master node of a 
+machine or cluster.";0.4325004105438267;500
+28;What is the role of the Driver component?;99c63eb2-5677-4792-894d-cbcb145ba384;4;"•	 Apache YARN (Hadoop’s resource manager): Integrated with Spark, YARN enables Spark 
+applications to share Hadoop’s cluster resources efficiently.
+•	 Apache Mesos (resource sharing platform): Mesos offers efficient resource sharing across 
+multiple applications, allowing Spark to run alongside other frameworks.
+We will talk more about deployment modes later in this chapter.
+Spark executors
+Spark executors are the processes that run on the worker node and execute tasks sent by the driver. 
+The data is stored in memory primarily but can also be written to disk storage closest to them. Driver 
+launches the executors based on the DAG that Spark generates for its execution. Once the tasks have 
+finished executing, executors send the results back to the driver.
+Since the driver is the main controller of the Spark application, if an executor fails or takes too long to 
+execute a task, the driver can choose to send that task over to other available executors. This ensures 
+reliability and fault tolerance in Spark. We will read more about this later in this chapter.
+It is the responsibility of the executor to read data from external sources that are needed to run the 
+tasks. It can also write its partitioned data to the disk as needed. All processing for a task is done by 
+the executor.
+The key functions of an executor are as follows:
+•	 Task execution: Executors run tasks assigned by the Spark application, processing data stored 
+in RDDs or DataFrames
+•	 Resource allocation: Each Spark application has a set of executors allocated by the cluster 
+manager for managing resources such as CPU cores and memory
+In Apache Spark, the concepts of job, stage, and task form the fundamental building blocks of its 
+distributed computing framework. Understanding these components is essential to grasp the core 
+workings of Spark’s parallel processing and task execution. See Figure 3.2 to understand the relationship 
+between these concepts while we discuss them in detail:
+Figure 3.2: Interaction between jobs, stages, and tasks
+
+Partitioning in Spark
+
+Let’s take a closer look:
+•	 Job: The Spark application will initiate multiple jobs when the application starts running. These 
+jobs can be executed in parallel, wherein each job can consist of multiple tasks. A job gets 
+initiated when a Spark action is called (such as collect). We will learn more about actions 
+later.";0.37612373862170456;500
+29;What is the role of the Driver component?;10c91af0-bba9-4d4c-85f7-2fad4dd60217;5;"This whole life cycle of model deployment is typically the responsibility of machine learning engineers. 
+Note that the process would slightly vary for different problems, but the overall idea remains the same.
+Summary
+In this chapter, we learned about the basics of Apache Spark and why Spark is becoming a lot more 
+prevalent in the industry for big data applications. We also learned about the different components of 
+Spark and how these components are helpful in terms of application development. Then, we discussed 
+the different roles that are present in the industry today and who can make use of Spark’s capabilities. 
+Finally, we discussed the modern-day uses of Spark in different industry use cases.
+
+Understanding Apache Spark and Its Applications
+
+Spark Architecture and 
+Transformations
+Spark approaches data processing differently than traditional tools and technologies. To understand 
+Spark’s unique approach, we will have to understand its basic architecture. A deep dive into Spark’s 
+architecture and its components will give you an idea of how Spark achieves its ground-breaking 
+processing speeds for big data analytics.
+In this chapter, you will learn about the following broader topics:
+•	 Spark architecture and execution hierarchy
+•	 Different Spark components
+•	 The roles of the Spark driver and Spark executor
+•	 Different deployment modes in Spark
+•	 Transformations and actions as Spark operations
+By the end of this chapter, you will have valuable insights into Spark’s inner workings and know how 
+to apply this knowledge effectively for your certification test.
+Spark architecture
+In the previous chapters, we discussed that Apache Spark is an open source, distributed computing 
+framework designed for big data processing and analytics. Its architecture is built to handle various 
+workloads efficiently, offering speed, scalability, and fault tolerance. Understanding the architecture 
+of Spark is crucial for comprehending its capabilities in processing large volumes of data.
+
+Spark Architecture and Transformations
+
+The components of Spark architecture work in collaboration to process data efficiently. The following 
+major components are involved:
+•	 Spark driver
+•	 SparkContext
+•	 Cluster manager
+•	 Worker node
+•	 Spark executor
+•	 Task
+Before we talk about any of these components, it’s important to understand their execution hierarchy 
+to know how each component interacts when a Spark program starts.";0.3758283444333101;500
+30;What does a 'broadcast join' mean?;76db68fe-e43a-4350-ab0e-10f597073769;1;"We’ll take 
+a look at these next.
+
+Advanced Operations and Optimizations in Spark
+
+Shuffle and broadcast joins
+Apache Spark offers two fundamental approaches for performing join operations: shuffle joins and 
+broadcast joins. Each method has its advantages and use cases, and understanding when to use them 
+is crucial for optimizing your Spark applications. Note that these joins are done by Spark automatically 
+to join different datasets together. You can enforce some of the join types in your code but Spark takes 
+care of the execution.
+Shuffle joins
+Shuffle joins are a common method for joining large datasets in distributed computing environments. 
+These joins redistribute data across partitions, ensuring that matching keys end up on the same worker 
+nodes. Spark performs shuffle joins efficiently thanks to its underlying execution engine.
+Here are some of the key characteristics of shuffle joins:
+•	 Data redistribution: Shuffle joins redistribute data to ensure that rows with matching keys are 
+co-located on the same worker nodes. This process may require substantial network and disk I/O.
+•	 Suitable for large datasets: Shuffle joins are well-suited for joining large DataFrames with 
+comparable sizes.
+•	 Replicating data: During a shuffle join, data may be temporarily replicated on worker nodes 
+to facilitate efficient joins.
+•	 Costly in terms of network and disk I/O: Shuffle joins can be resource-intensive due to data 
+shuffling, making them slower compared to other join techniques for smaller datasets.
+•	 Examples: Inner join, left join, right join, and full outer join are often implemented as shuffle joins.
+Use case
+Shuffle joins are typically used when joining two large DataFrames with no significant size difference.
+Shuffle sort-merge joins
+A shuffle sort-merge join is a type of shuffle join that leverages a combination of sorting and merging 
+techniques to perform the join operation. It sorts both DataFrames based on the join key and then 
+merges them efficiently.";0.5255242894987019;500
+31;What does a 'broadcast join' mean?;0c0682a1-a1f2-4ac0-8f86-8eaa934e0933;2;"It sorts both DataFrames based on the join key and then 
+merges them efficiently.
+Here are some of the key features of shuffle sort-merge joins:
+•	 Data sorting: Shuffle sort-merge joins sort the data on both sides to ensure efficient merging
+•	 Suitable for large datasets: They are efficient for joining large DataFrames with skewed 
+data distribution
+
+Data-based optimizations in Apache Spark
+
+•	 Complexity: This type of shuffle join is more complex than a simple shuffle join as it involves 
+sorting operations
+Use case
+Shuffle sort-merge joins are effective for large-scale joins, especially when the data distribution is 
+skewed, and a balanced distribution of data across partitions is essential.
+Let’s look at broadcast joins next.
+Broadcast joins
+Broadcast joins are a highly efficient technique for joining a small DataFrame with a larger one. In this 
+approach, the smaller DataFrame is broadcast to all worker nodes, eliminating the need for shuffling 
+data across the network. A broadcast join is a specific optimization technique that can be applied 
+when one of the DataFrames is small enough to fit in memory. In this case, the small DataFrame is 
+broadcast to all worker nodes, avoiding costly shuffling.
+Let’s look at some of the key characteristics of broadcast joins:
+•	 Small DataFrame broadcast: The smaller DataFrame is broadcast to all worker nodes, ensuring 
+that it is available locally
+•	 Reduced network overhead: Broadcast joins significantly reduce network and disk I/O because 
+they avoid data shuffling
+•	 Ideal for dimension tables: Broadcast joins are commonly used when joining a fact table with 
+smaller dimension tables, such as in data warehousing scenarios
+•	 Efficient for small-to-large joins: They are efficient for joins where one DataFrame is significantly 
+smaller than the other
+Use case
+Broadcast joins are useful when you’re joining a large DataFrame with a much smaller one, such as 
+joining a fact table with dimension tables in a data warehouse.
+Broadcast hash joins
+A specific type of broadcast join is the broadcast hash join. In this variant, the smaller DataFrame is 
+broadcast as a hash table to all worker nodes, which allows for efficient lookups in the larger DataFrame.
+Use case
+Broadcast hash joins are suitable for scenarios where one DataFrame is small enough to be broadcast, 
+and you need to perform equality-based joins.";0.5152231778887182;500
+32;What does a 'broadcast join' mean?;d361a3d3-cffb-41f8-933e-855a08210a5f;3;"servers"",""localhost:9092"") .option(""subscribe"", ""topic2"") .load()
+ joinedStream =stream1.join(stream2, ""common_key"")
+In this example, two Kafka streams, stream1 and stream2, are read from different topics. The 
+join method is then applied to perform the join operation, based on the common_key field shared 
+by both streams.
+Stream-static joins
+Stream-static joins, also known as stream-batch joins, involve joining a streaming data source to a 
+static or reference dataset. The static dataset typically represents reference data, such as configuration 
+data or dimension tables, that remains constant over time.
+Stream-static joins are useful for enriching streaming data with additional information or attributes 
+from the static dataset. For example, you might join a stream of user activity events with a static user 
+profile table to enrich each event with user-related details.
+To perform a stream-static join in Structured Streaming, you can load the static dataset as a static 
+DataFrame and then use the join method to perform the join with the streaming DataFrame. Since 
+the static dataset does not change, the join operation can be performed using the default “right outer 
+join” mode.
+Here’s an example of a stream-static join in Structured Streaming:
+stream =spark.readStream.format(""kafka"")
+.option(""kafka.bootstrap.servers"", ""localhost:9092"") 
+.option(""subscribe"", ""topic"") .load()
+  staticData = spark.read.format(""csv"") .option(""header"", ""true"") 
+.load(""data/static_data.csv"")
+ enrichedStream = stream.join(staticData,""common_key"")
+In this example, the streaming data is read from a Kafka source, and the static dataset is loaded from 
+a CSV file. The join method is then used to perform the stream-static join based on the “common_
+key” field.
+Both stream-stream and stream-static joins provide powerful capabilities for real-time data analysis 
+and enrichment. When using these join operations, it is essential to carefully manage event time 
+characteristics, windowing options, and data consistency to ensure accurate and reliable results. 
+Additionally, performance considerations should be considered to handle large volumes of data and 
+meet low-latency requirements in real-time streaming applications.
+
+Structured Streaming in Spark
+
+Final thoughts and future developments
+Structured Streaming has emerged as a powerful framework for real-time data processing in Apache 
+Spark.";0.45833264541797286;500
+33;What does a 'broadcast join' mean?;098fa2c1-d4cb-4d0a-ac3e-e14be61dafc9;4;"Structured Streaming in Spark
+
+The following code snippet demonstrates handling schema evolution in Structured Streaming:
+stream = spark.readStream \
+  .format(""csv"") \
+  .option(""header"", ""true"") \
+  .schema(initialSchema) \
+  .load(""data/input"")
+mergedStream = stream \
+  .selectExpr(""col1"", ""col2"", ""new_col AS col3"")
+In this example, the initial schema is provided explicitly using the schema method. As new data 
+arrives with additional fields, such as new_col, it can be selected and merged into the stream using 
+the selectExpr method.
+Handling schema evolution is crucial to ensure compatibility and flexibility in streaming applications 
+where the data schema may change or evolve over time.
+Different joins in Structured Streaming
+One of the key features of Structured Streaming is its ability to join different types of data streams 
+together in one sink.
+Stream-stream joins
+Stream-stream joins, also known as stream-stream co-grouping or stream-stream correlation, 
+involve joining two or more streaming data sources based on a common key or condition. In this 
+type of join, each incoming event from the streams is matched with events from other streams that 
+share the same key or satisfy the specified condition.
+Stream-stream joins enable real-time data correlation and enrichment, making it possible to combine 
+multiple streams of data to gain deeper insights and perform complex analytics. However, stream-
+stream joins present unique challenges compared to batch or stream-static joins, due to the unbounded 
+nature of streaming data and potential event-time skew.
+One common approach to stream-stream joins is the use of windowing operations. By defining 
+overlapping or tumbling windows on the streams, events within the same window can be joined based 
+on their keys. Careful consideration of window size, watermarking, and event time characteristics is 
+necessary to ensure accurate and meaningful joins.
+Here’s an example of a stream-stream join using Structured Streaming:
+stream1 = spark.readStream.format(""kafka"")
+.option(""kafka.bootstrap.servers"", ""localhost:9092"") 
+.option(""subscribe"", ""topic1"") .load()
+
+Different joins in Structured Streaming
+
+stream2 = spark.readStream.format(""kafka"").option(""kafka.bootstrap.";0.4052066371009468;500
+34;What does a 'broadcast join' mean?;0e92124c-b18d-4578-a59e-376a3d11b304;5;"Advanced Operations and Optimizations in Spark
+
+In this section, we discussed two fundamental join techniques in Spark – shuffle joins and broadcast 
+joins – including specific variants, such as the broadcast hash join and the shuffle sort-merge join. 
+Choosing the right join method depends on the size of your DataFrames, data distribution, and network 
+considerations, and it’s essential to make informed decisions to optimize your Spark applications. In 
+the next section, we will cover different types of transformations that exist in Spark.
+Narrow and wide transformations in Apache Spark
+As discussed in Chapter 3, transformations are the core operations for processing data. Transformations 
+are categorized into two main types: narrow transformations and wide transformations. Understanding 
+the distinction between these two types of transformations is essential for optimizing the performance 
+of your Spark applications.
+Narrow transformations
+Narrow transformations are operations that do not require data shuffling or extensive data movement 
+across partitions. They can be executed on a single partition without the need to communicate with other 
+partitions. This inherent locality makes narrow transformations highly efficient and faster to execute.
+The following are some of the key characteristics of narrow transformations:
+•	 Single-partition processing: Narrow transformations operate on a single partition of the data 
+independently, which minimizes communication overhead.
+•	 Speed and efficiency: Due to their partition-wise nature, narrow transformations are fast 
+and efficient.
+map(), filter(), union(), and groupBy() are typical examples of narrow transformations.
+Wide transformations
+Wide transformations, in contrast, involve data shuffling, which necessitates the exchange of data 
+between partitions. These transformations require communication between multiple partitions and 
+can be resource-intensive. As a result, they tend to be slower and more costly in terms of computation.
+Here are a few of the key characteristics of wide transformations:
+•	 Data shuffling: Wide transformations involve the reorganization of data across partitions, 
+requiring data exchange between different workers.
+•	 Slower execution: Due to the need for shuffling, wide transformations are relatively slower 
+and resource-intensive compared to narrow transformations.
+groupByKey(), reduceByKey(), and join() are common examples of wide transformations.
+Let’s discuss which transformation works best, depending on the operation.
+
+Narrow and wide transformations in Apache Spark
+
+Choosing between narrow and wide transformations
+Selecting the appropriate type of transformation depends on the specific use case and the data at hand.";0.38745746430888817;500
+35;How does persist() differ from cache() in PySpark?;03b85921-e8c6-4282-8c60-ef5235f577e3;1;"Caching and persistence are techniques that 
+allow you to store intermediate or frequently used data in memory or on disk, reducing the need for 
+recomputation and enhancing overall performance. This section explores the concepts of persisting 
+and caching in Spark.
+Understanding data persistence
+Data persistence is the process of storing the intermediate or final results of Spark transformations 
+in memory or on disk. By persisting data, you reduce the need to recompute it from the source data, 
+thereby improving query performance.
+The following key concepts are related to data persistence:
+•	 Storage levels: Spark offers multiple storage levels for data, ranging from memory-only to 
+disk, depending on your needs. Each storage level comes with its trade-offs in terms of speed 
+and durability.
+•	 Lazy evaluation: Spark follows a lazy evaluation model, meaning transformations are not 
+executed until an action is called. Data persistence ensures that the intermediate results are 
+available for reuse without recomputation.
+•	 Caching versus persistence: Caching is a specific form of data persistence that stores data in 
+memory, while persistence encompasses both in-memory and on-disk storage.
+Caching data
+Caching is a form of data persistence that stores DataFrames, RDDs, or datasets in memory for fast 
+access. It is an essential optimization technique that improves the performance of Spark applications, 
+particularly when dealing with iterative algorithms or repeated computations.
+To cache a DataFrame or an RDD, you can use the .cache() or .persist() method while 
+specifying the storage level:
+•	 Memory-only: This option stores data in memory but does not replicate it for fault tolerance. 
+Use .cache() or .persist(StorageLevel.MEMORY_ONLY).
+•	 Memory-only, serialized: This option stores data in memory in a serialized form, reducing 
+memory usage. Use .persist(StorageLevel.MEMORY_ONLY_SER).
+•	 Memory and disk: This option stores data in memory and spills excess data to disk when 
+memory is full. Use .persist(StorageLevel.MEMORY_AND_DISK).
+
+Persisting and caching in Apache Spark
+
+•	 Disk-only: This option stores data only on disk, avoiding memory usage. 
+Use .persist(StorageLevel.DISK_ONLY).";0.6845900562874315;500
+36;How does persist() differ from cache() in PySpark?;85f4056d-8a46-4696-8b48-2f49216eb97a;2;"Use .persist(StorageLevel.DISK_ONLY).
+Caching is particularly beneficial in the following scenarios:
+•	 Iterative algorithms: Caching is vital for iterative algorithms such as machine learning, graph 
+processing, and optimization problems, where the same data is used repeatedly
+•	 Multiple actions: When a DataFrame is used for multiple actions, caching it after the first 
+action can improve performance
+•	 Avoiding recomputation: Caching helps avoid recomputing the same data when multiple 
+transformations depend on it
+•	 Interactive queries: In interactive data exploration or querying, caching frequently used 
+intermediate results can speed up ad hoc analysis
+Unpersisting data
+Caching consumes memory, and in a cluster environment, it’s essential to manage memory efficiently. 
+You can release cached data from memory using the .unpersist() method. This method allows 
+you to specify whether to release the data immediately or only when it is no longer needed.
+Here’s an example of unpersisting data:
+# Cache a DataFrame
+df.cache()
+# Unpersist the cached DataFrame
+df.unpersist()
+Best practices
+To use caching and persistence effectively in your Spark applications, consider the following best practices:
+•	 Cache only what’s necessary: Caching consumes memory, so cache only the data that is 
+frequently used or costly to compute
+•	 Monitor memory usage: Regularly monitor memory usage to avoid running out of memory 
+or excessive disk spills
+•	 Automate unpersistence: If you have limited memory resources, automate the unpersistence 
+of less frequently used data to free up memory for more critical operations
+•	 Consider serialization: Depending on your use case, consider using serialized storage levels 
+to reduce memory overhead
+
+Advanced Operations and Optimizations in Spark
+
+In this section, we explored the concepts of persistence and caching in Apache Spark. Caching and 
+persistence are powerful techniques for optimizing performance in Spark applications, particularly when 
+dealing with iterative algorithms or scenarios where the same data is used repeatedly. Understanding when 
+and how to use these techniques can significantly improve the efficiency of your data processing workflows.
+In the next section, we’ll learn how repartition and coalesce work in Spark.
+Repartitioning and coalescing in Apache Spark
+Efficient data partitioning plays a crucial role in optimizing data processing workflows in Apache 
+Spark.";0.6681899164597269;500
+37;How does persist() differ from cache() in PySpark?;807baf56-d324-4fb8-a7b5-3635df03c813;3;"You will read 
+more about them in the next section.
+Understanding Spark differentiators
+Spark’s foundation lies in its major capabilities such as in-memory computation, lazy evaluation, fault 
+tolerance, and support for multiple languages such as Python, SQL, Scala, and R. We will discuss each 
+one of them in detail in the following section.
+Let’s start with in-memory computation.
+In-memory computation
+The first major differentiator technology that Spark’s foundation is built on is that it utilizes in-memory 
+computations. Remember when we discussed Hadoop MapReduce technology? One of its major 
+limitations is to write back to disk at each step. Spark saw this as an opportunity for improvement and 
+introduced the concept of in-memory computation. The main idea is that the data remains in memory 
+as long as it is worked on. If we can work with the size of data that can be stored in the memory at once, 
+we can eliminate the need to write to disk at each step. As a result, the complete computation cycle 
+can be done in memory if we can work with all computations on that amount of data. Now, the thing 
+to note here is that with the advent of big data, it’s hard to contain all the data in memory. Even if we 
+look at heavyweight servers and clusters in the cloud computing world, memory remains finite. This 
+is where Spark’s internal framework of parallel processing comes into play. Spark framework utilizes 
+the underlying hardware resources in the most efficient manner. It distributes the computations across 
+multiple cores and utilizes the hardware capabilities to the maximum.
+This tremendously reduces the computation time, since the overhead of writing to disk and reading it 
+back for the subsequent step is minimized as long as the data can be fit in the memory of Spark compute.
+
+What is Apache Spark?
+
+Lazy evaluation
+Generally, when we work with programming frameworks, the backend compilers look at each 
+statement and execute it. While this works great for programming paradigms, with big data and 
+parallel processing, we need to shift to a look-ahead kind of model. Spark is well known for its parallel 
+processing capabilities. To achieve even better performance, Spark doesn’t execute code as it reads it, 
+but once the code is there and we submit a Spark statement to execute, the first step is that Spark builds 
+a logical map of the queries.";0.4342404255476839;500
+38;How does persist() differ from cache() in PySpark?;907be2d9-d751-4d6a-9a8f-814db03ea1fd;4;"Since RDD is the lowest level of abstraction in Spark, all other 
+datasets built on top of RDDs share these properties. The high-level DataFrame API is built on top of 
+the low-level RDD API as well, so DataFrames also share the same properties.
+RDDs are also partitioned by Spark and each partition is distributed to multiple nodes in the cluster.
+Here are some of the key characteristics of Spark RDDs:
+•	 Immutable nature: RDDs are immutable, ensuring that once created, they cannot be altered, 
+allowing for a lineage of transformations.
+•	 Resilience through lineage: RDDs store lineage information, enabling reconstruction of lost 
+partitions in case of failures. Spark is designed to be fault-tolerant. Therefore, if an executor 
+on a worker node fails while calculating an RDD, that RDD can be recomputed by another 
+executor using the lineage that Spark has created.
+•	 Partitioned data: RDDs divide data into partitions, distributed across multiple nodes in a 
+cluster for parallel processing.
+•	 Parallel execution: Spark executes operations on RDDs in parallel across distributed partitions, 
+enhancing performance.
+Let’s discuss some more characteristics in detail.
+Lazy computation
+RDDs support lazy evaluation, deferring execution of transformations until an action is invoked. 
+The way Spark achieves its efficiency in processing and fault tolerance is through lazy evaluation. 
+Code execution in Spark is delayed. Unless an action is called an operation, Spark does not start code 
+execution. This helps Spark achieve optimization as well. For all the transformations and actions, Spark 
+keeps track of the steps in the code that need to be executed by creating a DAG for these operations. 
+Because Spark creates the query plan before execution, it can make smart decisions about the hierarchy 
+of execution as well. To achieve this, one of the features Spark uses is called predicate pushdown.
+Predicate pushdown means that Spark can prioritize the operations to make them the most efficient. 
+One example can be a filter operation. A filter operation would generally reduce the amount of data 
+that the subsequent operations have to work with if the filter operation can be applied before other 
+transformations. This is exactly how Spark operates. It will execute filters as early in the process as 
+possible, thus making the next operations more performant.
+This also implies that Spark jobs would fail only at execution time.";0.4203287032048512;500
+39;How does persist() differ from cache() in PySpark?;31ec5bab-7c4e-4fa6-b398-823c94518fdd;5;"Executors have their own pods.
+
+RDDs
+
+Let’s look at some points of significance regarding the different deployment modes:
+•	 Resource utilization: Different deployment modes optimize resource utilization by determining 
+where the driver program runs and how resources are allocated between the client and the cluster.
+•	 Accessibility and control: Client mode offers easy accessibility to driver logs and outputs, 
+facilitating development and debugging, while cluster mode utilizes cluster resources more 
+efficiently for production workloads.
+•	 Integration with container orchestration: Kubernetes deployment mode enables seamless 
+integration with containerized environments, leveraging Kubernetes’ orchestration capabilities 
+for efficient resource management.
+There are some considerations to keep in mind while choosing deployment modes:
+•	 Development versus production: Client mode is suitable for development and debugging, 
+while cluster mode is ideal for production workloads
+•	 Resource management: Evaluate the allocation of resources between client and cluster nodes 
+based on the application’s requirements
+•	 Containerization needs: Consider Kubernetes deployment for containerized environments, 
+leveraging Kubernetes features for efficient container management
+In summary, deployment modes in Apache Spark provide flexibility in how Spark applications are launched 
+and executed, catering to different development, production, and containerized deployment scenarios.
+Next, we will look at RDDs, which serve as foundational data abstractions in Apache Spark, enabling 
+distributed processing, fault tolerance, and flexibility in handling large-scale data operations. While 
+RDDs continue to be a fundamental concept, Spark’s DataFrame and Dataset APIs offer advancements 
+in structured data processing and performance optimization.
+RDDs
+Apache Spark’s RDD stands as a foundational abstraction that underpins the distributed computing 
+capabilities within the Spark framework. RDDs serve as the core data structure in Spark, enabling 
+fault-tolerant and parallel operations on large-scale distributed datasets and they are immutable. This 
+means that they cannot be changed over time. For any operations, a new RDD has to be generated from 
+the existing RDD. When a new RDD originates from the original RDD, the new RDD has a pointer to 
+the RDD it is generated from. This is the way Spark documents the lineage for all the transformations 
+taking place on an RDD. This lineage enables lazy evaluation in Spark, which generates DAGs for 
+different operations.
+
+Spark Architecture and Transformations
+
+This immutability and lineage gives Spark the ability to reproduce any DataFrame in case of failure 
+and it makes fault-tolerant by design.";0.41933522738944384;500
+40;What does collect() function do in pyspark?;1483ce02-c68c-4a96-8e8f-b4ffb0d14d62;1;"take(n)
+This function returns an array containing the first n elements from the DataFrame or RDD
+•	 It is useful for quickly inspecting a small subset of the data
+•	 It performs a lazy evaluation, meaning it only computes the required number of elements
+collect()
+This function retrieves all elements from the DataFrame or RDD and returns them as a list
+•	 It should be used with caution as it brings all data to the driver node, which can lead to out-of-
+memory errors for large datasets
+•	 It is suitable for small datasets or when working with aggregated results that fit into memory
+
+Converting a PySpark DataFrame to a Pandas DataFrame
+
+show(n)
+This function displays the first n rows of the DataFrame in a tabular format
+•	 It is primarily used for visual inspection of data during exploratory data analysis (EDA) 
+or debugging
+•	 It provides a user-friendly display of data with column headers and formatting
+head(n)
+This function returns the first n rows of the DataFrame as a list of Row objects
+•	 It is similar to take(n) but it returns Row objects instead of simple values
+•	 It is often used when you need access to specific column values while working with structured data
+tail(n)
+This function returns the last n rows of the DataFrame
+•	 It is useful for examining the end of the dataset, especially in cases where data is sorted in 
+descending order
+•	 It performs a more expensive operation compared to head(n) as it may involve scanning 
+the entire dataset
+In summary, take and collect are used to retrieve data elements, with take being more suitable 
+for small subsets and collect for retrieving all data (with caution). show is used for visual inspection, 
+head retrieves the first rows as Row objects, and tail retrieves the last rows of the dataset. Each 
+method serves different purposes and should be chosen based on the specific requirements of the 
+data analysis task.
+When working with data in PySpark, sometimes, you will need to use some Python functions on the 
+DataFrames. To achieve that, you will have to convert PySpark DataFrames to Pandas DataFrames. 
+Now, let’s take a look at how we can convert a Pyspark DataFrame to a Pandas DataFrame.
+Converting a PySpark DataFrame to a Pandas DataFrame
+At various times in your workflow, you will want to switch from a Pyspark DataFrame to a Pandas 
+DataFrame. There are options to convert a PySpark DataFrame to a Pandas DataFrame. This option 
+is toPandas().
+One thing to note here is that Python inherently is not distributed. Therefore, when a PySpark 
+DataFrame is converted to Pandas, the driver would need to collect all the data in its memory. We 
+need to make sure that the driver’s memory is able to collect the data in itself. If the data is not able 
+to fit in the driver’s memory, it will cause an out-of-memory error.
+
+Spark DataFrames and their Operations
+
+Here’s an example to see how we can convert a PySpark DataFrame to a Pandas DataFrame:
+data_df.toPandas()
+As a result, you will see a DataFrame with our specified columns and their data types:
+col_1
+col_2
+col_3
+col_4
+col_5
+
+
+200.0
+String_test_1
+2023-01-01
+2023-01-01 12:00:00
+
+
+300.0
+String_test_2
+2023-02-01
+2023-01-02 12:00:00
+
+
+400.0
+String_test_3
+2023-03-01
+2023-01-03 12:00:00
+Table 4.1: DataFrame with the columns and data types specified by us
+In the next section, we will learn about different data manipulation techniques. You will need to filter, 
+slice, and dice the data based on different criteria for different purposes. Therefore, data manipulation 
+is essential in working with data.
+How to manipulate data on rows and columns
+In this section, we will learn how to do different data manipulation operations on Spark DataFrames 
+rows and columns.
+We will start by looking at how we can select columns in a Spark DataFrame.";0.5089255157962549;900
+41;What does collect() function do in pyspark?;43def2de-ff92-45cb-95a6-a171b64e9422;2;"•	 Parallel execution: Spark executes operations on RDDs in parallel across distributed partitions, 
+enhancing performance.
+Let’s discuss some more characteristics in detail.
+Lazy computation
+RDDs support lazy evaluation, deferring execution of transformations until an action is invoked. 
+The way Spark achieves its efficiency in processing and fault tolerance is through lazy evaluation. 
+Code execution in Spark is delayed. Unless an action is called an operation, Spark does not start code 
+execution. This helps Spark achieve optimization as well. For all the transformations and actions, Spark 
+keeps track of the steps in the code that need to be executed by creating a DAG for these operations. 
+Because Spark creates the query plan before execution, it can make smart decisions about the hierarchy 
+of execution as well. To achieve this, one of the features Spark uses is called predicate pushdown.
+Predicate pushdown means that Spark can prioritize the operations to make them the most efficient. 
+One example can be a filter operation. A filter operation would generally reduce the amount of data 
+that the subsequent operations have to work with if the filter operation can be applied before other 
+transformations. This is exactly how Spark operates. It will execute filters as early in the process as 
+possible, thus making the next operations more performant.
+This also implies that Spark jobs would fail only at execution time. Since Spark uses lazy evaluation, 
+until an action is called, the code is not executed and certain errors can be missed. To catch these 
+errors, Spark code would need to have an action for execution and hence error handling.
+
+RDDs
+
+Transformations
+Transformations create new RDDs by applying functions to existing RDDs (for example, map, 
+filter, and reduce). Transformations are operations that do not result in any code execution. 
+These statements result in Spark creating a DAG for execution. Once that DAG is created, Spark would 
+need an action operation in the end to run the code. Due to this, when certain developers try to time 
+the code from Spark, they see that certain operations’ runtime is very fast. The reason could be that 
+the code is only comprised of transformations until that point. Since no action is present, the code 
+doesn’t run. To accurately measure the runtime of each operation, actions have to be called to force 
+Spark to execute those statements.
+Here are some of the operations that can be classified as transformations:
+•	 orderBy()
+•	 groupBy()
+•	 filter()
+•	 select()
+•	 join()
+When these commands are executed, they are evaluated lazily. This means all these operations on 
+DataFrames result in a new DataFrame, but they are not executed until an action is followed by them. 
+This would return a DataFrame or RDD when it is triggered by an action.
+Actions and computation execution
+Actions (for example, collect, count, and saveAsTextFile) prompt the execution of 
+transformations on RDDs. Execution is triggered by actions only, not by transformations. When an 
+action is called, this is when Spark starts execution on the DAG it created during the analysis phase of 
+code. With the DAG created, Spark creates multiple query plans based on its internal optimizations. 
+Then, it executes the plan that is the most efficient and cost-effective. We will discuss query plans 
+later in this book.
+Here are some of the operations that can be classified as actions:
+•	 show()
+•	 take()
+•	 count()
+•	 collect()
+•	 save()
+•	 foreach()
+•	 first()
+
+Spark Architecture and Transformations
+
+All of these operations would result in Spark triggering code execution and thus operations are run.
+Let’s take a look at the following code to understand these concepts better:
+# Python
+>>> df = spark.read.text(""{path_to_data_file}"")
+>>> names_df = df.select(col(""firstname""),col(""lastname""))
+>>> names_df.show()
+In the preceding code, until line 2, nothing would be executed. On line 3, an action is triggered and 
+thus it triggers the whole code execution. Therefore, if you give the wrong data path in line 1 or the 
+wrong column names in line 2, Spark will not detect this until it runs line 3. This is a different paradigm 
+than most other programming paradigms.";0.5084183938545995;900
+42;What does collect() function do in pyspark?;a52785cc-55c0-4186-a57e-cca89b24b195;3;"PySpark provides us with the dropDuplicates() 
+function to do this. Here’s the code to illustrate this:
+new_salary_data = salary_data.dropDuplicates().show()
+Here is the result:
++--------+----------+------+
+|Employee|Department|Salary|
++--------+----------+------+
+|    John| Field-eng|  3500|
+| Michael| Field-eng|  4500|
+|   Maria|   Finance|  3500|
+|    John|     Sales|  3000|
+|   Kelly|   Finance|  3500|
+|    Kate|   Finance|  3000|
+|   Kiran|     Sales|  2200|
++--------+----------+------+
+We see in this example that employees named Michael are only shown once in the resulting DataFrame 
+after we apply the dropDuplicates() function to the original DataFrame. This name and its 
+corresponding values exist in the original DataFrame twice.
+Now that we have learned about different data filtering techniques, we will now see how we can 
+aggregate data in Pyspark DataFrames.
+Using aggregates in a DataFrame
+Some of the methods available in Spark for aggregating data are as follows:
+•	 agg
+•	 avg
+•	 count
+•	 max
+•	 mean
+•	 min
+•	 pivot
+•	 sum
+
+Spark DataFrames and their Operations
+
+We will see some of them in action in the following code examples.
+Average (avg)
+In the following example, we see how to use aggregate functions in Spark. We will start by calculating 
+the average of all the values in a column:
+from pyspark.sql.functions import countDistinct, avg
+salary_data.select(avg('Salary')).show()
+Here is the result:
++-----------+
+|avg(Salary)|
++-----------+
+|     3520.0|
++-----------+
+This example calculates the average of the salary column of the salary_data DataFrame. We have 
+passed the Salary column to the avg function and it has calculated the average of that column for us.
+Now, let’s take a look at how to count different elements in a PySpark DataFrame.
+Count
+In the following code example, we can see how you use aggregate functions in Spark:
+salary_data.agg({'Salary':'count'}).show()
+Here is the result:
++-------------+
+|count(Salary)|
++-------------+
+|           10|
++-------------+
+This example calculates the total count of the values in the Salary column of the salary_data 
+DataFrame. We have passed the Salary column to the agg function with count as its other 
+parameter, and it has calculated the count of that column for us.
+Now, let’s take a look at how to count distinct elements in a PySpark DataFrame.
+
+How to manipulate data on rows and columns
+
+Count distinct values
+In the following example, we will look at how to count distinct elements in a PySpark DataFrame:
+salary_data.select(countDistinct(""Salary"").alias(""Distinct Salary"")).
+show()
+Here is the result:
++---------------+
+|Distinct Salary|
++---------------+
+|              5|
++---------------+
+This example calculates total distinct values in the salary column of the salary_data DataFrame. 
+We have passed the Salary column to the countDistinct function and it has calculated the 
+count of that column for us.
+Now, let’s take a look at how to find maximum values in a PySpark DataFrame.";0.5084008265580254;900
+43;What does collect() function do in pyspark?;4190755c-dfb1-4381-9d75-40bb889e6282;4;"Here’s an example of how you can view the data in 
+a vertical format:
+data_df.show(1, vertical=True)
+As a result, you will see a DataFrame with our specified columns and their data but in a vertical format:
+-RECORD 0------------------
+ col_1   | 100
+ col_2   | 200.0
+ col_3   | string_test_1
+ col_4   | 2023-01-01
+ col_5   | 2023-01-01 12:00:00
+only showing top 1 row
+
+Spark DataFrames and their Operations
+
+Viewing columns of data
+When we just need to view the columns that exist in a DataFrame, we would use the following:
+data_df.columns
+As a result, you will see a list of the columns in the DataFrame:
+['col_1', 'col_2', 'col_3', 'col_4', 'col_5']
+Viewing summary statistics
+Now, let’s take a look at how we can view the summary statistics of a DataFrame:
+Show the summary of the DataFrame
+data_df.select('col_1', 'col_2', 'col_3').describe().show()
+As a result, you will see a DataFrame with its summary statistics for each column defined:
++-------+-------+-------+-------------+
+|summary| col_1 | col_2 |    col_3    |
++-------+-------+-------+-------------+
+|  count|   3   |   3   |            3|
+|   mean| 200.0 | 300.0 |         null|
+| stddev| 100.0 | 100.0 |         null|
+|    min| 100   | 200.0 |string_test_1|
+|    max| 300   | 400.0 |string_test_3|
++-------+-------+-------+-------------+
+Now, let’s take a look at the collect statement.
+Collecting the data
+A collect statement is used when we want to get all the data that is being processed in different clusters 
+back to the driver. When using a collect statement, we need to make sure that the driver has enough 
+memory to hold the processed data. If the driver doesn’t have enough memory to hold the data, we 
+will get out-of-memory errors.
+This is how you show the collect statement:
+data_df.collect()
+This statement will then show result as follows:
+[Row(col_1=100, col_2=200.0, col_3='string_test_1', col_4=datetime.
+date(2023, 1, 1), col_5=datetime.datetime(2023, 1, 1, 12, 0)),
+
+Collecting the data
+
+ Row(col_1=200, col_2=300.0, col_3='string_test_2', col_4=datetime.
+date(2023, 2, 1), col_5=datetime.datetime(2023, 1, 2, 12, 0)),
+ Row(col_1=300, col_2=400.0, col_3='string_test_3', col_4=datetime.
+date(2023, 3, 1), col_5=datetime.datetime(2023, 1, 3, 12, 0))]
+There are a few ways to avoid out-of-memory errors. We will explore some of the options that avoid 
+out-of-memory errors such as take, tail, and head statements.";0.504096205654681;900
+44;What does collect() function do in pyspark?;4bc7342b-5fc1-4ded-b0f2-6652f00f50f7;5;"It also provides different 
+APIs to interact and work with RDDs. All the components of Spark work with underlying RDDs for 
+data manipulation and processing. RDDs make it possible for Spark to have a lineage for data, since 
+they are immutable. This means that every time an operation is run on an RDD that requires changes 
+in it, Spark will create a new RDD for it. Hence, it maintains the lineage information of RDDs and 
+their corresponding operations.
+Spark SQL
+SQL is the most popular language for database and data warehouse applications. Analysts use this 
+language for all their exploratory data analysis on relational databases and their counterparts in 
+traditional data warehouses. Spark SQL adds this advantage to the Spark ecosystem. Spark SQL is 
+used to query structured data in SQL using the DataFrame API.
+As its name represents, Spark SQL gives SQL support to Spark. This means we can query the data 
+present in RDDs and other external sources, such as Parquet files. This is a powerful capability of Spark, 
+since it gives developers the flexibility to use a relational table structure on top of RDDs and other file 
+formats and write SQL queries on top of it. This also adds the capabilities of using SQL where necessary 
+and unifies it with analytics applications and use cases, thus providing unification of the platforms.
+With Spark SQL, developers are able to do the following with ease:
+•	 They can read data from different file formats and different sources into RDDs and DataFrames
+•	 They can run SQL queries on top of the data present in DataFrames, thus giving flexibility to 
+the developers to use programming languages or SQL to process data
+•	 Once they’re done with the processing of the data, they have the capability to write RDDs and 
+DataFrames to external sources
+Spark SQL consists of a cost-based optimizer that optimizes queries, keeping in view the resources; it 
+also has the capability to generate code for these optimizations, which makes these queries very fast 
+and efficient. To support even faster query times, it can scale to multiple nodes with the help of Spark 
+Core and also provides features such as fault tolerance and resiliency. This is known as the Catalyst 
+optimizer. We will read more about it in Chapter 5.
+
+Understanding Apache Spark and Its Applications
+
+The most noticeable features of Sparks SQL are as follows:
+•	 It provides an engine for high-level structured APIs
+•	 Reads/writes data to and from a large number of file formats such as Avro, Delta, Comma-
+Separated Values (CSV), and Parquet
+•	 Provides Open Database Connectivity (ODBC)/Java Database Connectivity (JDBC) 
+connectors to business intelligence (BI) tools such as PowerBI and Tableau, as well as popular 
+relational databases (RDBMs)
+•	 Provides a way to query structured data in files as tables and views
+•	 It supports ANSI SQL:2003-compliant commands and HiveQL
+Now that we have covered SparkSQL, let’s discuss the Spark Streaming component.
+Spark Streaming
+We have talked about the rapid growth of data in today’s times. If we were to divide this data into 
+groups, there are two types of datasets in practice, batch and streaming:
+•	 Batch data is when there’s a chunk of data present that you have to ingest and then transform 
+all at once. Think of when you want to get a sales report of all the sales in a month. You would 
+have the monthly data available as a batch and process it all at once.
+•	 Streaming data is when you need output of that data in real time. To serve this requirement, 
+you would have to ingest and process that data in real time. This means every data point can 
+be ingested as a single data element, and we would not wait for it to be ingested after a block 
+of data is collected. Think of when self-driving cars need to make decisions in real time based 
+on the data they collect. All the data needs to be ingested and processed in real time for the 
+car to make effective decisions in a given moment.
+There are a large number of industries generating streaming data. To make use of this data, you need 
+real-time ingestion, processing, and management of this data.";0.4863875869960481;900
+45;What is the role of the Driver component?;ced0d1f2-9b3c-44fb-8066-bda7e4537c61;1;"It runs on its own Java Virtual Machine (JVM). Spark 
+driver can run as an independent process or it can run on one of the worker nodes, depending on 
+the architecture.
+
+Spark Architecture and Transformations
+
+The Spark driver is responsible for dividing the application into smaller entities for execution. These 
+entities are known as tasks. You will learn more about tasks in the upcoming sections of this chapter. 
+The Spark driver also decides what data the executor will work on and what tasks are run on which 
+executor. These tasks are scheduled to run on the executor nodes with the help of the cluster manager. 
+This information that is driven by the driver enables fault tolerance. Since the driver has all the 
+information about the number of available workers and the tasks that are running on each of them 
+alongside data in case a worker fails, that task can be reassigned to a different cluster. Even if a task is 
+taking too long to run, it can be assigned to another executor if that gets free. In that case, whichever 
+executor returns the task earlier would prevail. The Spark driver also maintains metadata about the 
+Resilient Distributed Dataset (RDD) and its partitions.
+It is the responsibility of the Spark driver to design the complete execution map. It determines which 
+tasks run on which executors, as well as how the data is distributed across these executors. This is 
+done by creating RDDs internally. Based on this distribution of data, the operations that are required 
+are determined, such as transformations and actions that are defined in the program. A DAG is 
+created based on these decisions. The Spark driver optimizes the logical plan (DAG) and finds the 
+best possible execution strategy for the DAG, in addition to determining the most optimal location for 
+the execution of a particular task. These executions are done in parallel. The executors simply follow 
+these commands without doing any optimization on their end.
+For performance considerations, it is optimal to have the Spark driver work close to the executor. This 
+reduces the latency by a great deal. This means that there would be less delay in the response time of 
+the processes. Another point to note here is that this is true for the data as well. The executor reading 
+the data close to it would have better performance than otherwise. Ideally, the driver and worker nodes 
+should be run in the same local area network (LAN) for the best performance.
+The Spark driver also creates a web UI for the execution details. This UI is very helpful in determining 
+the performance of the application. In cases where troubleshooting is required and some bottlenecks 
+need to be identified in the Spark process, this UI is very helpful.
+SparkSession
+SparkSession is the main point of entry and interaction with Spark. As discussed earlier, in the 
+previous versions of Spark, SparkContext used to play this role, but in Spark 2.0, SparkSession 
+can be created for this purpose. The Spark driver creates a SparkSession object to interact with 
+the cluster manager and get resource allocation through it.
+In the lifetime of the application, SparkSession is also used to interact with all the underlying Spark 
+APIs. We talked about different Spark APIs in Chapter 2 namely, SparkSQL, Spark Streaming, MLlib, 
+and GraphX. All of these APIs use SparkSession from its core to interact with the Spark application.
+SparkSession keeps track of Spark executors throughout the application’s execution.
+
+Spark components
+
+Cluster manager
+Spark is a distributed framework, which requires it to have access to computing resources. This access is 
+governed and controlled by a process known as the cluster manager. It is the responsibility of the cluster 
+manager to allocate computing resources for the Spark application when the application execution 
+starts. These resources become available at the request of the application master. In the Apache Spark 
+ecosystem, the application master plays a crucial role in managing and coordinating the execution 
+of Spark applications within a distributed cluster environment. It’s an essential component that’s 
+responsible for negotiating resources, scheduling tasks, and monitoring the application’s execution.
+Once the resources are available, the driver is made aware of those resources.";0.5011366047963447;900
+46;What is the role of the Driver component?;fd524a5e-ca3f-465d-8def-d108fcbfd939;2;"To understand 
+Spark’s unique approach, we will have to understand its basic architecture. A deep dive into Spark’s 
+architecture and its components will give you an idea of how Spark achieves its ground-breaking 
+processing speeds for big data analytics.
+In this chapter, you will learn about the following broader topics:
+•	 Spark architecture and execution hierarchy
+•	 Different Spark components
+•	 The roles of the Spark driver and Spark executor
+•	 Different deployment modes in Spark
+•	 Transformations and actions as Spark operations
+By the end of this chapter, you will have valuable insights into Spark’s inner workings and know how 
+to apply this knowledge effectively for your certification test.
+Spark architecture
+In the previous chapters, we discussed that Apache Spark is an open source, distributed computing 
+framework designed for big data processing and analytics. Its architecture is built to handle various 
+workloads efficiently, offering speed, scalability, and fault tolerance. Understanding the architecture 
+of Spark is crucial for comprehending its capabilities in processing large volumes of data.
+
+Spark Architecture and Transformations
+
+The components of Spark architecture work in collaboration to process data efficiently. The following 
+major components are involved:
+•	 Spark driver
+•	 SparkContext
+•	 Cluster manager
+•	 Worker node
+•	 Spark executor
+•	 Task
+Before we talk about any of these components, it’s important to understand their execution hierarchy 
+to know how each component interacts when a Spark program starts.
+Execution hierarchy
+Let’s look at the execution flow of a Spark application with the help of the architecture depicted in 
+Figure 3.1:
+Figure 3.1: Spark architecture
+
+Spark components
+
+These steps outline the flow from submitting a Spark job to freeing up resources when the job is completed:
+1.	
+Spark executions start with a user submitting a spark-submit request to the Spark engine. This 
+will create a Spark application. Once an action is performed, it will result in a job being created.
+2.	
+This request will initiate communication with the cluster manager. In turn, the cluster manager 
+initializes the Spark driver to execute the main() method of the Spark application. To execute 
+this method, SparkSession is created.
+3.	
+The driver starts communicating with the cluster manager and asks for resources to start 
+planning for execution.
+4.	
+The cluster manager then starts the executors, which can communicate with the driver directly.
+5.	
+The driver creates a logical plan, known as a directed acyclic graph (DAG), and physical plan 
+for execution based on the total number of tasks required to be executed.
+6.	
+The driver also divides data to be run on each executor, along with tasks.
+7.	
+Once each task finishes running, the driver gets the results.
+8.	
+When the program finishes running, the main() method exits and Spark frees all executors 
+and driver resources.
+Now that you understand the execution hierarchy, let’s discuss each of Spark’s components in detail.
+Spark components
+Let’s dive into the inner workings of each Spark component to understand how each of them plays a 
+crucial role in empowering efficient distributed data processing.
+Spark driver
+The Spark driver is the core of the intelligent and efficient computations in Spark. Spark follows an 
+architecture that is commonly known as the master-worker architecture in network topology. Consider 
+the Spark driver as a master and Spark executors as slaves. The driver has control and knowledge of 
+all the executors at any given time. It is the responsibility of the driver to know how many executors 
+are present and if any executor has failed so that it can fall back on its alternative. The Spark driver 
+also maintains communication with executors all the time. The driver runs on the master node of a 
+machine or cluster. When a Spark application starts running, the driver keeps up with all the required 
+information that is needed to run the application successfully.
+As shown in Figure 3.1, the driver node contains SparkSession, which is the entry point of the 
+Spark application. Previously, this was known as the SparkContext object, but in Spark 2.0, 
+SparkSession handles all contexts to start execution. The application’s main method runs on the 
+driver to coordinate the whole application. It runs on its own Java Virtual Machine (JVM).";0.479943701955026;900
+47;What is the role of the Driver component?;99f549c7-04c2-4dec-a444-56f35aaceded;3;"Once the resources are available, the driver is made aware of those resources. It’s the responsibility of 
+the driver to manage these resources based on tasks that need to be executed by the Spark application. 
+Once the application has finished execution, these resources are released back to the cluster manager.
+Applications have their dedicated executor processes that parallelize how tasks are run. The advantage 
+is that each application is independent of the other and runs on its own schedule. Data also becomes 
+independent for each of these applications, so data sharing can only take place by writing data to disk 
+so that it can be shared across applications.
+Cluster modes
+Cluster modes define how Spark applications utilize cluster resources, manage task execution, and 
+interact with cluster managers for resource allocation.
+If there is more than one user sharing resources on the cluster, be it Spark applications or other 
+applications that need cluster resources, they have to be managed based on different modes. There 
+are two types of modes available for cluster managers – standalone client mode and cluster mode. 
+The following table highlights some of the differences between the two:
+Client Mode
+Cluster Mode
+In client mode, the driver program runs on 
+the machine where the Spark application 
+is submitted.
+In cluster mode, the driver program runs within 
+the cluster, on one of the worker nodes.
+The driver program is responsible 
+for orchestrating the execution of the 
+Spark application, including creating 
+SparkContext and coordinating tasks.
+The cluster manager is responsible for launching 
+the driver program and allocating resources 
+for execution.
+The client machine interacts directly with the 
+cluster manager to request resources and launch 
+executors on worker nodes.
+Once the driver program is launched, it 
+coordinates with the cluster manager to request 
+resources and distribute tasks to worker nodes.
+It may not be suitable for production 
+deployments with large-scale applications.
+It is commonly used for production deployments 
+as it allows for better resource utilization and 
+scalability. It also ensures fault tolerance.
+Table 3.1: Client mode versus cluster mode
+
+Spark Architecture and Transformations
+
+Now, we will talk about different deployment modes and their corresponding managers in Spark:
+•	 Built-in standalone mode (Spark’s native manager): A simple cluster manager bundled with 
+Spark that’s suitable for small to medium-scale deployments without external dependencies.
+•	 Apache YARN (Hadoop’s resource manager): Integrated with Spark, YARN enables Spark 
+applications to share Hadoop’s cluster resources efficiently.
+•	 Apache Mesos (resource sharing platform): Mesos offers efficient resource sharing across 
+multiple applications, allowing Spark to run alongside other frameworks.
+We will talk more about deployment modes later in this chapter.
+Spark executors
+Spark executors are the processes that run on the worker node and execute tasks sent by the driver. 
+The data is stored in memory primarily but can also be written to disk storage closest to them. Driver 
+launches the executors based on the DAG that Spark generates for its execution. Once the tasks have 
+finished executing, executors send the results back to the driver.
+Since the driver is the main controller of the Spark application, if an executor fails or takes too long to 
+execute a task, the driver can choose to send that task over to other available executors. This ensures 
+reliability and fault tolerance in Spark. We will read more about this later in this chapter.
+It is the responsibility of the executor to read data from external sources that are needed to run the 
+tasks. It can also write its partitioned data to the disk as needed. All processing for a task is done by 
+the executor.
+The key functions of an executor are as follows:
+•	 Task execution: Executors run tasks assigned by the Spark application, processing data stored 
+in RDDs or DataFrames
+•	 Resource allocation: Each Spark application has a set of executors allocated by the cluster 
+manager for managing resources such as CPU cores and memory
+In Apache Spark, the concepts of job, stage, and task form the fundamental building blocks of its 
+distributed computing framework. Understanding these components is essential to grasp the core 
+workings of Spark’s parallel processing and task execution.";0.4113506368609568;900
+48;What is the role of the Driver component?;a921d309-9442-48bd-8e75-853e2317cffb;4;"While this works great for programming paradigms, with big data and 
+parallel processing, we need to shift to a look-ahead kind of model. Spark is well known for its parallel 
+processing capabilities. To achieve even better performance, Spark doesn’t execute code as it reads it, 
+but once the code is there and we submit a Spark statement to execute, the first step is that Spark builds 
+a logical map of the queries. Once that map is built, then it plans what the best path of execution is. 
+You will read more about its intricacies in the Spark architecture chapters. Once the plan is established, 
+only then will the execution begin. Once the execution begins, even then, Spark holds off executing 
+all statements until it hits an “action” statement. There are two types of statements in Spark:
+•	 Transformations
+•	 Actions
+You will learn more about the different types of Spark statements in detail in Chapter 3, where we 
+discuss Spark architecture. Here are a few advantages of lazy evaluation:
+•	 Efficiency
+•	 Code manageability
+•	 Query and resource optimization
+•	 Reduced complexities
+Resilient datasets/fault tolerance
+Spark’s foundation is built on resilient distributed datasets (RDDs). It is an immutable distributed 
+collection of objects that represent a set of records. RDDs are distributed across a number of servers, 
+and they are computed in parallel across multiple cluster nodes. RDDs can be generated with code. 
+When we read data from an external storage location into Spark, RDDs hold that data. This data can 
+be shared across multiple clusters and can be computed in parallel, thus giving Spark a very efficient 
+way of running computations on RDD data. RDDs are loaded in memory for processing; therefore, 
+loading to and from memory computations is not required, unlike Hadoop.
+RDDs are fault-tolerant. This means that if there are failures, RDDs have the ability to self-recover. 
+Spark achieves that by distributing these RDDs to different worker nodes while keeping in view what 
+task is performed by which worker node. This handling of worker nodes is done by the Spark driver. 
+We will discuss this in detail in upcoming chapters.
+RDDs give a lot of power to Spark in terms of resilience and fault-tolerance. This capability, along with 
+other features, makes Spark the tool of choice for any production-grade applications.
+
+Understanding Apache Spark and Its Applications
+
+Multiple language support
+Spark supports multiple languages for development such as Java, R, Scala, and Python. This gives 
+users the flexibility to use any language of choice to build applications in Spark.
+The components of Spark
+Let’s talk about the different components Spark has. As you can see in Figure 1.1, Spark Core is the 
+backbone of operations in Spark and spans across all the other components that Spark has. Other 
+components that we’re going to discuss in this section are Spark SQL, Spark Streaming, Spark MLlib, 
+and GraphX.
+Figure 2.1: Spark components
+Let’s look at the first component of Spark.
+Spark Core
+Spark Core is central to all the other components of Spark. It provides functionalities and core features 
+for all the different components. Spark SQL, Spark Streaming, Spark MLlib, and GraphX all make 
+use of Spark Core as their base. All the functionality and features of Spark are controlled by Spark 
+Core. It provides in-memory computing capabilities to deliver speed, a generalized execution model 
+to support a wide variety of applications, and Java, Scala, and Python APIs for ease of development.
+In all of these different components, you can write queries in supported languages. Spark will then 
+convert these queries to directed acyclic graphs (DAGs), and Spark Core has the responsibility of 
+executing them.
+The key responsibilities of Spark Core are as follows:
+•	 Interacting with storage systems
+•	 Memory management
+•	 Task distribution
+
+What is Apache Spark?
+
+•	 Task scheduling
+•	 Task monitoring
+•	 In-memory computation
+•	 Fault tolerance
+•	 Optimization
+Spark Core contains an API for RDDs which are an integral part of Spark. It also provides different 
+APIs to interact and work with RDDs.";0.3479794712545755;900
+49;What is the role of the Driver component?;76f1f5f3-5827-4a27-be33-518407b16e45;5;"This architecture abstracts complexities by offering a simplified approach to developing and 
+deploying real-time applications. This is ideal for scenarios where simplicity and ease of development 
+are crucial, allowing developers to focus more on business logic than intricate technicalities.
+The advantages are that it simplifies development, reduces operational overhead, and ensures 
+consistency across batch and stream processing.
+These architectures cater to different needs based on the specific requirements of a given application. 
+Event-driven is ideal for real-time reactions, lambda for a balance between real-time and historical 
+data, and unified streaming for a streamlined, unified approach to both batch and stream processing. 
+Each approach has its strengths and trade-offs, making them suitable for various scenarios based on 
+the specific needs of a system.
+In the following sections, we will delve into the specifics of Structured Streaming, its key concepts, and 
+how it compares to Spark Streaming. We will also explore stateless and stateful streaming, streaming 
+sources, and sinks, providing code examples and practical illustrations to enhance understanding.
+Introducing Spark Streaming
+As you’ve seen so far, Spark Streaming is a powerful real-time data processing framework built on 
+Apache Spark. It extends the capabilities of the Spark engine to support high-throughput, fault-tolerant, 
+and scalable stream processing. Spark Streaming enables developers to process real-time data streams 
+using the same programming model as batch processing, making it easy to transition from batch to 
+streaming workloads.
+At its core, Spark Streaming divides the real-time data stream into small batches or micro-batches, 
+which are then processed using Spark’s distributed computing capabilities. Each micro-batch is 
+treated as a Resilient Distributed Dataset (RDD), Spark’s fundamental abstraction for distributed 
+data processing. This approach allows developers to leverage Spark’s extensive ecosystem of libraries, 
+such as Spark SQL, MLlib, and GraphX, for real-time analytics and machine learning tasks.
+
+Introducing Spark Streaming
+
+Exploring the architecture of Spark Streaming
+Spark Streaming follows a master-worker architecture, where the driver program serves as the master 
+and the worker nodes process the data. The high-level architecture consists of the following components:
+•	 The driver program: The driver program runs the main application and manages the overall 
+execution of the Spark Streaming application. It divides the data stream into batches, schedules 
+tasks on the worker nodes, and coordinates the processing.
+•	 Receivers: Receivers are responsible for connecting to the streaming data sources and receiving 
+the data. They run on worker nodes and pull the data from sources such as Kafka, Flume, or 
+TCP sockets. The received data is then stored in the memory of the worker nodes.
+•	 Discretized Stream (DStream): DStream is the basic abstraction in Spark Streaming. It 
+represents a continuous stream of data divided into small, discrete RDDs. DStream provides a 
+high-level API to perform transformations and actions on the streaming data.
+•	 Transformations and actions: Spark Streaming supports a wide range of transformations and 
+actions, similar to batch processing. Transformations, such as map, filter, and reduceByKey, 
+are applied to each RDD in the DStream. Actions, such as count, saveAsTextFiles, 
+and foreachRDD, trigger the execution of the streaming computation and produce results.
+•	 Output operations: Output operations allow the processed data to be written to external 
+systems or storage. Spark Streaming supports various output operations, such as writing to 
+files, databases, or sending to dashboards for visualization.
+Key concepts
+To effectively use Spark Streaming, it is important to understand some key concepts:
+•	 DStreams: As mentioned earlier, DStreams represent the continuous stream of data in Spark 
+Streaming. They are a sequence of RDDs, where each RDD contains data from a specific time 
+interval. DStreams support various transformations and actions, enabling complex computations 
+on the stream.
+•	 Window operations: Window operations allow you to apply transformations on a sliding 
+window of data in the stream. It enables computations over a fixed window size or based on 
+time durations, enabling tasks such as windowed aggregations or time-based joins.
+•	 Stateful operations: Spark Streaming gives you the ability to maintain stateful information 
+across batches.";0.295019940954041;900
+50;What does a 'broadcast join' mean?;cf993723-1c30-4986-b271-57485427dd25;1;"It sorts both DataFrames based on the join key and then 
+merges them efficiently.
+Here are some of the key features of shuffle sort-merge joins:
+•	 Data sorting: Shuffle sort-merge joins sort the data on both sides to ensure efficient merging
+•	 Suitable for large datasets: They are efficient for joining large DataFrames with skewed 
+data distribution
+
+Data-based optimizations in Apache Spark
+
+•	 Complexity: This type of shuffle join is more complex than a simple shuffle join as it involves 
+sorting operations
+Use case
+Shuffle sort-merge joins are effective for large-scale joins, especially when the data distribution is 
+skewed, and a balanced distribution of data across partitions is essential.
+Let’s look at broadcast joins next.
+Broadcast joins
+Broadcast joins are a highly efficient technique for joining a small DataFrame with a larger one. In this 
+approach, the smaller DataFrame is broadcast to all worker nodes, eliminating the need for shuffling 
+data across the network. A broadcast join is a specific optimization technique that can be applied 
+when one of the DataFrames is small enough to fit in memory. In this case, the small DataFrame is 
+broadcast to all worker nodes, avoiding costly shuffling.
+Let’s look at some of the key characteristics of broadcast joins:
+•	 Small DataFrame broadcast: The smaller DataFrame is broadcast to all worker nodes, ensuring 
+that it is available locally
+•	 Reduced network overhead: Broadcast joins significantly reduce network and disk I/O because 
+they avoid data shuffling
+•	 Ideal for dimension tables: Broadcast joins are commonly used when joining a fact table with 
+smaller dimension tables, such as in data warehousing scenarios
+•	 Efficient for small-to-large joins: They are efficient for joins where one DataFrame is significantly 
+smaller than the other
+Use case
+Broadcast joins are useful when you’re joining a large DataFrame with a much smaller one, such as 
+joining a fact table with dimension tables in a data warehouse.
+Broadcast hash joins
+A specific type of broadcast join is the broadcast hash join. In this variant, the smaller DataFrame is 
+broadcast as a hash table to all worker nodes, which allows for efficient lookups in the larger DataFrame.
+Use case
+Broadcast hash joins are suitable for scenarios where one DataFrame is small enough to be broadcast, 
+and you need to perform equality-based joins.
+
+Advanced Operations and Optimizations in Spark
+
+In this section, we discussed two fundamental join techniques in Spark – shuffle joins and broadcast 
+joins – including specific variants, such as the broadcast hash join and the shuffle sort-merge join. 
+Choosing the right join method depends on the size of your DataFrames, data distribution, and network 
+considerations, and it’s essential to make informed decisions to optimize your Spark applications. In 
+the next section, we will cover different types of transformations that exist in Spark.
+Narrow and wide transformations in Apache Spark
+As discussed in Chapter 3, transformations are the core operations for processing data. Transformations 
+are categorized into two main types: narrow transformations and wide transformations. Understanding 
+the distinction between these two types of transformations is essential for optimizing the performance 
+of your Spark applications.
+Narrow transformations
+Narrow transformations are operations that do not require data shuffling or extensive data movement 
+across partitions. They can be executed on a single partition without the need to communicate with other 
+partitions. This inherent locality makes narrow transformations highly efficient and faster to execute.
+The following are some of the key characteristics of narrow transformations:
+•	 Single-partition processing: Narrow transformations operate on a single partition of the data 
+independently, which minimizes communication overhead.
+•	 Speed and efficiency: Due to their partition-wise nature, narrow transformations are fast 
+and efficient.
+map(), filter(), union(), and groupBy() are typical examples of narrow transformations.
+Wide transformations
+Wide transformations, in contrast, involve data shuffling, which necessitates the exchange of data 
+between partitions. These transformations require communication between multiple partitions and 
+can be resource-intensive. As a result, they tend to be slower and more costly in terms of computation.
+Here are a few of the key characteristics of wide transformations:
+•	 Data shuffling: Wide transformations involve the reorganization of data across partitions, 
+requiring data exchange between different workers.";0.42242093715899015;900
+51;What does a 'broadcast join' mean?;306ccc59-2e02-4f34-9586-211c30d30e0d;2;"Intensive shuffle operations can cause 
+resource contention among nodes, impacting overall cluster performance.
+Let’s discuss the solutions for optimizing data shuffle:
+•	 Data partitioning techniques: Implement optimized data partitioning strategies to reduce 
+shuffle overhead, ensuring a more balanced workload distribution
+•	 Skew handling: Mitigate data skew by employing techniques such as salting or custom 
+partitioning to prevent hotspots and balance data distribution
+
+Data-based optimizations in Apache Spark
+
+•	 Shuffle partitions adjustment: Tune the number of shuffle partitions based on data characteristics 
+and job requirements to optimize shuffle performance and reduce overhead
+•	 Memory management: Optimize memory allocation for shuffle operations to minimize spills 
+to disk and improve overall shuffle performance
+•	 Data filtering and pruning: Apply filtering or pruning techniques to reduce the amount of 
+data shuffled across nodes, focusing only on relevant subsets of data
+•	 Join optimization:
+	 Broadcast joins: Utilize broadcast joins for smaller datasets to replicate them across nodes, 
+minimizing data shuffling and improving join performance
+	 Sort-merge joins: Employ sort-merge join algorithms for large datasets to minimize data 
+movement during join operations
+•	 AQE: Leverage Spark’s AQE capabilities to dynamically optimize shuffle operations based on 
+runtime statistics and data distribution
+The best practices for managing data shuffle are as follows:
+•	 Profile and monitor: Continuously profile and monitor shuffle operations to identify bottlenecks 
+and optimize configurations
+•	 Optimized partition sizes: Determine optimal partition sizes based on data characteristics 
+and adjust shuffle partitioning accordingly
+•	 Caching and persistence: Cache or persist intermediate shuffle results to reduce recomputation 
+and mitigate shuffle overhead
+•	 Regular tuning: Regularly tune Spark configurations related to shuffle operations based on 
+workload requirements and cluster resources
+By implementing these strategies and best practices, organizations can effectively optimize data 
+shuffle operations in Apache Spark, ensuring improved performance, reduced resource contention, 
+and enhanced overall efficiency in distributed data processing workflows. These approaches empower 
+users to proactively manage and optimize shuffle operations for streamlined data processing and 
+improved cluster performance.
+Despite all the data-related challenges that users need to be aware of, there are certain types of joins 
+that Spark has available in its internal working that we can utilize for better performance. We’ll take 
+a look at these next.
+
+Advanced Operations and Optimizations in Spark
+
+Shuffle and broadcast joins
+Apache Spark offers two fundamental approaches for performing join operations: shuffle joins and 
+broadcast joins. Each method has its advantages and use cases, and understanding when to use them 
+is crucial for optimizing your Spark applications. Note that these joins are done by Spark automatically 
+to join different datasets together. You can enforce some of the join types in your code but Spark takes 
+care of the execution.
+Shuffle joins
+Shuffle joins are a common method for joining large datasets in distributed computing environments. 
+These joins redistribute data across partitions, ensuring that matching keys end up on the same worker 
+nodes. Spark performs shuffle joins efficiently thanks to its underlying execution engine.
+Here are some of the key characteristics of shuffle joins:
+•	 Data redistribution: Shuffle joins redistribute data to ensure that rows with matching keys are 
+co-located on the same worker nodes. This process may require substantial network and disk I/O.
+•	 Suitable for large datasets: Shuffle joins are well-suited for joining large DataFrames with 
+comparable sizes.
+•	 Replicating data: During a shuffle join, data may be temporarily replicated on worker nodes 
+to facilitate efficient joins.
+•	 Costly in terms of network and disk I/O: Shuffle joins can be resource-intensive due to data 
+shuffling, making them slower compared to other join techniques for smaller datasets.
+•	 Examples: Inner join, left join, right join, and full outer join are often implemented as shuffle joins.
+Use case
+Shuffle joins are typically used when joining two large DataFrames with no significant size difference.
+Shuffle sort-merge joins
+A shuffle sort-merge join is a type of shuffle join that leverages a combination of sorting and merging 
+techniques to perform the join operation. It sorts both DataFrames based on the join key and then 
+merges them efficiently.";0.4045605953446533;900
+52;What does a 'broadcast join' mean?;ac57a1c9-8f50-4618-bbe8-160436871b84;3;"One common approach to stream-stream joins is the use of windowing operations. By defining 
+overlapping or tumbling windows on the streams, events within the same window can be joined based 
+on their keys. Careful consideration of window size, watermarking, and event time characteristics is 
+necessary to ensure accurate and meaningful joins.
+Here’s an example of a stream-stream join using Structured Streaming:
+stream1 = spark.readStream.format(""kafka"")
+.option(""kafka.bootstrap.servers"", ""localhost:9092"") 
+.option(""subscribe"", ""topic1"") .load()
+
+Different joins in Structured Streaming
+
+stream2 = spark.readStream.format(""kafka"").option(""kafka.bootstrap.
+servers"",""localhost:9092"") .option(""subscribe"", ""topic2"") .load()
+ joinedStream =stream1.join(stream2, ""common_key"")
+In this example, two Kafka streams, stream1 and stream2, are read from different topics. The 
+join method is then applied to perform the join operation, based on the common_key field shared 
+by both streams.
+Stream-static joins
+Stream-static joins, also known as stream-batch joins, involve joining a streaming data source to a 
+static or reference dataset. The static dataset typically represents reference data, such as configuration 
+data or dimension tables, that remains constant over time.
+Stream-static joins are useful for enriching streaming data with additional information or attributes 
+from the static dataset. For example, you might join a stream of user activity events with a static user 
+profile table to enrich each event with user-related details.
+To perform a stream-static join in Structured Streaming, you can load the static dataset as a static 
+DataFrame and then use the join method to perform the join with the streaming DataFrame. Since 
+the static dataset does not change, the join operation can be performed using the default “right outer 
+join” mode.
+Here’s an example of a stream-static join in Structured Streaming:
+stream =spark.readStream.format(""kafka"")
+.option(""kafka.bootstrap.servers"", ""localhost:9092"") 
+.option(""subscribe"", ""topic"") .load()
+  staticData = spark.read.format(""csv"") .option(""header"", ""true"") 
+.load(""data/static_data.csv"")
+ enrichedStream = stream.join(staticData,""common_key"")
+In this example, the streaming data is read from a Kafka source, and the static dataset is loaded from 
+a CSV file. The join method is then used to perform the stream-static join based on the “common_
+key” field.
+Both stream-stream and stream-static joins provide powerful capabilities for real-time data analysis 
+and enrichment. When using these join operations, it is essential to carefully manage event time 
+characteristics, windowing options, and data consistency to ensure accurate and reliable results. 
+Additionally, performance considerations should be considered to handle large volumes of data and 
+meet low-latency requirements in real-time streaming applications.
+
+Structured Streaming in Spark
+
+Final thoughts and future developments
+Structured Streaming has emerged as a powerful framework for real-time data processing in Apache 
+Spark. Its unified programming model, fault tolerance, and seamless integration with the Spark 
+ecosystem make it an attractive choice for building scalable and robust streaming applications.
+As Structured Streaming continues to evolve, there are several areas that hold promise for future 
+developments. These include the following:
+•	 Enhanced support for streaming sources and sinks: Providing more built-in connectors for 
+popular streaming systems and databases, as well as improving the integration and compatibility 
+with custom sources and sinks.
+•	 Advanced event time handling: Introducing more advanced features for event time handling, 
+including support for event-time skew detection and handling, event deduplication, and 
+watermark optimizations.
+•	 Performance optimization: Continuously improving the performance of Structured Streaming, 
+especially in scenarios with high data volumes and complex computations. This could involve 
+optimizations in memory management, query planning, and query optimization techniques.
+•	 Integration with AI and machine learning: Further integrating Structured Streaming with 
+AI and machine learning libraries in Spark, such as MLlib and TensorFlow, to enable real-time 
+machine learning and predictive analytics on streaming data.";0.38072721682527055;900
+53;What does a 'broadcast join' mean?;a413fc17-0723-49f7-88f0-173b56b08f05;4;"Spark provides several types of joins to combine data from different DataFrames or datasets. In this 
+section, we will explore different Spark join operations and when to use each type.
+Join operations are used to combine data from two or more DataFrames based on a common column. 
+These operations are essential for tasks such as merging datasets, aggregating information, and 
+performing relational operations.
+In Spark, the primary syntax for performing joins is using the .join() method, which takes the 
+following parameters:
+•	 other: The other DataFrame to join with
+•	 on: The column(s) on which to join the DataFrames
+•	 how: The type of join to perform (inner, outer, left, or right)
+•	 suffixes: Suffixes to add to columns with the same name in both DataFrames
+These parameters are used in the main syntax of the join operation, as follows:
+Dataframe1.join(Dataframe2, on, how)
+Here, Dataframe1 would be on the left-hand side of the join and Dataframe2 would be on the 
+right-hand side of the join.
+DataFrames or datasets can be joined based on common columns within a DataFrame, and the result 
+of a join query is a new DataFrame.
+We will demonstrate the join operation on two new DataFrames. First, let’s create these DataFrames.";0.3786633663740197;900
+54;What does a 'broadcast join' mean?;1bdd3eae-9e68-4ef2-b6bd-0311a7012515;5;"Based on that, the strategy for data 
+processing can be determined.
+Watermarking and late data handling
+Now, we will discuss how to handle data that doesn’t arrive at the defined time in real-time applications. 
+There are different ways to handle that situation. Structured Streaming has a built-in mechanism to 
+handle this type of data. These mechanisms include:
+•	 Watermarking: Watermarking is a mechanism in Structured Streaming used to deal with 
+event time and handle delayed or late-arriving data. A watermark is a threshold timestamp 
+that indicates the maximum event time seen by a system up to a certain point. It allows the 
+system to track the progress of event time and determine when it is safe to emit results for a 
+specific window.
+•	 Late data handling: Late-arriving data refers to events that have timestamps beyond the 
+watermark threshold. Structured Streaming provides options to handle late data, such as 
+discarding it, updating existing results, or storing it separately for further analysis.
+These built-in mechanisms save users a lot of time and efficiently handle late-arriving data.
+Next, we will see, once the data arrives, how we start the operations on it in streaming.
+Triggers and output modes
+Triggers determine when a streaming application should emit results or trigger the execution of the 
+computation. Structured Streaming supports different types of triggers:
+•	 Event time triggers: Event time triggers operate based on the arrival of new events or when 
+a watermark advances beyond a certain threshold. They enable more accurate and efficient 
+processing, based on event time semantics.
+•	 Processing time triggers: These triggers operate based on processing time, allowing you to 
+specify time intervals or durations at which the computation should be executed.
+
+Structured Streaming in Spark
+
+Structured Streaming also offers different output modes. The output modes determine how data is 
+updated in the sink. A sink is where we would write the output after the streaming operation:
+•	 Complete mode: In this mode, the entire updated result, including all the rows in the output, 
+is written to the sink. This mode provides the most comprehensive view of data but can be 
+memory-intensive for large result sets.
+•	 Append mode: In append mode, only the new rows appended to the result table since the 
+last trigger are written to the sink. This mode is suitable for cases where the result is an 
+append-only stream.
+•	 Update mode: Update mode only writes the changed rows to the sink, preserving the existing 
+rows that haven’t changed since the last trigger. This mode is useful for cases where the result 
+table is updated incrementally.
+Now, let’s take a look at the different types of aggregate operations we can do on streaming data.
+Windowing operations
+Windowing operations in Structured Streaming allow you to group and aggregate data over specific 
+time windows. Windows for these operations can be defined based on either event time or processing 
+time, and they provide a way to perform computations over a subset of events within a given time range.
+The common types of windowing operations include the following:
+•	 Tumbling windows: Tumbling windows divide a stream into non-overlapping fixed-size windows. 
+Each event falls into exactly one window, and computations are performed independently for 
+each window.
+•	 Sliding windows: Sliding windows create overlapping windows that slide or move over a stream 
+at regular intervals. Each event can contribute to multiple windows, and computations can be 
+performed on the overlapping parts.
+•	 Session windows: Session windows group events that are close in time or belong to the same 
+session, based on a specified session timeout. A session is defined as a series of events within 
+a certain time threshold of each other.
+The next operation that we frequently use in streaming is the join operation. Now, we will see how 
+we can use joins with streaming data.
+Joins and aggregations
+Structured Streaming supports joins and aggregations on streaming data, enabling complex analytics 
+and data transformations:
+•	 Joins: Streaming joins allow you to combine two or more streams or a stream with static/
+reference data, based on a common key or condition.";0.34639128508331696;900
+55;How does persist() differ from cache() in PySpark?;d4d6a459-91bb-4e7e-97a6-a80ac3262795;1;"•	 Slower execution: Due to the need for shuffling, wide transformations are relatively slower 
+and resource-intensive compared to narrow transformations.
+groupByKey(), reduceByKey(), and join() are common examples of wide transformations.
+Let’s discuss which transformation works best, depending on the operation.
+
+Narrow and wide transformations in Apache Spark
+
+Choosing between narrow and wide transformations
+Selecting the appropriate type of transformation depends on the specific use case and the data at hand. 
+Here are some considerations for choosing between narrow and wide transformations:
+•	 Data size: If your data is small enough to fit comfortably within a single partition, it’s preferable 
+to use narrow transformations. This minimizes the overhead associated with shuffling.
+•	 Data distribution: If your data is distributed unevenly across partitions, wide transformations 
+might be necessary to reorganize and balance the data.
+•	 Performance: Narrow transformations are typically faster and more efficient, so if performance 
+is a critical concern, they are preferred.
+•	 Complex operations: Some operations, such as joining large DataFrames, often require wide 
+transformations. In such cases, the performance trade-off is inevitable.
+•	 Cluster resources: Consider the available cluster resources. Resource-intensive wide transformations 
+may lead to resource contention in a shared cluster.
+Next, we’ll learn how to optimize wide transformations in cases where it is necessary to implement them.
+Optimizing wide transformations
+While wide transformations are necessary for certain operations, it’s crucial to optimize them to 
+reduce their impact on performance. Here are some strategies for optimizing wide transformations:
+•	 Minimize data shuffling: Whenever possible, use techniques to minimize data shuffling. For 
+example, consider using broadcast joins for small DataFrames.
+•	 Partitioning: Carefully choose the number of partitions and partitioning keys to ensure even 
+data distribution, reducing the need for extensive shuffling.
+•	 Caching and persistence: Caching frequently used DataFrames can help reduce the need for 
+recomputation and shuffling in subsequent stages.
+•	 Tuning cluster resources: Adjust cluster configurations, such as the number of executors and 
+memory allocation, to meet the demands of wide transformations.
+•	 Profiling and monitoring: Regularly profile and monitor your Spark applications to identify 
+performance bottlenecks, especially in the case of wide transformations.
+In this section, we explored the concepts of narrow and wide transformations in Apache Spark. 
+Understanding when and how to use these transformations is critical for optimizing the performance 
+of your Spark applications, especially when dealing with large datasets and complex operations.
+In the next section, we will cover the persist and cache operations in Spark.
+
+Advanced Operations and Optimizations in Spark
+
+Persisting and caching in Apache Spark
+In Apache Spark, optimizing the performance of your data processing operations is essential, especially 
+when working with large datasets and complex workflows. Caching and persistence are techniques that 
+allow you to store intermediate or frequently used data in memory or on disk, reducing the need for 
+recomputation and enhancing overall performance. This section explores the concepts of persisting 
+and caching in Spark.
+Understanding data persistence
+Data persistence is the process of storing the intermediate or final results of Spark transformations 
+in memory or on disk. By persisting data, you reduce the need to recompute it from the source data, 
+thereby improving query performance.
+The following key concepts are related to data persistence:
+•	 Storage levels: Spark offers multiple storage levels for data, ranging from memory-only to 
+disk, depending on your needs. Each storage level comes with its trade-offs in terms of speed 
+and durability.
+•	 Lazy evaluation: Spark follows a lazy evaluation model, meaning transformations are not 
+executed until an action is called. Data persistence ensures that the intermediate results are 
+available for reuse without recomputation.
+•	 Caching versus persistence: Caching is a specific form of data persistence that stores data in 
+memory, while persistence encompasses both in-memory and on-disk storage.
+Caching data
+Caching is a form of data persistence that stores DataFrames, RDDs, or datasets in memory for fast 
+access. It is an essential optimization technique that improves the performance of Spark applications, 
+particularly when dealing with iterative algorithms or repeated computations.";0.5711334958043552;900
+56;How does persist() differ from cache() in PySpark?;a6a2a027-e422-4a05-ad9c-bcc44db670c0;2;"To cache a DataFrame or an RDD, you can use the .cache() or .persist() method while 
+specifying the storage level:
+•	 Memory-only: This option stores data in memory but does not replicate it for fault tolerance. 
+Use .cache() or .persist(StorageLevel.MEMORY_ONLY).
+•	 Memory-only, serialized: This option stores data in memory in a serialized form, reducing 
+memory usage. Use .persist(StorageLevel.MEMORY_ONLY_SER).
+•	 Memory and disk: This option stores data in memory and spills excess data to disk when 
+memory is full. Use .persist(StorageLevel.MEMORY_AND_DISK).
+
+Persisting and caching in Apache Spark
+
+•	 Disk-only: This option stores data only on disk, avoiding memory usage. 
+Use .persist(StorageLevel.DISK_ONLY).
+Caching is particularly beneficial in the following scenarios:
+•	 Iterative algorithms: Caching is vital for iterative algorithms such as machine learning, graph 
+processing, and optimization problems, where the same data is used repeatedly
+•	 Multiple actions: When a DataFrame is used for multiple actions, caching it after the first 
+action can improve performance
+•	 Avoiding recomputation: Caching helps avoid recomputing the same data when multiple 
+transformations depend on it
+•	 Interactive queries: In interactive data exploration or querying, caching frequently used 
+intermediate results can speed up ad hoc analysis
+Unpersisting data
+Caching consumes memory, and in a cluster environment, it’s essential to manage memory efficiently. 
+You can release cached data from memory using the .unpersist() method. This method allows 
+you to specify whether to release the data immediately or only when it is no longer needed.
+Here’s an example of unpersisting data:
+# Cache a DataFrame
+df.cache()
+# Unpersist the cached DataFrame
+df.unpersist()
+Best practices
+To use caching and persistence effectively in your Spark applications, consider the following best practices:
+•	 Cache only what’s necessary: Caching consumes memory, so cache only the data that is 
+frequently used or costly to compute
+•	 Monitor memory usage: Regularly monitor memory usage to avoid running out of memory 
+or excessive disk spills
+•	 Automate unpersistence: If you have limited memory resources, automate the unpersistence 
+of less frequently used data to free up memory for more critical operations
+•	 Consider serialization: Depending on your use case, consider using serialized storage levels 
+to reduce memory overhead
+
+Advanced Operations and Optimizations in Spark
+
+In this section, we explored the concepts of persistence and caching in Apache Spark. Caching and 
+persistence are powerful techniques for optimizing performance in Spark applications, particularly when 
+dealing with iterative algorithms or scenarios where the same data is used repeatedly. Understanding when 
+and how to use these techniques can significantly improve the efficiency of your data processing workflows.
+In the next section, we’ll learn how repartition and coalesce work in Spark.
+Repartitioning and coalescing in Apache Spark
+Efficient data partitioning plays a crucial role in optimizing data processing workflows in Apache 
+Spark. Repartitioning and coalescing are operations that allow you to control the distribution of data 
+across partitions. In this section, we’ll explore the concepts of repartitioning and coalescing and their 
+significance in Spark applications.
+Understanding data partitioning
+Data partitioning in Apache Spark involves dividing a dataset into smaller, manageable units called 
+partitions. Each partition contains a subset of the data and is processed independently by different 
+worker nodes in a distributed cluster. Proper data partitioning can significantly impact the efficiency 
+and performance of Spark applications.
+Repartitioning data
+Repartitioning is the process of redistributing data across a different number of partitions. This 
+operation can help balance data distribution, improve parallelism, and optimize data processing. You 
+can use the .repartition() method to specify the number of desired partitions.
+Here are some key points related to repartitioning data:
+•	 Increasing or decreasing partitions: Repartitioning allows you to increase or decrease the 
+number of partitions to suit your processing needs.
+•	 Data shuffling: Repartitioning often involves data shuffling, which can be resource-intensive. 
+Therefore, it should be used judiciously.";0.5421294791132608;900
+57;How does persist() differ from cache() in PySpark?;84a4d4db-0278-42d5-a58e-a1611718afb7;3;"The different deployment modes that are available in Spark are as follows:
+•	 Local: In local mode, the Spark driver and executor run on a single JVM and the cluster manager 
+runs on the same host as the driver and executor.
+•	 Standalone: In standalone mode, the driver can run on any node of the cluster and the executor 
+will launch its own independent JVM. The cluster manager can remain on any of the hosts in 
+the cluster.
+•	 YARN (client): In this mode, the Spark driver runs on the client and YARN’s resource manager 
+allocates containers for executors on NodeManagers.
+•	 YARN (cluster): In this mode, the Spark driver runs with the YARN application master while 
+YARN’s resource manager allocates containers for executors on NodeManagers.
+•	 Kubernetes: In this mode, the driver runs in Kubernetes pods. Executors have their own pods.
+
+RDDs
+
+Let’s look at some points of significance regarding the different deployment modes:
+•	 Resource utilization: Different deployment modes optimize resource utilization by determining 
+where the driver program runs and how resources are allocated between the client and the cluster.
+•	 Accessibility and control: Client mode offers easy accessibility to driver logs and outputs, 
+facilitating development and debugging, while cluster mode utilizes cluster resources more 
+efficiently for production workloads.
+•	 Integration with container orchestration: Kubernetes deployment mode enables seamless 
+integration with containerized environments, leveraging Kubernetes’ orchestration capabilities 
+for efficient resource management.
+There are some considerations to keep in mind while choosing deployment modes:
+•	 Development versus production: Client mode is suitable for development and debugging, 
+while cluster mode is ideal for production workloads
+•	 Resource management: Evaluate the allocation of resources between client and cluster nodes 
+based on the application’s requirements
+•	 Containerization needs: Consider Kubernetes deployment for containerized environments, 
+leveraging Kubernetes features for efficient container management
+In summary, deployment modes in Apache Spark provide flexibility in how Spark applications are launched 
+and executed, catering to different development, production, and containerized deployment scenarios.
+Next, we will look at RDDs, which serve as foundational data abstractions in Apache Spark, enabling 
+distributed processing, fault tolerance, and flexibility in handling large-scale data operations. While 
+RDDs continue to be a fundamental concept, Spark’s DataFrame and Dataset APIs offer advancements 
+in structured data processing and performance optimization.
+RDDs
+Apache Spark’s RDD stands as a foundational abstraction that underpins the distributed computing 
+capabilities within the Spark framework. RDDs serve as the core data structure in Spark, enabling 
+fault-tolerant and parallel operations on large-scale distributed datasets and they are immutable. This 
+means that they cannot be changed over time. For any operations, a new RDD has to be generated from 
+the existing RDD. When a new RDD originates from the original RDD, the new RDD has a pointer to 
+the RDD it is generated from. This is the way Spark documents the lineage for all the transformations 
+taking place on an RDD. This lineage enables lazy evaluation in Spark, which generates DAGs for 
+different operations.
+
+Spark Architecture and Transformations
+
+This immutability and lineage gives Spark the ability to reproduce any DataFrame in case of failure 
+and it makes fault-tolerant by design. Since RDD is the lowest level of abstraction in Spark, all other 
+datasets built on top of RDDs share these properties. The high-level DataFrame API is built on top of 
+the low-level RDD API as well, so DataFrames also share the same properties.
+RDDs are also partitioned by Spark and each partition is distributed to multiple nodes in the cluster.
+Here are some of the key characteristics of Spark RDDs:
+•	 Immutable nature: RDDs are immutable, ensuring that once created, they cannot be altered, 
+allowing for a lineage of transformations.
+•	 Resilience through lineage: RDDs store lineage information, enabling reconstruction of lost 
+partitions in case of failures. Spark is designed to be fault-tolerant. Therefore, if an executor 
+on a worker node fails while calculating an RDD, that RDD can be recomputed by another 
+executor using the lineage that Spark has created.
+•	 Partitioned data: RDDs divide data into partitions, distributed across multiple nodes in a 
+cluster for parallel processing.";0.401451516695121;900
+58;How does persist() differ from cache() in PySpark?;05a6176c-7109-46fb-9403-0eec1d540562;4;"Understanding Apache Spark 
+and Its Applications
+With the advent of machine learning and data science, the world is seeing a paradigm shift. A tremendous 
+amount of data is being collected every second, and it’s hard for computing power to keep up with 
+this pace of rapid data growth. To make use of all this data, Spark has become a de facto standard for 
+big data processing. Migrating data processing to Spark is not only a question of saving resources that 
+will allow you to focus on your business; it’s also a means of modernizing your workloads to leverage 
+the capabilities of Spark and the modern technology stack to create new business opportunities.
+In this chapter, we will cover the following topics:
+•	 What is Apache Spark?
+•	 Why choose Apache Spark?
+•	 Different components of Spark
+•	 What are the Spark use cases?
+•	 Who are the Spark users?
+What is Apache Spark?
+Apache Spark is an open-source big data framework that is used for multiple big data applications. The 
+strength of Spark lies in its superior parallel processing capabilities that makes it a leader in its domain.
+According to its website (https://spark.apache.org/), “The most widely-used engine for 
+scalable computing.”
+
+Understanding Apache Spark and Its Applications
+
+The history of Apache Spark
+Apache Spark started as a research project at the UC Berkeley AMPLab in 2009 and moved to an open 
+source license in 2010. Later, in 2013, it came under the Apache Software Foundation (https://
+spark.apache.org/). It gained popularity after 2013, and today, it serves as a backbone for 
+a large number of big data products across various Fortune 500 companies and has thousands of 
+developers actively working on it.
+Spark came into being because of limitations in the Hadoop MapReduce framework. MapReduce’s main 
+premise was to read data from disk, distribute that data for parallel processing, apply map functions 
+to the data, and then reduce those functions and save them back to disk. This back-and-forth reading 
+and saving to disk becomes time-consuming and costly very quickly.
+To overcome this limitation, Spark introduced the concept of in-memory computation. On top of 
+that, Spark has several capabilities that came as a result of different research initiatives. You will read 
+more about them in the next section.
+Understanding Spark differentiators
+Spark’s foundation lies in its major capabilities such as in-memory computation, lazy evaluation, fault 
+tolerance, and support for multiple languages such as Python, SQL, Scala, and R. We will discuss each 
+one of them in detail in the following section.
+Let’s start with in-memory computation.
+In-memory computation
+The first major differentiator technology that Spark’s foundation is built on is that it utilizes in-memory 
+computations. Remember when we discussed Hadoop MapReduce technology? One of its major 
+limitations is to write back to disk at each step. Spark saw this as an opportunity for improvement and 
+introduced the concept of in-memory computation. The main idea is that the data remains in memory 
+as long as it is worked on. If we can work with the size of data that can be stored in the memory at once, 
+we can eliminate the need to write to disk at each step. As a result, the complete computation cycle 
+can be done in memory if we can work with all computations on that amount of data. Now, the thing 
+to note here is that with the advent of big data, it’s hard to contain all the data in memory. Even if we 
+look at heavyweight servers and clusters in the cloud computing world, memory remains finite. This 
+is where Spark’s internal framework of parallel processing comes into play. Spark framework utilizes 
+the underlying hardware resources in the most efficient manner. It distributes the computations across 
+multiple cores and utilizes the hardware capabilities to the maximum.
+This tremendously reduces the computation time, since the overhead of writing to disk and reading it 
+back for the subsequent step is minimized as long as the data can be fit in the memory of Spark compute.
+
+What is Apache Spark?
+
+Lazy evaluation
+Generally, when we work with programming frameworks, the backend compilers look at each 
+statement and execute it.";0.39551326015834554;900
+59;How does persist() differ from cache() in PySpark?;0da9cd70-dae7-4a45-b6f2-05c83f1db709;5;"Therefore, it should be used judiciously.
+•	 Even data distribution: Repartitioning is useful when the original data is unevenly distributed 
+across partitions, causing skewed workloads.
+•	 Optimizing for joins: Repartitioning can be beneficial when performing joins to minimize 
+data shuffling.
+Here’s an example of repartitioning data:
+# Repartition a DataFrame into 8 partitions
+df.repartition(8)
+
+Repartitioning and coalescing in Apache Spark
+
+Coalescing data
+Coalescing is the process of reducing the number of partitions while preserving data locality. It is a 
+more efficient operation than repartitioning because it avoids unnecessary data shuffling whenever 
+possible. You can use the .coalesce() method to specify the target number of partitions.
+Here are some key points related to coalescing data:
+•	 Decreasing partitions: Coalescing is used when you want to decrease the number of partitions 
+to optimize data processing
+•	 Minimizing data movement: Unlike repartitioning, coalescing minimizes data shuffling by 
+merging partitions locally whenever possible
+•	 Efficient for data reduction: Coalescing is efficient when you need to reduce the number of 
+partitions without incurring the full cost of data shuffling
+Here’s an example of coalescing data:
+# Coalesce a DataFrame to 4 partitions
+df.coalesce(4)
+Use cases for repartitioning and coalescing
+Understanding when to repartition and coalesce is critical for optimizing your Spark applications.
+The following are some use cases for repartitioning:
+•	 Data skew: When data is skewed across partitions, repartitioning can balance the workload
+•	 Join optimization: For optimizing join operations by ensuring that the joining keys are collocated
+•	 Parallelism control: Adjusting the level of parallelism to optimize resource utilization
+Now, let’s look at some use cases for coalescing:
+•	 Reducing data: When you need to reduce the number of partitions to save memory and 
+reduce overhead
+•	 Minimizing shuffling: To avoid unnecessary data shuffling and minimize network communication
+•	 Post-filtering: After applying a filter or transformation that significantly reduces the dataset size
+Best practices
+To repartition and coalesce effectively in your Spark applications, consider these best practices:
+•	 Profile and monitor: Profile your application to identify performance bottlenecks related to 
+data partitioning. Use Spark’s UI and monitoring tools to track data shuffling.
+
+Advanced Operations and Optimizations in Spark
+
+•	 Consider data size: Consider the size of your dataset and the available cluster resources when 
+deciding on the number of partitions.
+•	 Balance workloads: Aim for a balanced workload distribution across partitions to 
+optimize parallelism.
+•	 Coalesce where possible: When reducing the number of partitions, prefer coalescing over 
+repartitioning to minimize data shuffling.
+•	 Plan for joins: When performing joins, plan for the optimal number of partitions to minimize 
+shuffle overhead.
+In this section, we explored the concepts of repartitioning and coalescing in Apache Spark. Understanding 
+how to efficiently control data partitioning can significantly impact the performance of your Spark 
+applications, especially when you’re working with large datasets and complex operations.
+Summary
+In this chapter, we delved into advanced data processing capabilities in Apache Spark, enhancing 
+your understanding of key concepts and techniques. We explored the intricacies of Spark’s Catalyst 
+optimizer, the power of different types of Spark joins, the importance of data persistence and caching, 
+the significance of narrow and wide transformations, and the role of data partitioning using repartition 
+and coalesce. Additionally, we discovered the versatility and utility of UDFs.
+As you advance in your journey with Apache Spark, these advanced capabilities will prove invaluable 
+for optimizing and customizing your data processing workflows. By harnessing the potential of the 
+Catalyst optimizer, you can fine-tune query execution for improved performance. Understanding the 
+nuances of Spark joins empowers you to make informed decisions on which type of join to employ 
+for specific use cases. Data persistence and caching become indispensable when you seek to reduce 
+recomputation and expedite iterative processes.";0.3834022042744386;900

@@ -1,0 +1,1326 @@
+[
+    {
+        "question_id": "Test_1_1",
+        "question": "Which statement does not accurately describe a feature of the Spark driver?",
+        "options": {
+            "A": "The Spark driver serves as the node where the main method of a Spark application runs \nto co-ordinate the application\nB",
+            "B": "The Spark driver can be horizontally scaled to enhance overall processing throughput\nC",
+            "C": "The Spark driver houses the SparkContext object\nD",
+            "D": "The Spark driver is tasked with scheduling the execution of data by using different worker \nnodes in cluster mode\nE",
+            "E": "Optimal performance dictates that the Spark driver should be positioned as close as \npossible to worker nodes"
+        },
+        "correct_answer": "B"
+    },
+    {
+        "question_id": "Test_1_2",
+        "question": "Which of these statements accurately describes stages?",
+        "options": {
+            "A": "Tasks within a stage can be simultaneously executed by multiple machines\nB",
+            "B": "Various stages within a job can run concurrently\nC",
+            "C": "Stages comprise one or more jobs\nD",
+            "D": "Stages temporarily store transactions before committing them through actions"
+        },
+        "correct_answer": "A"
+    },
+    {
+        "question_id": "Test_1_3",
+        "question": "Which of these statements accurately describes Spark’s cluster execution mode?",
+        "options": {
+            "A": "Cluster mode runs executor processes on gateway nodes\nB",
+            "B": "Cluster mode involves the driver being hosted on a gateway machine\nC",
+            "C": "In cluster mode, the Spark driver and the cluster manager are not co-located\nD",
+            "D": "The driver in cluster mode is located on a worker node"
+        },
+        "correct_answer": "D"
+    },
+    {
+        "question_id": "Test_1_4",
+        "question": "Which of these statements accurately describes Spark’s client execution mode?",
+        "options": {
+            "A": "Client mode runs executor processes on gateway nodes\nB",
+            "B": "In client mode, the driver is co-located with the executor\nC",
+            "C": "In client mode, the Spark driver and the cluster manager are co-located\nD",
+            "D": "In client mode, the driver is found on an edge node"
+        },
+        "correct_answer": "D"
+    },
+    {
+        "question_id": "Test_1_5",
+        "question": "Which statement accurately describes Spark’s standalone deployment mode?",
+        "options": {
+            "A": "Standalone mode utilizes only one executor per worker for each application\nB",
+            "B": "In standalone mode, the driver is located on a worker node\nC",
+            "C": "In standalone mode, the cluster does not need the driver\nD",
+            "D": "In standalone mode, the driver is found on an edge node"
+        },
+        "correct_answer": "A"
+    },
+    {
+        "question_id": "Test_1_6",
+        "question": "What is a task in Spark?",
+        "options": {
+            "A": "The unit of work performed for each data partition within a task is slots\nB",
+            "B": "Tasks are the second-smallest entity that can be executed within Spark\nC",
+            "C": "Tasks featuring wide dependencies can be combined into a single task\nD",
+            "D": "A task is a single unit of work done by a partition within Spark"
+        },
+        "correct_answer": "D"
+    },
+    {
+        "question_id": "Test_1_7",
+        "question": "Which of the following is the highest level in Spark’s execution hierarchy?",
+        "options": {
+            "A": "Job\nB",
+            "B": "Task\nC",
+            "C": "Executor\nD",
+            "D": "Stage"
+        },
+        "correct_answer": "A"
+    },
+    {
+        "question_id": "Test_1_8",
+        "question": "How can the concept of slots be accurately described in Spark’s context?",
+        "options": {
+            "A": "The creation and termination of slots align with the workload of an executor\nB",
+            "B": "Spark strategically stores data on disk across various slots to enhance I/O performance\nC",
+            "C": "Each slot is consistently confined to a solitary core\nD",
+            "D": "Slots enable the tasks to run in parallel"
+        },
+        "correct_answer": "D"
+    },
+    {
+        "question_id": "Test_1_9",
+        "question": "What is the role of an executor in Spark?",
+        "options": {
+            "A": "The executor’s role is to request the transformation of operations into DAG\nB",
+            "B": "There can only be one executor within a Spark environment\nC",
+            "C": "The executor processes partitions in an optimized and distributed manner\nD",
+            "D": "The executor schedules queries for execution\nE."
+        },
+        "correct_answer": "C"
+    },
+    {
+        "question_id": "Test_1_10",
+        "question": "What is the role of shuffle in Spark?",
+        "options": {
+            "A": "Shuffle broadcasts variables to different partitions\nB",
+            "B": "With shuffle, data is written to the disk\nC",
+            "C": "The shuffle command transforms data in Spark\nD",
+            "D": "Shuffles are a narrow transformation"
+        },
+        "correct_answer": "B"
+    },
+    {
+        "question_id": "Test_1_11",
+        "question": "What is the role of actions in Spark?",
+        "options": {
+            "A": "Actions only read data from a disk\nB",
+            "B": "Actions are used to modify existing RDDs\nC",
+            "C": "Actions trigger the execution of tasks\nD",
+            "D": "Actions are used to establish stage boundaries"
+        },
+        "correct_answer": "C"
+    },
+    {
+        "question_id": "Test_1_12",
+        "question": "Which of the following is one of the tasks of the cluster manager in Spark?",
+        "options": {
+            "A": "In the event of an executor failure, the cluster manager will collaborate with the driver to \ninitiate a new executor\nB",
+            "B": "The cluster manager can coalesce partitions to increase the speed of complex data processing\nC",
+            "C": "The cluster manager collects runtime statistics of queries\nD",
+            "D": "The cluster manager creates query plans"
+        },
+        "correct_answer": "A"
+    },
+    {
+        "question_id": "Test_1_13",
+        "question": "Which of the following is one of the tasks of adaptive query execution in Spark?",
+        "options": {
+            "A": "Adaptive query execution can coalesce partitions to increase the speed of complex \ndata processing\nB",
+            "B": "In the event of an executor failure, the adaptive query execution feature will collaborate \nwith the driver to initiate a new executor\nC",
+            "C": "Adaptive query execution creates query plans\nD",
+            "D": "Adaptive query execution is responsible for spawning multiple executors to carry our \ntasks in Spark"
+        },
+        "correct_answer": "A"
+    },
+    {
+        "question_id": "Test_1_14",
+        "question": "Which of the following operations is considered a transformation?",
+        "options": {
+            "A": "df.select()\nB",
+            "B": "df.show()\n\n\nC",
+            "C": "df.head()\nD",
+            "D": "df.count()"
+        },
+        "correct_answer": "A"
+    },
+    {
+        "question_id": "Test_1_15",
+        "question": "What is a feature of lazy evaluation in Spark?",
+        "options": {
+            "A": "Spark will fail a job only during execution but not during definition\nB",
+            "B": "Spark will fail a job only during definition\nC",
+            "C": "Spark will execute upon receiving a transformation operation\nD",
+            "D": "Spark will fail upon receiving an action"
+        },
+        "correct_answer": "A"
+    },
+    {
+        "question_id": "Test_1_16",
+        "question": "Which of the following statements about Spark’s execution hierarchy is correct?",
+        "options": {
+            "A": "In Spark’s execution hierarchy, tasks are above the level of jobs\nB",
+            "B": "In Spark’s execution hierarchy, multiple jobs are contained in a stage\nC",
+            "C": "In Spark’s execution hierarchy, a job can potentially span multiple stage boundaries\nD",
+            "D": "In Spark’s execution hierarchy, slots are the smallest unit"
+        },
+        "correct_answer": "C"
+    },
+    {
+        "question_id": "Test_1_17",
+        "question": "Which of the following is the characteristic of the Spark driver?",
+        "options": {
+            "A": "The worker nodes are responsible for transforming Spark operations into DAGs when the \ndriver sends a command\nB",
+            "B": "The Spark driver is responsible for executing tasks and returning results to executors\nC",
+            "C": "Spark driver can be scaled by adding more machines so that the performance of Spark \ntasks can be improved\nD",
+            "D": "The Spark driver processes partitions in an optimized and distributed fashion"
+        },
+        "correct_answer": "B"
+    },
+    {
+        "question_id": "Test_1_18",
+        "question": "Which of the following statements about broadcast variables is accurate?",
+        "options": {
+            "A": "Broadcast variables are only present on driver nodes\nB",
+            "B": "Broadcast variables can only be used for tables that fit into memory\nC",
+            "C": "Broadcast variables are not immutable, meaning they can be shared across clusters\nD",
+            "D": "Broadcast variables are not shared across the worker nodes"
+        },
+        "correct_answer": "B"
+    },
+    {
+        "question_id": "Test_1_19",
+        "question": "Which of the following code blocks returns unique values in columns employee_state and \nemployee_salary in DataFrame df for all columns?",
+        "options": {
+            "A": "Df.select('employee_state').join(df.select('employee_salary'), \ncol('employee_state')==col('employee_salary'), 'left').show()\nB",
+            "B": "df.select(col('employee_state'), col('employee_salary')).\nagg({'*': 'count'}).show()\nC",
+            "C": "df.select('employee_state', 'employee_salary').distinct().\nshow()\nD",
+            "D": "df.select('employee_state').union(df.select('employee_\nsalary')).distinct().show()"
+        },
+        "correct_answer": "D"
+    },
+    {
+        "question_id": "Test_1_20",
+        "question": "Which of the following code blocks reads a Parquet file from the my_fle_path location, where the \nfile name is my_file.parquet, into a DataFrame df?",
+        "options": {
+            "A": "df = spark.mode(\"parquet\").read(\"my_fle_path/my_file.parquet\")\nB",
+            "B": "df = spark.read.path(\"my_fle_path/my_file.parquet\")\nC",
+            "C": "df = spark.read().parquet(\"my_fle_path/my_file.parquet\")\nD",
+            "D": "df = spark.read.parquet(\"/my_fle_path/my_file.parquet\")"
+        },
+        "correct_answer": "D"
+    },
+    {
+        "question_id": "Test_1_21",
+        "question": "Which of the following code blocks performs an inner join of the salarydf and employeedf \nDataFrames for columns employeeSalaryID and employeeID, respectively?",
+        "options": {
+            "A": "salarydf.join(employeedf, salarydf.employeeID == employeedf.\nemployeeSalaryID)\n\n\nB",
+            "B": "i.\t\nSalarydf.createOrReplaceTempView(salarydf)\nii.\t employeedf.createOrReplaceTempView('employeedf')\niii.\t spark.sql(\"SELECT * FROM salarydf CROSS JOIN employeedf ON \nemployeeSalaryID ==employeeID\")\nC",
+            "C": "i.\t\nsalarydf\nii.\t .join(employeedf, col(employeeID)==col(employeeSalaryID))\nD",
+            "D": "i.\t\nSalarydf.createOrReplaceTempView(salarydf)\nii.\t employeedf.createOrReplaceTempView('employeedf')\niii.\t SELECT * FROM salarydf\niv.\t INNER JOIN employeedf\nv.\t\nON salarydf.employeeSalaryID == employeedf. employeeID"
+        },
+        "correct_answer": "D"
+    },
+    {
+        "question_id": "Test_1_22",
+        "question": "Which of the following code blocks returns the df DataFrame sorted in descending order by column \nsalary, showing missing values in the end?",
+        "options": {
+            "A": "df.sort(nulls_last(\"salary\"))\nB",
+            "B": "df.orderBy(\"salary\").nulls_last()\nC",
+            "C": "df.sort(\"salary\", ascending=False)\nD",
+            "D": "df.nulls_last(\"salary\")"
+        },
+        "correct_answer": "C"
+    },
+    {
+        "question_id": "Test_1_23",
+        "question": "The following code block contains an error. The code block should return a copy of the df DataFrame, \nwhere the name of the column state is changed to stateID. Find the error.\nCode block:\ndf.withColumn(\"stateID\", \"state\")",
+        "options": {
+            "A": "The arguments to the method \"stateID\" and \"state\" should be swapped\n\n\nB",
+            "B": "The withColumn method should be replaced by the withColumnRenamed method\nC",
+            "C": "The withColumn method should be replaced by withColumnRenamed method, and \nthe arguments to the method need to be reordered\nD",
+            "D": "There is no such method whereby the column name can be changed"
+        },
+        "correct_answer": "C"
+    },
+    {
+        "question_id": "Test_1_24",
+        "question": "Which of the following code blocks performs an inner join between the salarydf and employeedf \nDataFrames, using the employeeID and salaryEmployeeID columns as join keys, respectively?",
+        "options": {
+            "A": "salarydf.join(employeedf, \"inner\", salarydf.employeedf == \nemployeeID.salaryEmployeeID)\nB",
+            "B": "salarydf.join(employeedf, employeeID == salaryEmployeeID)\nC",
+            "C": "salarydf.join(employeedf, salarydf.salaryEmployeeID == \nemployeedf.employeeID, \"inner\")\nD",
+            "D": "salarydf.join(employeedf, salarydf.employeeID == employeedf.\nsalaryEmployeeID, \"inner\")"
+        },
+        "correct_answer": "D"
+    },
+    {
+        "question_id": "Test_1_25",
+        "question": "The following code block should return a df DataFrame, where the employeeID column is converted \ninto an integer. Choose the answer that correctly fills the blanks in the code block to accomplish this:\ndf.__1__(__2__.__3__(__4__))",
+        "options": {
+            "A": "i.\t\nselect\nii.\t col(\"employeeID\")\niii.\t as\niv.\t IntegerType\nB",
+            "B": "i.\t\nselect\nii.\t col(\"employeeID\")\niii.\t as\niv.\t Integer\n\n\nC",
+            "C": "i.\t\ncast\nii.\t \"employeeID\"\niii.\t as\niv.\t IntegerType()\nD",
+            "D": "i.\t\nselect\nii.\t col(\"employeeID\")\niii.\t cast\niv.\t IntegerType()"
+        },
+        "correct_answer": "D"
+    },
+    {
+        "question_id": "Test_1_26",
+        "question": "Find the number of records that are not empty in the column department of the resulting DataFrame when \nwe join the employeedf and salarydf DataFrames for the employeeID and employeeSalaryID \ncolumns, respectively. Which code blocks (in order) should be executed to achieve this?\n1. .filter(col(\"department\").isNotNull())\n2. .count()\n3. \u0007employeedf.join(salarydf, employeedf.employeeID == salarydf.\nemployeeSalaryID)\n4. \u0007employeedf.join(salarydf, employeedf.employeeID ==salarydf. \nemployeeSalaryID, how='inner')\n5. .filter(col(department).isnotnull())\n6. .sum(col(department))",
+        "options": {
+            "A": "3, 1, 6\nB",
+            "B": "3, 1, 2\nC",
+            "C": "4, 1, 2\nD",
+            "D": "3, 5, 2"
+        },
+        "correct_answer": "C"
+    },
+    {
+        "question_id": "Test_1_27",
+        "question": "Which of the following code blocks returns only those rows from the df DataFrame in which the \nvalues in the column state are unique?",
+        "options": {
+            "A": "df.dropDuplicates(subset=[\"state\"]).show()\nB",
+            "B": "df.distinct(subset=[\"state\"]).show()\nC",
+            "C": "df.drop_duplicates(subset=[\"state\"]).show()\nD",
+            "D": "df.unique(\"state\").show()"
+        },
+        "correct_answer": "A"
+    },
+    {
+        "question_id": "Test_1_28",
+        "question": "The following code block contains an error. The code block should return a copy of the df DataFrame \nwith an additional column named squared_number, which has the square of the column number. \nFind the error.\nCode block:\ndf.withColumnRenamed(col(\"number\"), pow(col(\"number\"), 0.2).\nalias(\"squared_number\"))",
+        "options": {
+            "A": "The arguments to the withColumnRenamed method need to be reordered\nB",
+            "B": "The withColumnRenamed method should be replaced by the withColumn method\nC",
+            "C": "The withColumnRenamed method should be replaced by the select method, and \n0.2 should be replaced with 2\nD",
+            "D": "The argument 0.2 should be replaced by 2"
+        },
+        "correct_answer": "C"
+    },
+    {
+        "question_id": "Test_1_29",
+        "question": "Which of the following code blocks returns a new DataFrame in which column salary is renamed to \nnew_salary and employee is renamed to new_employee in the df DataFrame?",
+        "options": {
+            "A": "df.withColumnRenamed(salary, new_salary).\nwithColumnRenamed(employee, new_employee)\nB",
+            "B": "df.withColumnRenamed(\"salary\", \"new_salary\")\nC",
+            "C": "df.withColumnRenamed(\"employee\", \"new_employee\")\nD",
+            "D": "df.withColumn(\"salary\", \"new_salary\").withColumn(\"employee\", \n\"new_employee\")\n\n\nE",
+            "E": "df.withColumnRenamed(\"salary\", \"new_salary\").\nwithColumnRenamed(\"employee\", \"new_employee\")"
+        },
+        "correct_answer": "E"
+    },
+    {
+        "question_id": "Test_1_30",
+        "question": "Which of the following code blocks returns a copy of the df DataFrame, where the column salary \nhas been renamed to employeeSalary?",
+        "options": {
+            "A": "df.withColumn([\"salary\", \"employeeSalary\"])\nB",
+            "B": "df.withColumnRenamed(\"salary\").alias(\"employeeSalary \")\nC",
+            "C": "df.withColumnRenamed(\"salary\", \"employeeSalary \")\nD",
+            "D": "df.withColumn(\"salary\", \"employeeSalary \")"
+        },
+        "correct_answer": "C"
+    },
+    {
+        "question_id": "Test_1_31",
+        "question": "The following code block contains an error. The code block should save the df DataFrame to the \nmy_file_path path as a Parquet file, appending to any existing parquet file. Find the error.\ndf.format(\"parquet\").option(\"mode\", \"append\").save(my_file_path)",
+        "options": {
+            "A": "The code is not saved to the correct path\nB",
+            "B": "The save() and format functions should be swapped\nC",
+            "C": "The code block is missing a reference to the DataFrameWriter\nD",
+            "D": "The option mode should be overwritten to correctly write the file"
+        },
+        "correct_answer": "C"
+    },
+    {
+        "question_id": "Test_1_32",
+        "question": "How can we reduce the df DataFrame from 12 to 6 partitions?",
+        "options": {
+            "A": "df.repartition(12)\nB",
+            "B": "df.coalesce(6).shuffle()\nC",
+            "C": "df.coalesce(6, shuffle=True)\nD",
+            "D": "df.repartition(6)"
+        },
+        "correct_answer": "D"
+    },
+    {
+        "question_id": "Test_1_33",
+        "question": "Which of the following code blocks returns a DataFrame where the timestamp column is converted \ninto unix epoch timestamps in a new column named record_timestamp with a format of day, \nmonth, and year?",
+        "options": {
+            "A": "df.withColumn(\"record_timestamp\", from_unixtime(unix_\ntimestamp(col(\"timestamp\")), \"dd-MM-yyyy\"))\nB",
+            "B": "df.withColumnRenamed(\"record_timestamp\", from_unixtime(unix_\ntimestamp(col(\"timestamp\")), \"dd-MM-yyyy\"))\nC",
+            "C": "df.select (\"record_timestamp\", from_unixtime(unix_\ntimestamp(col(\"timestamp\")), \"dd-MM-yyyy\"))\nD",
+            "D": "df.withColumn(\"record_timestamp\", from_unixtime(unix_\ntimestamp(col(\"timestamp\")), \"MM-dd-yyyy\"))"
+        },
+        "correct_answer": "A"
+    },
+    {
+        "question_id": "Test_1_34",
+        "question": "Which of the following code blocks creates a new DataFrame by appending the rows of the DataFrame \nsalaryDf to the rows of the DataFrame employeeDf, regardless of the fact that both DataFrames \nhave different column names?",
+        "options": {
+            "A": "salaryDf.join(employeeDf)\nB",
+            "B": "salaryDf.union(employeeDf)\nC",
+            "C": "salaryDf.concat(employeeDf)\nD",
+            "D": "salaryDf.unionAll(employeeDf)"
+        },
+        "correct_answer": "B"
+    },
+    {
+        "question_id": "Test_1_35",
+        "question": "The following code block contains an error. The code block should calculate the total of all salaries in \nthe employee_salary column across each department. Find the error.\ndf.agg(\"department\").sum(\"employee_salary\")",
+        "options": {
+            "A": "Instead of avg(\"value\"), avg(col(\"value\")) should be used\nB",
+            "B": "All column names should be wrapped in col() operators\nC",
+            "C": "\"storeId\" and “value\" should be swapped\nD",
+            "D": "Agg should be replaced by groupBy"
+        },
+        "correct_answer": "D"
+    },
+    {
+        "question_id": "Test_1_36",
+        "question": "The following code block contains an error. The code block is intended to perform a cross-join of \nthe salarydf and employeedf DataFrames for the employeeSalaryID and employeeID \ncolumns, respectively. Find the error.\nemployeedf.join(salarydf, [salarydf.employeeSalaryID, employeedf.\nemployeeID], \"cross\")",
+        "options": {
+            "A": "The join type \"cross\" in the argument needs to be replaced with crossJoin\nB",
+            "B": "[salarydf.employeeSalaryID, employeedf.employeeID] should be \nreplaced by salarydf.employeeSalaryID == employeedf.employeeID\nC",
+            "C": "The \"cross\" argument should be eliminated since \"cross\" is the default join type\nD",
+            "D": "The \"cross\" argument should be eliminated from the call and join should be replaced \nby crossJoin"
+        },
+        "correct_answer": "B"
+    },
+    {
+        "question_id": "Test_1_37",
+        "question": "The following code block contains an error. The code block should display the schema of the df \nDataFrame. Find the error.\ndf.rdd.printSchema()",
+        "options": {
+            "A": "In Spark, we cannot print the schema of a DataFrame\nB",
+            "B": "printSchema is not callable through df.rdd and should be called directly from df\nC",
+            "C": "There is no method in Spark named printSchema()\nD",
+            "D": "The print_schema() method should be used instead of printSchema()"
+        },
+        "correct_answer": "B"
+    },
+    {
+        "question_id": "Test_1_38",
+        "question": "The following code block should write the df DataFrame as a Parquet file to the filePath path, \nreplacing any existing file. Choose the answer that correctly fills the blanks in the code block to \naccomplish this:\ndf.__1__.format(\"parquet\").__2__(__3__).__4__(filePath)",
+        "options": {
+            "A": "i.\t\nsave\nii.\t mode\niii.\t \"ignore\"\niv.\t path\n\n\nB",
+            "B": "i.\t\nstore\nii.\t with\niii.\t \"replace\"\niv.\t path\nC",
+            "C": "i.\t\nwrite\nii.\t mode\niii.\t \"overwrite\"\niv.\t save\nD",
+            "D": "i.\t\nsave\nii.\t mode\niii.\t \"overwrite\"\niv.\t path"
+        },
+        "correct_answer": "C"
+    },
+    {
+        "question_id": "Test_1_39",
+        "question": "The following code block contains an error. The code block is supposed to sort the df DataFrame \naccording to salary in descending order. Then, it should sort based on the bonus column, putting \nnulls to last. Find the error.\ndf.orderBy ('salary', asc_nulls_first(col('bonus')))\ntransactionsDf.orderBy('value', asc_nulls_first(col('predError')))",
+        "options": {
+            "A": "The salary column should be sorted in a descending way. Moreover, it should be wrapped \nin a col() operator\nB",
+            "B": "The salary column should be wrapped by the col() operator\nC",
+            "C": "The bonus column should be sorted in a descending way, putting nulls last\nD",
+            "D": "The bonus column should be sorted by desc_nulls_first() instead"
+        },
+        "correct_answer": "A"
+    },
+    {
+        "question_id": "Test_1_40",
+        "question": "The following code block contains an error. The code block should use the square_root_method \nPython method to find the square root of the salary column in the df DataFrame and return it in \na new column called sqrt_salary. Find the error.\nsquare_root_method_udf = udf(square_root_method)\ndf.withColumn(\"sqrt_salary\", square_root_method(\"salary\"))",
+        "options": {
+            "A": "There is no return type specified for square_root_method\nB",
+            "B": "In the second line of the code, Spark needs to call squre_root_method_udf instead \nof square_root_method\nC",
+            "C": "udf is not registered with Spark\nD",
+            "D": "A new column needs to be added"
+        },
+        "correct_answer": "B"
+    },
+    {
+        "question_id": "Test_1_41",
+        "question": "The following code block contains an error. The code block should return the df DataFrame with \nemployeeID renamed to employeeIdColumn. Find the error.\ndf.withColumn(\"employeeIdColumn\", \"employeeID\")",
+        "options": {
+            "A": "Instead of withColumn, the withColumnRenamed method should be used\nB",
+            "B": "Instead of withColumn, the withColumnRenamed method should be used and \nargument \"employeeIdColumn\" should be swapped with argument \"employeeID\"\nC",
+            "C": "Arguments \"employeeIdColumn\" and \"employeeID\" should be swapped\nD",
+            "D": "The withColumn operator should be replaced with the withColumnRenamed operator"
+        },
+        "correct_answer": "B"
+    },
+    {
+        "question_id": "Test_1_42",
+        "question": "Which of the following code blocks will return a new DataFrame with the same columns as DataFrame \ndf, except for the salary column?",
+        "options": {
+            "A": "df.drop(\"salary\")\nB",
+            "B": "df.drop(col(salary))\nC",
+            "C": "df.drop(salary)\nD",
+            "D": "df.delete(\"salary\")"
+        },
+        "correct_answer": "A"
+    },
+    {
+        "question_id": "Test_1_43",
+        "question": "Which of the following code blocks returns a DataFrame showing the mean of the salary column \nfrom the df DataFrame, grouped by column department?",
+        "options": {
+            "A": "df.groupBy(\"department\").agg(avg(\"salary\"))\nB",
+            "B": "df.groupBy(col(department).avg())\nC",
+            "C": "df.groupBy(\"department\").avg(col(\"salary\"))\nD",
+            "D": "df.groupBy(\"department\").agg(average(\"salary\"))"
+        },
+        "correct_answer": "A"
+    },
+    {
+        "question_id": "Test_1_44",
+        "question": "Which of the following code blocks creates a DataFrame that shows the mean of the salary column of \nthe salaryDf DataFrame, based on the department and state columns, where age is greater than 35?\n1.\t\nsalaryDf.filter(col(\"age\") > 35)\n2.\t\n.filter(col(\"employeeID\")\n3.\t\n.filter(col(\"employeeID\").isNotNull())\n4.\t\n.groupBy(\"department\")\n5.\t\n.groupBy(\"department\", \"state\")\n6.\t\n.agg(avg(\"salary\").alias(\"mean_salary\"))\n7.\t\n.agg(average(\"salary\").alias(\"mean_salary\"))",
+        "options": {
+            "A": "1,2,5,6\nB",
+            "B": "1,3,5,6\nC",
+            "C": "1,3,6,7\nD",
+            "D": "1,2,4,6"
+        },
+        "correct_answer": "A"
+    },
+    {
+        "question_id": "Test_1_45",
+        "question": "The following code block contains an error. The code block needs to cache the df DataFrame so that \nthis DataFrame is fault-tolerant. Find the error.\ndf.persist(StorageLevel.MEMORY_AND_DISK_3)",
+        "options": {
+            "A": "persist() is not a function of the API DataFrame\nB",
+            "B": "df.write() should be used in conjunction with df.persist to correctly write \nthe DataFrame\n\n\nC",
+            "C": "The storage level is incorrect and should be MEMORY_AND_DISK_2\nD",
+            "D": "df.cache() should be used instead of df.persist()"
+        },
+        "correct_answer": "C"
+    },
+    {
+        "question_id": "Test_1_46",
+        "question": "Which of the following code blocks concatenates the rows of the salaryDf and employeeDf \nDataFrames without any duplicates (assuming the columns of both DataFrames are similar)?",
+        "options": {
+            "A": "salaryDf.concat(employeeDf).unique()\nB",
+            "B": "spark.union(salaryDf, employeeDf).distinct()\nC",
+            "C": "salaryDf.union(employeeDf).unique()\nD",
+            "D": "salaryDf.union(employeeDf).distinct()"
+        },
+        "correct_answer": "D"
+    },
+    {
+        "question_id": "Test_1_47",
+        "question": "Which of the following code blocks reads a complete folder of CSV files from filePath with \ncolumn headers?",
+        "options": {
+            "A": "spark.option(\"header\",True).csv(filePath)\nB",
+            "B": "spark.read.load(filePath)\nC",
+            "C": "spark.read().option(\"header\",True).load(filePath)\nD",
+            "D": "spark.read.format(\"csv\").option(\"header\",True).load(filePath)"
+        },
+        "correct_answer": "D"
+    },
+    {
+        "question_id": "Test_1_48",
+        "question": "The following code block contains an error. The df DataFrame contains columns [employeeID, \nsalary, and department]. The code block should return a DataFrame that contains only the \nemployeeID and salary columns from DataFrame df. Find the error.\ndf.select(col(department))",
+        "options": {
+            "A": "All column names from the df DataFrame should be specified in the select arguments\nB",
+            "B": "The select operator should be replaced by a drop operator, and all the column names \nfrom the df DataFrame should be listed as a list\nC",
+            "C": "The select operator should be replaced by a drop operator\nD",
+            "D": "The column name department should be listed like col(\"department\")"
+        },
+        "correct_answer": "C"
+    },
+    {
+        "question_id": "Test_1_49",
+        "question": "The following code block contains an error. The code block should write DataFrame df as a Parquet \nfile to the filePath location, after partitioning it for the department column. Find the error.\ndf.write.partition(\"department\").parquet()",
+        "options": {
+            "A": "partitionBy() method should be used instead of partition().\nB",
+            "B": "partitionBy() method should be used instead of partition() and filePath \nshould be added to the parquet method\nC",
+            "C": "The partition() method should be called before the write method and filePath \nshould be added to parquet method\nD",
+            "D": "The \"department\" column should be wrapped in a col() operator"
+        },
+        "correct_answer": "B"
+    },
+    {
+        "question_id": "Test_1_50",
+        "question": "Which of the following code blocks removes the cached df DataFrame from memory and disk?",
+        "options": {
+            "A": "df.unpersist()\nB",
+            "B": "drop df\nC",
+            "C": "df.clearCache()\nD",
+            "D": "df.persist()"
+        },
+        "correct_answer": "A"
+    },
+    {
+        "question_id": "Test_1_51",
+        "question": "The following code block should return a copy of the df DataFrame with an additional column: \ntest_column, which has a value of 19. Choose the answer that correctly fills the blanks in the \ncode block to accomplish this:\ndf.__1__(__2__, __3__)",
+        "options": {
+            "A": "i.\t\nwithColumn\nii.\t 'test_column'\niii.\t 19\nB",
+            "B": "i.\t\nwithColumnRenamed\n\n\nii.\t test_column\niii.\t lit(19)\nC",
+            "C": "i.\t\nwithColumn\nii.\t 'test_column'\niii.\t lit(19)\nD",
+            "D": "i.\t\nwithColumnRenamed\nii.\t test_column\niii.\t 19"
+        },
+        "correct_answer": "C"
+    },
+    {
+        "question_id": "Test_1_52",
+        "question": "The following code block should return a DataFrame with the columns employeeId, salary, \nbonus, and department from transactionsDf DataFrame. Choose the answer that correctly \nfills the blanks to accomplish this:\ndf.__1__(__2__)",
+        "options": {
+            "A": "i.\t\ndrop\nii.\t \"employeeId\", \"salary\", \"bonus\", \"department\"\nB",
+            "B": "i.\t\nfilter\nii.\t \"employeeId, salary, bonus, department\"\nC",
+            "C": "i.\t\nselect\nii.\t [\"employeeId\", \"salary\", \"bonus\", \"department\"]\nD",
+            "D": "i.\t\nselect\nii.\t col([\"employeeId\", \"salary\", \"bonus\",\"department\"])"
+        },
+        "correct_answer": "C"
+    },
+    {
+        "question_id": "Test_1_53",
+        "question": "Which of the following code blocks returns a DataFrame with the salary column converted into \na string in the df DataFrame?",
+        "options": {
+            "A": "df.withColumn(\"salary\", castString(\"salary\", \"string\"))\nB",
+            "B": "df.withColumn(\"salary\", col(\"salary\").cast(\"string\"))\nC",
+            "C": "df.select(cast(\"salary\", \"string\"))\nD",
+            "D": "df.withColumn(\"salary\", col(\"salary\").castString(\"string\"))"
+        },
+        "correct_answer": "B"
+    },
+    {
+        "question_id": "Test_1_54",
+        "question": "The following code block contains an error. The code block should combine data from DataFrames \nsalaryDf and employeeDf, showing all rows of DataFrame salaryDf that have a matching \nvalue in column employeeSalaryID with a value in column employeeID of DataFrame \nemployeeDf. Find the error.\nemployeeDf.join(salaryDf, employeeDf.employeeID==employeeSalaryID)",
+        "options": {
+            "A": "The join statement is missing the right-hand DataFrame, where the column name \nis employeeSalaryID\nB",
+            "B": "The union method should be used instead of join\nC",
+            "C": "Instead of join, innerJoin should have been used\nD",
+            "D": "salaryDf should come in place of employeeDf"
+        },
+        "correct_answer": "A"
+    },
+    {
+        "question_id": "Test_1_55",
+        "question": "Which of the following code blocks reads a JSON file stored at my_file_path as a DataFrame?",
+        "options": {
+            "A": "spark.read.json(my_file_path)\nB",
+            "B": "spark.read(my_file_path, source=\"json\")\nC",
+            "C": "spark.read.path(my_file_path)\nD",
+            "D": "spark.read().json(my_file_path)"
+        },
+        "correct_answer": "A"
+    },
+    {
+        "question_id": "Test_1_56",
+        "question": "The following code block contains an error. The code block should return a new DataFrame filtered \nby the rows where salary column is greater than 2000 in DataFrame df. Find the error.\ndf.where(\"col(salary) >= 2000\")",
+        "options": {
+            "A": "Instead of where(), filter() should be used\nB",
+            "B": "The argument to the where method should be \"col(salary) > 2000\"\nC",
+            "C": "Instead of >=, the operator > should be used\nD",
+            "D": "The argument to the where method should be \"salary > 2000\""
+        },
+        "correct_answer": "D"
+    },
+    {
+        "question_id": "Test_1_57",
+        "question": "Which of the following code blocks returns a DataFrame in which the salary and state columns \nare dropped from the df DataFrame?",
+        "options": {
+            "A": "df.withColumn (\"salary\", \"state\")\nB",
+            "B": "df.drop([\"salary\", \"state\"])\nC",
+            "C": "df.drop(\"salary\", \"state\")\nD",
+            "D": "df.withColumnRenamed (\"salary\", \"state\")"
+        },
+        "correct_answer": "C"
+    },
+    {
+        "question_id": "Test_1_58",
+        "question": "Which of the following code blocks returns a two-column DataFrame that contains counts of each \ndepartment in the df DataFrame?",
+        "options": {
+            "A": "df.count(\"department\").distinct()\nB",
+            "B": "df.count(\"department\")\nC",
+            "C": "df.groupBy(\"department\").count()\nD",
+            "D": "df.groupBy(\"department\").agg(count(\"department\"))"
+        },
+        "correct_answer": "C"
+    },
+    {
+        "question_id": "Test_1_59",
+        "question": "Which of the following code blocks prints the schema of a DataFrame and contains both column \nnames and types?",
+        "options": {
+            "A": "print(df.columns)\nB",
+            "B": "df.printSchema()\nC",
+            "C": "df.rdd.printSchema()\nD",
+            "D": "df.print_schema()"
+        },
+        "correct_answer": "B"
+    },
+    {
+        "question_id": "Test_1_60",
+        "question": "Which of the following code blocks creates a new DataFrame with three columns: department, \nage, and max_salary and has the maximum salary for each employee from each department and \neach age group from the df DataFrame?",
+        "options": {
+            "A": "df.max(salary)\nB",
+            "B": "df.groupBy([\"department\", \"age\"]).agg(max(\"salary\").alias(\"max_\nsalary\"))\nC",
+            "C": "df.agg(max(salary).alias(max_salary')\nD",
+            "D": "df.groupby(department).agg(max(salary).alias(max_salary)\nAnswers\n1.\t\nB\n2.\t\nA\n3.\t\nD\n4.\t\nD\n5.\t\nA\n6.\t\nD\n7.\t\nA\n8.\t\nD\n9.\t\nC\n10.\t B\n11.\t C\n12.\t A\n13.\t A\n\n\n14.\t A\n15.\t A\n16.\t C\n17.\t B\n18.\t B\n19.\t D\n20.\t D\n21.\t D\n22.\t C\n23.\t C\n24.\t D\n25.\t D\n26.\t C\n27.\t A\n28.\t C\n29.\t E\n30.\t C\n31.\t C\n32.\t D\n33.\t A\n34.\t B\n35.\t D\n36.\t B\n37.\t B\n38.\t C\n39.\t A\n40.\t B\n41.\t B\n42.\t A\n43.\t A\n44.\t A\n45.\t C\n\n\n46.\t D\n47.\t D\n48.\t C\n49.\t B\n50.\t A\n51.\t C\n52.\t C\n53.\t B\n54.\t A\n55.\t A\n56.\t D\n57.\t C\n58.\t C\n59.\t B\n60.\t B"
+        },
+        "correct_answer": "B"
+    },
+    {
+        "question_id": "Test_2_1",
+        "question": "What is a task in Spark?",
+        "options": {
+            "A": "The unit of work performed for each data partition within a task is the slots\nB",
+            "B": "A task is the second-smallest entity that can be executed within Spark\nC",
+            "C": "Tasks featuring wide dependencies can be combined into a single task\nD",
+            "D": "A task is the smallest component that can be executed within Spark"
+        },
+        "correct_answer": "D"
+    },
+    {
+        "question_id": "Test_2_2",
+        "question": "What is the role of an executor in Spark?",
+        "options": {
+            "A": "The executor’s role is to request the transformation of operations into a directed acyclic \ngraph (DAG)\nB",
+            "B": "There can only be one executor within a Spark environment\nC",
+            "C": "Executors are tasked with executing the assignments provided to them by the driver\nD",
+            "D": "The executor schedules queries for execution"
+        },
+        "correct_answer": "C"
+    },
+    {
+        "question_id": "Test_2_3",
+        "question": "Which of the following is one of the tasks of Adaptive Query Execution in Spark?",
+        "options": {
+            "A": "Adaptive Query Execution collects runtime statistics during query execution to optimize \nquery plans\nB",
+            "B": "Adaptive Query Execution is responsible for distributing tasks to executors\nC",
+            "C": "Adaptive Query Execution is responsible for wide operations in Spark\nD",
+            "D": "Adaptive Query Execution is responsible for fault tolerance in Spark"
+        },
+        "correct_answer": "A"
+    },
+    {
+        "question_id": "Test_2_4",
+        "question": "Which is the lowest level in Spark’s execution hierarchy?",
+        "options": {
+            "A": "Task\nB",
+            "B": "Slot\nC",
+            "C": "Job\nD",
+            "D": "Stage"
+        },
+        "correct_answer": "A"
+    },
+    {
+        "question_id": "Test_2_5",
+        "question": "Which one of these operations is an action?",
+        "options": {
+            "A": "DataFrame.count()\nB",
+            "B": "DataFrame.filter()\nC",
+            "C": "DataFrame.select()\nD",
+            "D": "DataFrame.groupBy()"
+        },
+        "correct_answer": "A"
+    },
+    {
+        "question_id": "Test_2_6",
+        "question": "Which of the following describes the characteristics of the DataFrame API?",
+        "options": {
+            "A": "The DataFrame API is based on resilient distributed dataset (RDD) at the backend\nB",
+            "B": "The DataFrame API is available in Scala, but it is not available in Python\nC",
+            "C": "The DataFrame API does not have data manipulation functions\nD",
+            "D": "The DataFrame API is used for distributing tasks in executors"
+        },
+        "correct_answer": "A"
+    },
+    {
+        "question_id": "Test_2_7",
+        "question": "Which of the following statements is accurate about executors?",
+        "options": {
+            "A": "Slots are not a part of an executor\nB",
+            "B": "Executors are able to run tasks in parallel via slots\nC",
+            "C": "Executors are always equal to tasks\nD",
+            "D": "An executor is responsible for distributing tasks for a job"
+        },
+        "correct_answer": "B"
+    },
+    {
+        "question_id": "Test_2_8",
+        "question": "Which of the following statements is accurate about the Spark driver?",
+        "options": {
+            "A": "There are multiple drivers in a Spark application\nB",
+            "B": "Slots are a part of a driver\nC",
+            "C": "Drivers execute tasks in parallel\nD",
+            "D": "It is the responsibility of the Spark driver to transform operations into DAG computations"
+        },
+        "correct_answer": "D"
+    },
+    {
+        "question_id": "Test_2_9",
+        "question": "Which one of these operations is a wide transformation?",
+        "options": {
+            "A": "DataFrame.show()\nB",
+            "B": "DataFrame.groupBy()\nC",
+            "C": "DataFrame.repartition()\nD",
+            "D": "DataFrame.select()\nE",
+            "E": "DataFrame.filter()"
+        },
+        "correct_answer": "C"
+    },
+    {
+        "question_id": "Test_2_10",
+        "question": "Which of the following statements is correct about lazy evaluation?",
+        "options": {
+            "A": "Execution is triggered by transformations\nB",
+            "B": "Execution is triggered by actions\nC",
+            "C": "Statements are executed as they appear in the code\nD",
+            "D": "Spark distributes tasks to different executors"
+        },
+        "correct_answer": "B"
+    },
+    {
+        "question_id": "Test_2_11",
+        "question": "Which of the following is true about DAGs in Spark?",
+        "options": {
+            "A": "DAGs are lazily evaluated\nB",
+            "B": "DAGs can be scaled horizontally in Spark\nC",
+            "C": "DAGs are responsible for processing partitions in an optimized and distributed fashion\nD",
+            "D": "DAG is comprised of tasks that can run in parallel"
+        },
+        "correct_answer": "C"
+    },
+    {
+        "question_id": "Test_2_12",
+        "question": "Which of the following statements is true about Spark’s fault tolerance mechanism?",
+        "options": {
+            "A": "Spark achieves fault tolerance via DAGs\nB",
+            "B": "It is the responsibility of the executor to enable fault tolerance in Spark\nC",
+            "C": "Because of fault tolerance, Spark can recompute any failed RDD\nD",
+            "D": "Spark builds a fault-tolerant layer on top of the legacy RDD data system, which by itself \nis not fault tolerant"
+        },
+        "correct_answer": "C"
+    },
+    {
+        "question_id": "Test_2_13",
+        "question": "What is the core of Spark’s fault-tolerant mechanism?",
+        "options": {
+            "A": "RDD is at the core of Spark, which is fault tolerant by design\nB",
+            "B": "Data partitions, since data can be recomputed\nC",
+            "C": "DataFrame is at the core of Spark since it is immutable\nD",
+            "D": "Executors ensure that Spark remains fault tolerant"
+        },
+        "correct_answer": "A"
+    },
+    {
+        "question_id": "Test_2_14",
+        "question": "What is accurate about jobs in Spark?",
+        "options": {
+            "A": "Different stages in a job may be executed in parallel\nB",
+            "B": "Different stages in a job cannot be executed in parallel\nC",
+            "C": "A task consists of many jobs\nD",
+            "D": "A stage consists of many jobs"
+        },
+        "correct_answer": "B"
+    },
+    {
+        "question_id": "Test_2_15",
+        "question": "What is accurate about a shuffle in Spark?",
+        "options": {
+            "A": "In a shuffle, data is sent to multiple partitions to be processed\nB",
+            "B": "In a shuffle, data is sent to a single partition to be processed\nC",
+            "C": "A shuffle is an action that triggers evaluation in Spark\nD",
+            "D": "In a shuffle, all data remains in memory to be processed"
+        },
+        "correct_answer": "A"
+    },
+    {
+        "question_id": "Test_2_16",
+        "question": "What is accurate about the cluster manager in Spark?",
+        "options": {
+            "A": "The cluster manager is responsible for managing resources for Spark\nB",
+            "B": "The cluster manager is responsible for working with executors directly\nC",
+            "C": "The cluster manager is responsible for creating query plans\nD",
+            "D": "The cluster manager is responsible for optimizing DAGs"
+        },
+        "correct_answer": "A"
+    },
+    {
+        "question_id": "Test_2_17",
+        "question": "The following code block needs to take the sum and average of the salary column for each department \nin the df DataFrame. Then, it should calculate the sum and maximum value for the bonus column:\ndf.___1___ (\"department\").___2___ (sum(\"salary\").alias(\"sum_salary\"), \n___3___ (\"salary\").alias(\"avg_salary\"), sum(\"bonus\").alias(\"sum_\nbonus\"), ___4___(\"bonus\").alias(\"max_bonus\") )\nChoose the answer that correctly fills the blanks in the code block to accomplish this:",
+        "options": {
+            "A": "i.\t\ngroupBy\nii.\t agg\niii.\t avg\niv.\t max\n\n\nB",
+            "B": "i.\t\nfilter\nii.\t agg\niii.\t avg\niv.\t max\nC",
+            "C": "i.\t\ngroupBy\nii.\t avg\niii.\t agg\niv.\t max\nD",
+            "D": "i.\t\ngroupBy\nii.\t agg\niii.\t avg\niv.\t avg"
+        },
+        "correct_answer": "A"
+    },
+    {
+        "question_id": "Test_2_18",
+        "question": "The following code block contains an error. The code block needs to join the salaryDf DataFrame \nwith the bigger employeeDf DataFrame on the employeeID column:\nsalaryDf.join(employeeDf, \"employeeID\", how=\"broadcast\")\nIdentify the error:",
+        "options": {
+            "A": "Instead of join, the code should use innerJoin\nB",
+            "B": "broadcast is not a join type in Spark for joining two DataFrames\nC",
+            "C": "salaryDf and employeeDf should be swapped\nD",
+            "D": "In the how parameter, crossJoin should be used instead of broadcast"
+        },
+        "correct_answer": "B"
+    },
+    {
+        "question_id": "Test_2_19",
+        "question": "Which of the following code blocks shuffles the df DataFrame to have 20 partitions instead of \n5 partitions?",
+        "options": {
+            "A": "df.repartition(5)\nB",
+            "B": "df.repartition(20)\nC",
+            "C": "df.coalesce(20)\nD",
+            "D": "df.coalesce(5)"
+        },
+        "correct_answer": "B"
+    },
+    {
+        "question_id": "Test_2_20",
+        "question": "Which of the following operations will trigger evaluation?",
+        "options": {
+            "A": "df.filter()\nB",
+            "B": "df.distinct()\nC",
+            "C": "df.intersect()\nD",
+            "D": "df.join()\nE",
+            "E": "df.count()"
+        },
+        "correct_answer": "E"
+    },
+    {
+        "question_id": "Test_2_21",
+        "question": "Which of the following code blocks returns unique values for the age and name columns in the df \nDataFrame in its respective columns where all values are unique in these columns?",
+        "options": {
+            "A": "df.select('age').join(df.select('name'), \ncol(state)==col('name'), 'inner').show()\nB",
+            "B": "df.select(col('age'), col('name')).agg({'*': 'count'}).show()\nC",
+            "C": "df.select('age', 'name').distinct().show()\nD",
+            "D": "df.select('age').unionAll(df.select('name')).distinct().show()"
+        },
+        "correct_answer": "C"
+    },
+    {
+        "question_id": "Test_2_22",
+        "question": "Which of the following code blocks returns the count of the total number of rows in the df DataFrame?",
+        "options": {
+            "A": "df.count()\nB",
+            "B": "df.select(col('state'), col('department')).agg({'*': 'count'}).\nshow()\nC",
+            "C": "df.select('state', 'department').distinct().show()\nD",
+            "D": "df.select('state').union(df.select('department')).distinct().\nshow()"
+        },
+        "correct_answer": "A"
+    },
+    {
+        "question_id": "Test_2_23",
+        "question": "The following code block contains an error. The code block should save the df DataFrame at the \nfilePath path as a new parquet file:\ndf.write.mode(\"append\").parquet(filePath)\nIdentify the error:",
+        "options": {
+            "A": "The code block should have overwrite instead of append as an option\nB",
+            "B": "The code should be write.parquet instead of write.mode\nC",
+            "C": "The df.write operation cannot be called directly from the DataFrame\nD",
+            "D": "The first part of the code should be df.write.mode(append)"
+        },
+        "correct_answer": "A"
+    },
+    {
+        "question_id": "Test_2_24",
+        "question": "Which of the following code blocks adds a salary_squared column to the df DataFrame that \nis the square of the salary column?",
+        "options": {
+            "A": "df.withColumnRenamed(\"salary_squared\", pow(col(\"salary\"), 2))\nB",
+            "B": "df.withColumn(\"salary_squared\", col(\"salary\"*2))\nC",
+            "C": "df.withColumn(\"salary_squared\", pow(col(\"salary\"), 2))\nD",
+            "D": "df.withColumn(\"salary_squared\", square(col(\"salary\")))"
+        },
+        "correct_answer": "C"
+    },
+    {
+        "question_id": "Test_2_25",
+        "question": "Which of the following code blocks performs a join in which the small salaryDf DataFrame is sent to \nall executors so that it can be joined with the employeeDf DataFrame on the employeeSalaryID \nand EmployeeID columns, respectively?",
+        "options": {
+            "A": "employeeDf.join(salaryDf, \"employeeDf.employeeID == salaryDf.\nemployeeSalaryID\", \"inner\")\nB",
+            "B": "employeeDf.join(salaryDf, \"employeeDf.employeeID == salaryDf.\nemployeeSalaryID\", \"broadcast\")\nC",
+            "C": "employeeDf.join(broadcast(salaryDf), employeeDf.employeeID \n== salaryDf.employeeSalaryID)\nD",
+            "D": "salaryDf.join(broadcast(employeeDf), employeeDf.employeeID \n== salaryDf.employeeSalaryID)"
+        },
+        "correct_answer": "C"
+    },
+    {
+        "question_id": "Test_2_26",
+        "question": "Which of the following code blocks performs an outer join between the salarydf DataFrame and \nthe employeedf DataFrame, using the employeeID and salaryEmployeeID columns as \njoin keys respectively?",
+        "options": {
+            "A": "Salarydf.join(employeedf, \"outer\", salarydf.employeedf == \nemployeeID.salaryEmployeeID)\nB",
+            "B": "salarydf.join(employeedf, employeeID == salaryEmployeeID)\nC",
+            "C": "salarydf.join(employeedf, salarydf.salaryEmployeeID == \nemployeedf.employeeID, \"outer\")\nD",
+            "D": "salarydf.join(employeedf, salarydf.employeeID == employeedf.\nsalaryEmployeeID, \"outer\")"
+        },
+        "correct_answer": "D"
+    },
+    {
+        "question_id": "Test_2_27",
+        "question": "Which of the following pieces of code would print the schema of the df DataFrame?",
+        "options": {
+            "A": "df.rdd.printSchema\nB",
+            "B": "df.rdd.printSchema()\nC",
+            "C": "df.printSchema\nD",
+            "D": "df.printSchema()"
+        },
+        "correct_answer": "D"
+    },
+    {
+        "question_id": "Test_2_28",
+        "question": "Which of the following code blocks performs a left join between the salarydf DataFrame and the \nemployeedf DataFrame, using the employeeID column?",
+        "options": {
+            "A": "salaryDf.join(employeeDf, salaryDf[\"employeeID\"] == \nemployeeDf[\"employeeID\"], \"outer\")\nB",
+            "B": "salaryDf.join(employeeDf, salaryDf[\"employeeID\"] == \nemployeeDf[\"employeeID\"], \"left\")\nC",
+            "C": "salaryDf.join(employeeDf, salaryDf[\"employeeID\"] == \nemployeeDf[\"employeeID\"], \"inner\")\nD",
+            "D": "salaryDf.join(employeeDf, salaryDf[\"employeeID\"] == \nemployeeDf[\"employeeID\"], \"right\")"
+        },
+        "correct_answer": "B"
+    },
+    {
+        "question_id": "Test_2_29",
+        "question": "Which of the following code blocks aggregates the bonus column of the df DataFrame in ascending \norder with nulls being last?",
+        "options": {
+            "A": "df.agg(asc_nulls_last(\"bonus\").alias(\"bonus_agg\"))\nB",
+            "B": "df.agg(asc_nulls_first(\"bonus\").alias(\"bonus_agg\"))\nC",
+            "C": "df.agg(asc_nulls_last(\"bonus\", asc).alias(\"bonus_agg\"))\nD",
+            "D": "df.agg(asc_nulls_first(\"bonus\", asc).alias(\"bonus_agg\"))"
+        },
+        "correct_answer": "A"
+    },
+    {
+        "question_id": "Test_2_30",
+        "question": "The following code block contains an error. The code block should return a DataFrame by joining \nthe employeeDf and salaryDf DataFrames on the employeeID and employeeSalaryID \ncolumns, respectively, excluding the bonus and department columns from the employeeDf \nDataFrame and the salary column from the salaryDf DataFrame in the final DataFrame.\nemployeeDf.groupBy(salaryDf, employeeDf.employeeID == salaryDf.\nemployeeSalaryID, \"inner\").delete(\"bonus\", \"department\", \"salary\")\nIdentify the error:",
+        "options": {
+            "A": "groupBy should be replaced with the innerJoin operator\nB",
+            "B": "groupBy should be replaced with a join operator and delete should be replaced \nwith drop\n\n\nC",
+            "C": "groupBy should be replaced with the crossJoin operator and delete should be \nreplaced with withColumn\nD",
+            "D": "groupBy should be replaced with a join operator and delete should be replaced \nwith withColumnRenamed"
+        },
+        "correct_answer": "B"
+    },
+    {
+        "question_id": "Test_2_31",
+        "question": "Which of the following code blocks reads a /loc/example.csv CSV file as a df DataFrame?",
+        "options": {
+            "A": "df = spark.read.csv(\"/loc/example.csv\")\nB",
+            "B": "df = spark.mode(\"csv\").read(\"/loc/example.csv\")\nC",
+            "C": "df = spark.read.path(\"/loc/example.csv\")\nD",
+            "D": "df = spark.read().csv(\"/loc/example.csv\")"
+        },
+        "correct_answer": "A"
+    },
+    {
+        "question_id": "Test_2_32",
+        "question": "Which of the following code blocks reads a parquet file at the my_path location using a schema file \nnamed my_schema?",
+        "options": {
+            "A": "spark.read.schema(my_schema).format(\"parquet\").load(my_path)\nB",
+            "B": "spark.read.schema(\"my_schema\").format(\"parquet\").load(my_path)\nC",
+            "C": "spark.read.schema(my_schema).parquet(my_path)\nD",
+            "D": "spark.read.parquet(my_path).schema(my_schema)"
+        },
+        "correct_answer": "A"
+    },
+    {
+        "question_id": "Test_2_33",
+        "question": "We want to find the number of records in the resulting DataFrame when we join the employeedf \nand salarydf DataFrames on the employeeID and employeeSalaryID columns respectively. \nWhich code blocks should be executed to achieve this?\n1.\t\n.filter(~isnull(col(department)))\n2.\t\n.count()\n3.\t\nemployeedf.join(salarydf, col(\"employeedf.\nemployeeID\")==col(\"salarydf.employeeSalaryID\"))\n4.\t\nemployeedf.join(salarydf, employeedf. employeeID ==salarydf. \nemployeeSalaryID, how='inner')\n5.\t\n.filter(col(department).isnotnull())\n\n\n6.\t\n.sum(col(department))",
+        "options": {
+            "A": "3, 1, 6\nB",
+            "B": "3, 1, 2\nC",
+            "C": "4, 2\nD",
+            "D": "3, 5, 2"
+        },
+        "correct_answer": "C"
+    },
+    {
+        "question_id": "Test_2_34",
+        "question": "Which of the following code blocks returns a copy of the df DataFrame where the name of the state \ncolumn has been changed to stateID?",
+        "options": {
+            "A": "df.withColumnRenamed(\"state\", \"stateID\")\nB",
+            "B": "df.withColumnRenamed(\"stateID\", \"state\")\nC",
+            "C": "df.withColumn(\"state\", \"stateID\")\nD",
+            "D": "df.withColumn(\"stateID\", \"state\")"
+        },
+        "correct_answer": "A"
+    },
+    {
+        "question_id": "Test_2_35",
+        "question": "Which of the following code blocks returns a copy of the df DataFrame where the salary column \nhas been converted to integer?",
+        "options": {
+            "A": "df.col(\"salary\").cast(\"integer\"))\nB",
+            "B": "df.withColumn(\"salary\", col(\"salary\").castType(\"integer\"))\nC",
+            "C": "df.withColumn(\"salary\", col(\"salary\").convert(\"integerType()\"))\nD",
+            "D": "df.withColumn(\"salary\", col(\"salary\").cast(\"integer\"))"
+        },
+        "correct_answer": "D"
+    },
+    {
+        "question_id": "Test_2_36",
+        "question": "Which of the following code blocks splits a df DataFrame in half with the exact same values even \nwhen the code is run multiple times?",
+        "options": {
+            "A": "df.randomSplit([0.5, 0.5], seed=123)\nB",
+            "B": "df.split([0.5, 0.5], seed=123)\nC",
+            "C": "df.split([0.5, 0.5])\nD",
+            "D": "df.randomSplit([0.5, 0.5])"
+        },
+        "correct_answer": "A"
+    },
+    {
+        "question_id": "Test_2_37",
+        "question": "Which of the following code blocks sorts the df DataFrame by two columns, salary and department, \nwhere salary is in ascending order and department is in descending order?",
+        "options": {
+            "A": "df.sort(\"salary\", asc(\"department\"))\nB",
+            "B": "df.sort(\"salary\", desc(department))\nC",
+            "C": "df.sort(col(salary)).desc(col(department))\nD",
+            "D": "df.sort(\"salary\", desc(\"department\"))"
+        },
+        "correct_answer": "D"
+    },
+    {
+        "question_id": "Test_2_38",
+        "question": "Which of the following code blocks calculates the average of the bonus column from the salaryDf \nDataFrame and adds that in a new column called average_bonus?",
+        "options": {
+            "A": "salaryDf.avg(\"bonus\").alias(\"average_bonus\"))\nB",
+            "B": "salaryDf.agg(avg(\"bonus\").alias(\"average_bonus\"))\nC",
+            "C": "salaryDf.agg(sum(\"bonus\").alias(\"average_bonus\"))\nD",
+            "D": "salaryDf.agg(average(\"bonus\").alias(\"average_bonus\"))"
+        },
+        "correct_answer": "B"
+    },
+    {
+        "question_id": "Test_2_39",
+        "question": "Which of the following code blocks saves the df DataFrame in the /FileStore/file.csv \nlocation as a CSV file and throws an error if a file already exists in the location?",
+        "options": {
+            "A": "df.write.mode(\"error\").csv(\"/FileStore/file.csv\")\nB",
+            "B": "df.write.mode.error.csv(\"/FileStore/file.csv\")\nC",
+            "C": "df.write.mode(\"exception\").csv(\"/FileStore/file.csv\")\nD",
+            "D": "df.write.mode(\"exists\").csv(\"/FileStore/file.csv\")"
+        },
+        "correct_answer": "A"
+    },
+    {
+        "question_id": "Test_2_40",
+        "question": "Which of the following code blocks reads the my_csv.csv CSV file located at /my_path/ into \na DataFrame?",
+        "options": {
+            "A": "spark.read().mode(\"csv\").path(\"/my_path/my_csv.csv\")\nB",
+            "B": "spark.read.format(\"csv\").path(\"/my_path/my_csv.csv\")\n\n\nC",
+            "C": "spark.read(\"csv\", \"/my_path/my_csv.csv\")\nD",
+            "D": "spark.read.csv(\"/my_path/my_csv.csv\")"
+        },
+        "correct_answer": "D"
+    },
+    {
+        "question_id": "Test_2_41",
+        "question": "Which of the following code blocks displays the top 100 rows of the df DataFrame, where the salary \ncolumn is present, in descending order?",
+        "options": {
+            "A": "df.sort(asc(value)).show(100)\nB",
+            "B": "df.sort(col(\"value\")).show(100)\nC",
+            "C": "df.sort(col(\"value\").desc()).show(100)\nD",
+            "D": "df.sort(col(\"value\").asc()).print(100)"
+        },
+        "correct_answer": "C"
+    },
+    {
+        "question_id": "Test_2_42",
+        "question": "Which of the following code blocks creates a DataFrame that shows the mean of the salary column \nof the salaryDf DataFrame based on the department and state columns, where age is greater \nthan 35 and the returned DataFrame should be sorted in ascending order by the employeeID \ncolumn such that there are no nulls in that column?\n1.\t\nsalaryDf.filter(col(\"age\") > 35)\n2.\t\n.filter(col(\"employeeID\")\n3.\t\n.filter(col(\"employeeID\").isNotNull())\n4.\t\n.groupBy(\"department\")\n5.\t\n.groupBy(\"department\", \"state\")\n6.\t\n.agg(avg(\"salary\").alias(\"mean_salary\"))\n7.\t\n.agg(average(\"salary\").alias(\"mean_salary\"))\n8.\t\n.orderBy(\"employeeID\")",
+        "options": {
+            "A": "1, 2, 5, 6, 8\nB",
+            "B": "1, 3, 5, 6, 8\nC",
+            "C": "1, 3, 6, 7, 8\nD",
+            "D": "1, 2, 4, 6, 8"
+        },
+        "correct_answer": "B"
+    },
+    {
+        "question_id": "Test_2_43",
+        "question": "The following code block contains an error. The code block should return a new DataFrame without \nthe employee and salary columns and with an additional fixed_value column, which has \na value of 100.\ndf.withColumnRenamed(fixed_value).drop('employee', 'salary')\nIdentify the error:",
+        "options": {
+            "A": "withcolumnRenamed should be replaced with withcolumn and the lit() function \nshould be used to fill the 100 value\nB",
+            "B": "withcolumnRenamed should be replaced with withcolumn\nC",
+            "C": "employee and salary should be swapped in a drop function\nD",
+            "D": "The lit() function call is missing"
+        },
+        "correct_answer": "A"
+    },
+    {
+        "question_id": "Test_2_44",
+        "question": "Which of the following code blocks returns the basic statistics for numeric and string columns of the \ndf DataFrame?",
+        "options": {
+            "A": "df.describe()\nB",
+            "B": "df.detail()\nC",
+            "C": "df.head()\nD",
+            "D": "df.explain()"
+        },
+        "correct_answer": "A"
+    },
+    {
+        "question_id": "Test_2_45",
+        "question": "Which of the following code blocks returns the top 5 rows of the df DataFrame?",
+        "options": {
+            "A": "df.select(5)\nB",
+            "B": "df.head(5)\nC",
+            "C": "df.top(5)\nD",
+            "D": "df.show()"
+        },
+        "correct_answer": "B"
+    },
+    {
+        "question_id": "Test_2_46",
+        "question": "Which of the following code blocks creates a new DataFrame with the department, age, and \nsalary columns from the df DataFrame?",
+        "options": {
+            "A": "df.select(\"department\", \"age\", \"salary\")\nB",
+            "B": "df.drop(\"department\", \"age\", \"salary\")\nC",
+            "C": "df.filter(\"department\", \"age\", \"salary\")\nD",
+            "D": "df.where(\"department\", \"age\", \"salary\")"
+        },
+        "correct_answer": "A"
+    },
+    {
+        "question_id": "Test_2_47",
+        "question": "Which of the following code blocks creates a new DataFrame with three columns, department, \nage, and max_salary, which has the maximum salary for each employee from each department \nand each age group from the df DataFrame?\ndf.___1___ ([\"department\", \"age\"]).___2___ (___3___ (\"salary\").\nalias(\"max_salary\"))\nIdentify the correct answer:",
+        "options": {
+            "A": "i.\t\nfilter\nii.\t agg\niii.\t max\nB",
+            "B": "i.\t\ngroupBy\nii.\t agg\niii.\t max\nC",
+            "C": "i.\t\nfilter\nii.\t agg\niii.\t sum\n\n\nD",
+            "D": "i.\t\ngroupBy\nii.\t agg\niii.\t sum"
+        },
+        "correct_answer": "B"
+    },
+    {
+        "question_id": "Test_2_48",
+        "question": "The following code block contains an error. The code block should return a new DataFrame, filtered \nby the rows, where the salary column is greater than or equal to 1000 in the df DataFrame.\ndf.filter(F(salary) >= 1000)\nIdentify the error:",
+        "options": {
+            "A": "Instead of filter(), where() should be used\nB",
+            "B": "The F(salary) operation should be replaced with F.col(\"salary\")\nC",
+            "C": "Instead of >=, the > operator should be used\nD",
+            "D": "The argument to the where method should be \"salary > 1000\""
+        },
+        "correct_answer": "B"
+    },
+    {
+        "question_id": "Test_2_49",
+        "question": "Which of the following code blocks returns a copy of the df DataFrame where the department \ncolumn has been renamed business_unit?",
+        "options": {
+            "A": "df.withColumn([\"department\", \"business_unit\"])\nB",
+            "B": "itemsDf.withColumn(\"department\").alias(\"business_unit\")\nC",
+            "C": "itemsDf.withColumnRenamed(\"department\", \"business_unit\")\nD",
+            "D": "itemsDf.withColumnRenamed(\"business_unit\", \"department\")"
+        },
+        "correct_answer": "C"
+    },
+    {
+        "question_id": "Test_2_50",
+        "question": "Which of the following code blocks returns a DataFrame with the total count of employees in each \ndepartment from the df DataFrame?",
+        "options": {
+            "A": "df.groupBy(\"department\").agg(count(\"*\").alias(\"total_\nemployees\"))\n\n\nB",
+            "B": "df.filter(\"department\").agg(count(\"*\").alias(\"total_\nemployees\"))\nC",
+            "C": "df.groupBy(\"department\").agg(sum(\"*\").alias(\"total_employees\"))\nD",
+            "D": "df.filter(\"department\").agg(sum(\"*\").alias(\"total_employees\"))"
+        },
+        "correct_answer": "A"
+    },
+    {
+        "question_id": "Test_2_51",
+        "question": "Which of the following code blocks returns a DataFrame with the employee column from the df \nDataFrame case to the string type?",
+        "options": {
+            "A": "df.withColumn(\"employee\", col(\"employee\").cast_type(\"string\"))\nB",
+            "B": "df.withColumn(\"employee\", col(\"employee\").cast(\"string\"))\nC",
+            "C": "df.withColumn(\"employee\", col(\"employee\").cast_\ntype(\"stringType()\"))\nD",
+            "D": "df.withColumnRenamed(\"employee\", col(\"employee\").\ncast(\"string\"))"
+        },
+        "correct_answer": "B"
+    },
+    {
+        "question_id": "Test_2_52",
+        "question": "Which of the following code blocks returns a DataFrame with a new fixed_value column, which \nhas Z in all rows in the df DataFrame?",
+        "options": {
+            "A": "df.withColumn(\"fixed_value\", F.lit(\"Z\"))\nB",
+            "B": "df.withColumn(\"fixed_value\", F(\"Z\"))\nC",
+            "C": "df.withColumnRenamed(\"fixed_value\", F.lit(\"Z\"))\nD",
+            "D": "df.withColumnRenamed(\"fixed_value\", lit(\"Z\"))"
+        },
+        "correct_answer": "A"
+    },
+    {
+        "question_id": "Test_2_53",
+        "question": "Which of the following code blocks returns a new DataFrame with a new upper_string column, \nwhich is the capitalized version of the employeeName column in the df DataFrame?",
+        "options": {
+            "A": "df.withColumnRenamed('employeeName', upper(df.upper_string))\nB",
+            "B": "df.withColumnRenamed('upper_string', upper(df.employeeName))\nC",
+            "C": "df.withColumn('upper_string', upper(df.employeeName))\nD",
+            "D": "df.withColumn(' employeeName', upper(df.upper_string))"
+        },
+        "correct_answer": "C"
+    },
+    {
+        "question_id": "Test_2_54",
+        "question": "The following code block contains an error. The code block is supposed to capitalize the employee \nnames using a udf:\ncapitalize_udf = udf(lambda x: x.upper(), StringType())\ndf_with_capitalized_names = df.withColumn(\"capitalized_name\", \ncapitalize(\"employee\"))\nIdentify the error:",
+        "options": {
+            "A": "The capitalize_udf function should be called instead of capitalize\nB",
+            "B": "The udf function, capitalize_udf, is not capitalizing correctly\nC",
+            "C": "Instead of StringType(), IntegerType() should be used\nD",
+            "D": "Instead of d f . w i t h C o l u m n ( \" c a p i t a l i z e d _ n a m e \" , \ncapitalize(\"employee\")), it should use df.withColumn(\"employee\", \ncapitalize(\"capitalized_name\"))"
+        },
+        "correct_answer": "A"
+    },
+    {
+        "question_id": "Test_2_55",
+        "question": "The following code block contains an error. The code block is supposed to sort the df DataFrame \nby salary in ascending order. Then, it should sort based on the bonus column, putting nulls last.\ndf.orderBy ('salary', asc_nulls_first(col('bonus')))\nIdentify the error:",
+        "options": {
+            "A": "The salary column should be sorted in descending order and desc_nulls_last \nshould be used instead of asc_nulls_first. Moreover, it should be wrapped in a \ncol() operator.\nB",
+            "B": "The salary column should be wrapped by the col() operator.\nC",
+            "C": "The bonus column should be sorted in a descending way, putting nulls last.\nD",
+            "D": "The bonus column should be sorted by desc_nulls_first() instead."
+        },
+        "correct_answer": "A"
+    },
+    {
+        "question_id": "Test_2_56",
+        "question": "The following code block contains an error. The code block needs to group the df DataFrame based \non the department column and calculate the total salary and average salary for each department.\ndf.filter(\"department\").agg(sum(\"salary\").alias(\"sum_salary\"), \navg(\"salary\").alias(\"avg_salary\"))\n\n\nIdentify the error:",
+        "options": {
+            "A": "The avg method should also be called through the agg function\nB",
+            "B": "Instead of filter, groupBy should be used\nC",
+            "C": "The agg method syntax is incorrect\nD",
+            "D": "Instead of filtering on department, the code should filter on salary"
+        },
+        "correct_answer": "B"
+    },
+    {
+        "question_id": "Test_2_57",
+        "question": "Which code block will write the df DataFrame as a parquet file on the filePath path partitioning \nit on the department column?",
+        "options": {
+            "A": "df.write.partitionBy(\"department\").parquet(filePath)\nB",
+            "B": "df.write.partition(\"department\").parquet(filePath)\nC",
+            "C": "df.write.parquet(\"department\").partition(filePath)\nD",
+            "D": "df.write.coalesce(\"department\").parquet(filePath)"
+        },
+        "correct_answer": "A"
+    },
+    {
+        "question_id": "Test_2_58",
+        "question": "The df DataFrame contains columns [employeeID, salary, department]. Which of \nthe following pieces of code would return the df DataFrame with only columns [employeeID, \nsalary]?",
+        "options": {
+            "A": "df.drop(\"department\")\nB",
+            "B": "df.select(col(employeeID))\nC",
+            "C": "df.drop(\"department\", \"salary\")\nD",
+            "D": "df.select(\"employeeID\", \"department\")"
+        },
+        "correct_answer": "A"
+    },
+    {
+        "question_id": "Test_2_59",
+        "question": "Which of the following code blocks returns a new DataFrame with the same columns as the df \nDataFrame, except for the salary column?",
+        "options": {
+            "A": "df.drop(col(\"salary\"))\nB",
+            "B": "df.delete(salary)\nC",
+            "C": "df.drop(salary)\nD",
+            "D": "df.delete(\"salary\")"
+        },
+        "correct_answer": "A"
+    },
+    {
+        "question_id": "Test_2_60",
+        "question": "The following code block contains an error. The code block should return the df DataFrame with \nemployeeID renamed as employeeIdColumn.\ndf.withColumnRenamed(\"employeeIdColumn\", \"employeeID\")\nIdentify the error:",
+        "options": {
+            "A": "Instead of withColumnRenamed, the withColumn method should be used\nB",
+            "B": "Instead of withColumnRenamed, the withColumn method should be used and the \n\"employeeIdColumn\" argument should be swapped with the \"employeeID\" argument\nC",
+            "C": "The \"employeeIdColumn\" and \"employeeID\" arguments should be swapped\nD",
+            "D": "withColumnRenamed is not a method for DataFrames\nAnswers\n1.\t\nD\n2.\t\nC\n3.\t\nA\n4.\t\nA\n5.\t\nA\n6.\t\nA\n7.\t\nB\n8.\t\nD\n9.\t\nC\n10.\t B\n11.\t C\n12.\t C\n13.\t A\n14.\t B\n15.\t A\n16.\t A\n17.\t A\n18.\t B\n19.\t B\n\n\n20.\t E\n21.\t C\n22.\t A\n23.\t A\n24.\t C\n25.\t C\n26.\t D\n27.\t D\n28.\t B\n29.\t A\n30.\t B\n31.\t A\n32.\t A\n33.\t C\n34.\t A\n35.\t D\n36.\t A\n37.\t D\n38.\t B\n39.\t A\n40.\t D\n41.\t C\n42.\t B\n43.\t A\n44.\t A\n45.\t B\n46.\t A\n47.\t B\n48.\t B\n49.\t C\n50.\t A\n51.\t B\n\n\n52.\t A\n53.\t C\n54.\t A\n55.\t A\n56.\t B\n57.\t A\n58.\t A\n59.\t A\n60.\t C"
+        },
+        "correct_answer": "C"
+    }
+]

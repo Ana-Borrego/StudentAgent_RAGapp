@@ -1,0 +1,701 @@
+
+Try your hand at these practice  to test your knowledge of Apache Spark:
+Question 1:
+Which statement does not accurately describe a feature of the Spark driver?
+A.	 The Spark driver serves as the node where the main method of a Spark application runs 
+to co-ordinate the application
+B.	 The Spark driver can be horizontally scaled to enhance overall processing throughput
+C.	 The Spark driver houses the SparkContext object
+D.	 The Spark driver is tasked with scheduling the execution of data by using different worker 
+nodes in cluster mode
+E.	 Optimal performance dictates that the Spark driver should be positioned as close as 
+possible to worker nodes
+Question 2:
+Which of these statements accurately describes stages?
+A.	 Tasks within a stage can be simultaneously executed by multiple machines
+B.	 Various stages within a job can run concurrently
+C.	 Stages comprise one or more jobs
+D.	 Stages temporarily store transactions before committing them through actions
+
+
+Question 3:
+Which of these statements accurately describes Spark’s cluster execution mode?
+A.	 Cluster mode runs executor processes on gateway nodes
+B.	 Cluster mode involves the driver being hosted on a gateway machine
+C.	 In cluster mode, the Spark driver and the cluster manager are not co-located
+D.	 The driver in cluster mode is located on a worker node
+Question 4:
+Which of these statements accurately describes Spark’s client execution mode?
+A.	 Client mode runs executor processes on gateway nodes
+B.	 In client mode, the driver is co-located with the executor
+C.	 In client mode, the Spark driver and the cluster manager are co-located
+D.	 In client mode, the driver is found on an edge node
+Question 5:
+Which statement accurately describes Spark’s standalone deployment mode?
+A.	 Standalone mode utilizes only one executor per worker for each application
+B.	 In standalone mode, the driver is located on a worker node
+C.	 In standalone mode, the cluster does not need the driver
+D.	 In standalone mode, the driver is found on an edge node
+Question 6:
+What is a task in Spark?
+A.	 The unit of work performed for each data partition within a task is slots
+B.	 Tasks are the second-smallest entity that can be executed within Spark
+C.	 Tasks featuring wide dependencies can be combined into a single task
+D.	 A task is a single unit of work done by a partition within Spark
+
+
+Question 7:
+Which of the following is the highest level in Spark’s execution hierarchy?
+A.	 Job
+B.	 Task
+C.	 Executor
+D.	 Stage
+Question 8:
+How can the concept of slots be accurately described in Spark’s context?
+A.	 The creation and termination of slots align with the workload of an executor
+B.	 Spark strategically stores data on disk across various slots to enhance I/O performance
+C.	 Each slot is consistently confined to a solitary core
+D.	 Slots enable the tasks to run in parallel
+Question 9:
+What is the role of an executor in Spark?
+A.	 The executor’s role is to request the transformation of operations into DAG
+B.	 There can only be one executor within a Spark environment
+C.	 The executor processes partitions in an optimized and distributed manner
+D.	 The executor schedules queries for execution
+E.	
+Question 10:
+What is the role of shuffle in Spark?
+A.	 Shuffle broadcasts variables to different partitions
+B.	 With shuffle, data is written to the disk
+C.	 The shuffle command transforms data in Spark
+D.	 Shuffles are a narrow transformation
+
+
+Question 11:
+What is the role of actions in Spark?
+A.	 Actions only read data from a disk
+B.	 Actions are used to modify existing RDDs
+C.	 Actions trigger the execution of tasks
+D.	 Actions are used to establish stage boundaries
+Question 12:
+Which of the following is one of the tasks of the cluster manager in Spark?
+A.	 In the event of an executor failure, the cluster manager will collaborate with the driver to 
+initiate a new executor
+B.	 The cluster manager can coalesce partitions to increase the speed of complex data processing
+C.	 The cluster manager collects runtime statistics of queries
+D.	 The cluster manager creates query plans
+Question 13:
+Which of the following is one of the tasks of adaptive query execution in Spark?
+A.	 Adaptive query execution can coalesce partitions to increase the speed of complex 
+data processing
+B.	 In the event of an executor failure, the adaptive query execution feature will collaborate 
+with the driver to initiate a new executor
+C.	 Adaptive query execution creates query plans
+D.	 Adaptive query execution is responsible for spawning multiple executors to carry our 
+tasks in Spark
+Question 14:
+Which of the following operations is considered a transformation?
+A.	 df.select()
+B.	 df.show()
+
+
+C.	 df.head()
+D.	 df.count()
+Question 15:
+What is a feature of lazy evaluation in Spark?
+A.	 Spark will fail a job only during execution but not during definition
+B.	 Spark will fail a job only during definition
+C.	 Spark will execute upon receiving a transformation operation
+D.	 Spark will fail upon receiving an action
+Question 16:
+Which of the following statements about Spark’s execution hierarchy is correct?
+A.	 In Spark’s execution hierarchy, tasks are above the level of jobs
+B.	 In Spark’s execution hierarchy, multiple jobs are contained in a stage
+C.	 In Spark’s execution hierarchy, a job can potentially span multiple stage boundaries
+D.	 In Spark’s execution hierarchy, slots are the smallest unit
+Question 17:
+Which of the following is the characteristic of the Spark driver?
+A.	 The worker nodes are responsible for transforming Spark operations into DAGs when the 
+driver sends a command
+B.	 The Spark driver is responsible for executing tasks and returning results to executors
+C.	 Spark driver can be scaled by adding more machines so that the performance of Spark 
+tasks can be improved
+D.	 The Spark driver processes partitions in an optimized and distributed fashion
+
+
+Question 18:
+Which of the following statements about broadcast variables is accurate?
+A.	 Broadcast variables are only present on driver nodes
+B.	 Broadcast variables can only be used for tables that fit into memory
+C.	 Broadcast variables are not immutable, meaning they can be shared across clusters
+D.	 Broadcast variables are not shared across the worker nodes
+Question 19:
+Which of the following code blocks returns unique values in columns employee_state and 
+employee_salary in DataFrame df for all columns?
+A.	 Df.select('employee_state').join(df.select('employee_salary'), 
+col('employee_state')==col('employee_salary'), 'left').show()
+B.	 df.select(col('employee_state'), col('employee_salary')).
+agg({'*': 'count'}).show()
+C.	 df.select('employee_state', 'employee_salary').distinct().
+show()
+D.	 df.select('employee_state').union(df.select('employee_
+salary')).distinct().show()
+Question 20:
+Which of the following code blocks reads a Parquet file from the my_fle_path location, where the 
+file name is my_file.parquet, into a DataFrame df?
+A.	 df = spark.mode("parquet").read("my_fle_path/my_file.parquet")
+B.	 df = spark.read.path("my_fle_path/my_file.parquet")
+C.	 df = spark.read().parquet("my_fle_path/my_file.parquet")
+D.	 df = spark.read.parquet("/my_fle_path/my_file.parquet")
+Question 21:
+Which of the following code blocks performs an inner join of the salarydf and employeedf 
+DataFrames for columns employeeSalaryID and employeeID, respectively?
+A.	 salarydf.join(employeedf, salarydf.employeeID == employeedf.
+employeeSalaryID)
+
+
+B.	
+i.	
+Salarydf.createOrReplaceTempView(salarydf)
+ii.	 employeedf.createOrReplaceTempView('employeedf')
+iii.	 spark.sql("SELECT * FROM salarydf CROSS JOIN employeedf ON 
+employeeSalaryID ==employeeID")
+C.	
+i.	
+salarydf
+ii.	 .join(employeedf, col(employeeID)==col(employeeSalaryID))
+D.	
+i.	
+Salarydf.createOrReplaceTempView(salarydf)
+ii.	 employeedf.createOrReplaceTempView('employeedf')
+iii.	 SELECT * FROM salarydf
+iv.	 INNER JOIN employeedf
+v.	
+ON salarydf.employeeSalaryID == employeedf. employeeID
+Question 22:
+Which of the following code blocks returns the df DataFrame sorted in descending order by column 
+salary, showing missing values in the end?
+A.	 df.sort(nulls_last("salary"))
+B.	 df.orderBy("salary").nulls_last()
+C.	 df.sort("salary", ascending=False)
+D.	 df.nulls_last("salary")
+Question 23:
+The following code block contains an error. The code block should return a copy of the df DataFrame, 
+where the name of the column state is changed to stateID. Find the error.
+Code block:
+df.withColumn("stateID", "state")
+A.	 The arguments to the method "stateID" and "state" should be swapped
+
+
+B.	 The withColumn method should be replaced by the withColumnRenamed method
+C.	 The withColumn method should be replaced by withColumnRenamed method, and 
+the arguments to the method need to be reordered
+D.	 There is no such method whereby the column name can be changed
+Question 24:
+Which of the following code blocks performs an inner join between the salarydf and employeedf 
+DataFrames, using the employeeID and salaryEmployeeID columns as join keys, respectively?
+A.	 salarydf.join(employeedf, "inner", salarydf.employeedf == 
+employeeID.salaryEmployeeID)
+B.	 salarydf.join(employeedf, employeeID == salaryEmployeeID)
+C.	 salarydf.join(employeedf, salarydf.salaryEmployeeID == 
+employeedf.employeeID, "inner")
+D.	 salarydf.join(employeedf, salarydf.employeeID == employeedf.
+salaryEmployeeID, "inner")
+Question 25:
+The following code block should return a df DataFrame, where the employeeID column is converted 
+into an integer. Choose the answer that correctly fills the blanks in the code block to accomplish this:
+df.__1__(__2__.__3__(__4__))
+A.	
+i.	
+select
+ii.	 col("employeeID")
+iii.	 as
+iv.	 IntegerType
+B.	
+i.	
+select
+ii.	 col("employeeID")
+iii.	 as
+iv.	 Integer
+
+
+C.	
+i.	
+cast
+ii.	 "employeeID"
+iii.	 as
+iv.	 IntegerType()
+D.	
+i.	
+select
+ii.	 col("employeeID")
+iii.	 cast
+iv.	 IntegerType()
+Question 26:
+Find the number of records that are not empty in the column department of the resulting DataFrame when 
+we join the employeedf and salarydf DataFrames for the employeeID and employeeSalaryID 
+columns, respectively. Which code blocks (in order) should be executed to achieve this?
+1. .filter(col("department").isNotNull())
+2. .count()
+3. employeedf.join(salarydf, employeedf.employeeID == salarydf.
+employeeSalaryID)
+4. employeedf.join(salarydf, employeedf.employeeID ==salarydf. 
+employeeSalaryID, how='inner')
+5. .filter(col(department).isnotnull())
+6. .sum(col(department))
+A.	 3, 1, 6
+B.	 3, 1, 2
+C.	 4, 1, 2
+D.	 3, 5, 2
+
+
+Question 27:
+Which of the following code blocks returns only those rows from the df DataFrame in which the 
+values in the column state are unique?
+A.	 df.dropDuplicates(subset=["state"]).show()
+B.	 df.distinct(subset=["state"]).show()
+C.	 df.drop_duplicates(subset=["state"]).show()
+D.	 df.unique("state").show()
+Question 28:
+The following code block contains an error. The code block should return a copy of the df DataFrame 
+with an additional column named squared_number, which has the square of the column number. 
+Find the error.
+Code block:
+df.withColumnRenamed(col("number"), pow(col("number"), 0.2).
+alias("squared_number"))
+A.	 The arguments to the withColumnRenamed method need to be reordered
+B.	 The withColumnRenamed method should be replaced by the withColumn method
+C.	 The withColumnRenamed method should be replaced by the select method, and 
+0.2 should be replaced with 2
+D.	 The argument 0.2 should be replaced by 2
+Question 29:
+Which of the following code blocks returns a new DataFrame in which column salary is renamed to 
+new_salary and employee is renamed to new_employee in the df DataFrame?
+A.	 df.withColumnRenamed(salary, new_salary).
+withColumnRenamed(employee, new_employee)
+B.	 df.withColumnRenamed("salary", "new_salary")
+C.	 df.withColumnRenamed("employee", "new_employee")
+D.	 df.withColumn("salary", "new_salary").withColumn("employee", 
+"new_employee")
+
+
+E.	 df.withColumnRenamed("salary", "new_salary").
+withColumnRenamed("employee", "new_employee")
+Question 30:
+Which of the following code blocks returns a copy of the df DataFrame, where the column salary 
+has been renamed to employeeSalary?
+A.	 df.withColumn(["salary", "employeeSalary"])
+B.	 df.withColumnRenamed("salary").alias("employeeSalary ")
+C.	 df.withColumnRenamed("salary", "employeeSalary ")
+D.	 df.withColumn("salary", "employeeSalary ")
+Question 31:
+The following code block contains an error. The code block should save the df DataFrame to the 
+my_file_path path as a Parquet file, appending to any existing parquet file. Find the error.
+df.format("parquet").option("mode", "append").save(my_file_path)
+A.	 The code is not saved to the correct path
+B.	 The save() and format functions should be swapped
+C.	 The code block is missing a reference to the DataFrameWriter
+D.	 The option mode should be overwritten to correctly write the file
+Question 32:
+How can we reduce the df DataFrame from 12 to 6 partitions?
+A.	 df.repartition(12)
+B.	 df.coalesce(6).shuffle()
+C.	 df.coalesce(6, shuffle=True)
+D.	 df.repartition(6)
+
+
+Question 33:
+Which of the following code blocks returns a DataFrame where the timestamp column is converted 
+into unix epoch timestamps in a new column named record_timestamp with a format of day, 
+month, and year?
+A.	 df.withColumn("record_timestamp", from_unixtime(unix_
+timestamp(col("timestamp")), "dd-MM-yyyy"))
+B.	 df.withColumnRenamed("record_timestamp", from_unixtime(unix_
+timestamp(col("timestamp")), "dd-MM-yyyy"))
+C.	 df.select ("record_timestamp", from_unixtime(unix_
+timestamp(col("timestamp")), "dd-MM-yyyy"))
+D.	 df.withColumn("record_timestamp", from_unixtime(unix_
+timestamp(col("timestamp")), "MM-dd-yyyy"))
+Question 34:
+Which of the following code blocks creates a new DataFrame by appending the rows of the DataFrame 
+salaryDf to the rows of the DataFrame employeeDf, regardless of the fact that both DataFrames 
+have different column names?
+A.	 salaryDf.join(employeeDf)
+B.	 salaryDf.union(employeeDf)
+C.	 salaryDf.concat(employeeDf)
+D.	 salaryDf.unionAll(employeeDf)
+Question 35:
+The following code block contains an error. The code block should calculate the total of all salaries in 
+the employee_salary column across each department. Find the error.
+df.agg("department").sum("employee_salary")
+A.	 Instead of avg("value"), avg(col("value")) should be used
+B.	 All column names should be wrapped in col() operators
+C.	 "storeId" and “value" should be swapped
+D.	 Agg should be replaced by groupBy
+
+
+Question 36:
+The following code block contains an error. The code block is intended to perform a cross-join of 
+the salarydf and employeedf DataFrames for the employeeSalaryID and employeeID 
+columns, respectively. Find the error.
+employeedf.join(salarydf, [salarydf.employeeSalaryID, employeedf.
+employeeID], "cross")
+A.	 The join type "cross" in the argument needs to be replaced with crossJoin
+B.	 [salarydf.employeeSalaryID, employeedf.employeeID] should be 
+replaced by salarydf.employeeSalaryID == employeedf.employeeID
+C.	 The "cross" argument should be eliminated since "cross" is the default join type
+D.	 The "cross" argument should be eliminated from the call and join should be replaced 
+by crossJoin
+Question 37:
+The following code block contains an error. The code block should display the schema of the df 
+DataFrame. Find the error.
+df.rdd.printSchema()
+A.	 In Spark, we cannot print the schema of a DataFrame
+B.	 printSchema is not callable through df.rdd and should be called directly from df
+C.	 There is no method in Spark named printSchema()
+D.	 The print_schema() method should be used instead of printSchema()
+Question 38:
+The following code block should write the df DataFrame as a Parquet file to the filePath path, 
+replacing any existing file. Choose the answer that correctly fills the blanks in the code block to 
+accomplish this:
+df.__1__.format("parquet").__2__(__3__).__4__(filePath)
+A.	
+i.	
+save
+ii.	 mode
+iii.	 "ignore"
+iv.	 path
+
+
+B.	
+i.	
+store
+ii.	 with
+iii.	 "replace"
+iv.	 path
+C.	
+i.	
+write
+ii.	 mode
+iii.	 "overwrite"
+iv.	 save
+D.	
+i.	
+save
+ii.	 mode
+iii.	 "overwrite"
+iv.	 path
+Question 39:
+The following code block contains an error. The code block is supposed to sort the df DataFrame 
+according to salary in descending order. Then, it should sort based on the bonus column, putting 
+nulls to last. Find the error.
+df.orderBy ('salary', asc_nulls_first(col('bonus')))
+transactionsDf.orderBy('value', asc_nulls_first(col('predError')))
+A.	 The salary column should be sorted in a descending way. Moreover, it should be wrapped 
+in a col() operator
+B.	 The salary column should be wrapped by the col() operator
+C.	 The bonus column should be sorted in a descending way, putting nulls last
+D.	 The bonus column should be sorted by desc_nulls_first() instead
+
+
+Question 40:
+The following code block contains an error. The code block should use the square_root_method 
+Python method to find the square root of the salary column in the df DataFrame and return it in 
+a new column called sqrt_salary. Find the error.
+square_root_method_udf = udf(square_root_method)
+df.withColumn("sqrt_salary", square_root_method("salary"))
+A.	 There is no return type specified for square_root_method
+B.	 In the second line of the code, Spark needs to call squre_root_method_udf instead 
+of square_root_method
+C.	 udf is not registered with Spark
+D.	 A new column needs to be added
+Question 41:
+The following code block contains an error. The code block should return the df DataFrame with 
+employeeID renamed to employeeIdColumn. Find the error.
+df.withColumn("employeeIdColumn", "employeeID")
+A.	 Instead of withColumn, the withColumnRenamed method should be used
+B.	 Instead of withColumn, the withColumnRenamed method should be used and 
+argument "employeeIdColumn" should be swapped with argument "employeeID"
+C.	 Arguments "employeeIdColumn" and "employeeID" should be swapped
+D.	 The withColumn operator should be replaced with the withColumnRenamed operator
+Question 42:
+Which of the following code blocks will return a new DataFrame with the same columns as DataFrame 
+df, except for the salary column?
+A.	 df.drop("salary")
+B.	 df.drop(col(salary))
+C.	 df.drop(salary)
+D.	 df.delete("salary")
+
+
+Question 43:
+Which of the following code blocks returns a DataFrame showing the mean of the salary column 
+from the df DataFrame, grouped by column department?
+A.	 df.groupBy("department").agg(avg("salary"))
+B.	 df.groupBy(col(department).avg())
+C.	 df.groupBy("department").avg(col("salary"))
+D.	 df.groupBy("department").agg(average("salary"))
+Question 44:
+Which of the following code blocks creates a DataFrame that shows the mean of the salary column of 
+the salaryDf DataFrame, based on the department and state columns, where age is greater than 35?
+1.	
+salaryDf.filter(col("age") > 35)
+2.	
+.filter(col("employeeID")
+3.	
+.filter(col("employeeID").isNotNull())
+4.	
+.groupBy("department")
+5.	
+.groupBy("department", "state")
+6.	
+.agg(avg("salary").alias("mean_salary"))
+7.	
+.agg(average("salary").alias("mean_salary"))
+A.	 1,2,5,6
+B.	 1,3,5,6
+C.	 1,3,6,7
+D.	 1,2,4,6
+Question 45:
+The following code block contains an error. The code block needs to cache the df DataFrame so that 
+this DataFrame is fault-tolerant. Find the error.
+df.persist(StorageLevel.MEMORY_AND_DISK_3)
+A.	 persist() is not a function of the API DataFrame
+B.	 df.write() should be used in conjunction with df.persist to correctly write 
+the DataFrame
+
+
+C.	 The storage level is incorrect and should be MEMORY_AND_DISK_2
+D.	 df.cache() should be used instead of df.persist()
+Question 46:
+Which of the following code blocks concatenates the rows of the salaryDf and employeeDf 
+DataFrames without any duplicates (assuming the columns of both DataFrames are similar)?
+A.	 salaryDf.concat(employeeDf).unique()
+B.	 spark.union(salaryDf, employeeDf).distinct()
+C.	 salaryDf.union(employeeDf).unique()
+D.	 salaryDf.union(employeeDf).distinct()
+Question 47:
+Which of the following code blocks reads a complete folder of CSV files from filePath with 
+column headers?
+A.	 spark.option("header",True).csv(filePath)
+B.	 spark.read.load(filePath)
+C.	 spark.read().option("header",True).load(filePath)
+D.	 spark.read.format("csv").option("header",True).load(filePath)
+Question 48:
+The following code block contains an error. The df DataFrame contains columns [employeeID, 
+salary, and department]. The code block should return a DataFrame that contains only the 
+employeeID and salary columns from DataFrame df. Find the error.
+df.select(col(department))
+A.	 All column names from the df DataFrame should be specified in the select arguments
+B.	 The select operator should be replaced by a drop operator, and all the column names 
+from the df DataFrame should be listed as a list
+C.	 The select operator should be replaced by a drop operator
+D.	 The column name department should be listed like col("department")
+
+
+Question 49:
+The following code block contains an error. The code block should write DataFrame df as a Parquet 
+file to the filePath location, after partitioning it for the department column. Find the error.
+df.write.partition("department").parquet()
+A.	 partitionBy() method should be used instead of partition().
+B.	 partitionBy() method should be used instead of partition() and filePath 
+should be added to the parquet method
+C.	 The partition() method should be called before the write method and filePath 
+should be added to parquet method
+D.	 The "department" column should be wrapped in a col() operator
+Question 50:
+Which of the following code blocks removes the cached df DataFrame from memory and disk?
+A.	 df.unpersist()
+B.	 drop df
+C.	 df.clearCache()
+D.	 df.persist()
+Question 51:
+The following code block should return a copy of the df DataFrame with an additional column: 
+test_column, which has a value of 19. Choose the answer that correctly fills the blanks in the 
+code block to accomplish this:
+df.__1__(__2__, __3__)
+A.	
+i.	
+withColumn
+ii.	 'test_column'
+iii.	 19
+B.	
+i.	
+withColumnRenamed
+
+
+ii.	 test_column
+iii.	 lit(19)
+C.	
+i.	
+withColumn
+ii.	 'test_column'
+iii.	 lit(19)
+D.	
+i.	
+withColumnRenamed
+ii.	 test_column
+iii.	 19
+Question 52:
+The following code block should return a DataFrame with the columns employeeId, salary, 
+bonus, and department from transactionsDf DataFrame. Choose the answer that correctly 
+fills the blanks to accomplish this:
+df.__1__(__2__)
+A.	
+i.	
+drop
+ii.	 "employeeId", "salary", "bonus", "department"
+B.	
+i.	
+filter
+ii.	 "employeeId, salary, bonus, department"
+C.	
+i.	
+select
+ii.	 ["employeeId", "salary", "bonus", "department"]
+D.	
+i.	
+select
+ii.	 col(["employeeId", "salary", "bonus","department"])
+
+
+Question 53:
+Which of the following code blocks returns a DataFrame with the salary column converted into 
+a string in the df DataFrame?
+A.	 df.withColumn("salary", castString("salary", "string"))
+B.	 df.withColumn("salary", col("salary").cast("string"))
+C.	 df.select(cast("salary", "string"))
+D.	 df.withColumn("salary", col("salary").castString("string"))
+Question 54:
+The following code block contains an error. The code block should combine data from DataFrames 
+salaryDf and employeeDf, showing all rows of DataFrame salaryDf that have a matching 
+value in column employeeSalaryID with a value in column employeeID of DataFrame 
+employeeDf. Find the error.
+employeeDf.join(salaryDf, employeeDf.employeeID==employeeSalaryID)
+A.	 The join statement is missing the right-hand DataFrame, where the column name 
+is employeeSalaryID
+B.	 The union method should be used instead of join
+C.	 Instead of join, innerJoin should have been used
+D.	 salaryDf should come in place of employeeDf
+Question 55:
+Which of the following code blocks reads a JSON file stored at my_file_path as a DataFrame?
+A.	 spark.read.json(my_file_path)
+B.	 spark.read(my_file_path, source="json")
+C.	 spark.read.path(my_file_path)
+D.	 spark.read().json(my_file_path)
+
+
+Question 56:
+The following code block contains an error. The code block should return a new DataFrame filtered 
+by the rows where salary column is greater than 2000 in DataFrame df. Find the error.
+df.where("col(salary) >= 2000")
+A.	 Instead of where(), filter() should be used
+B.	 The argument to the where method should be "col(salary) > 2000"
+C.	 Instead of >=, the operator > should be used
+D.	 The argument to the where method should be "salary > 2000"
+Question 57:
+Which of the following code blocks returns a DataFrame in which the salary and state columns 
+are dropped from the df DataFrame?
+A.	 df.withColumn ("salary", "state")
+B.	 df.drop(["salary", "state"])
+C.	 df.drop("salary", "state")
+D.	 df.withColumnRenamed ("salary", "state")
+Question 58:
+Which of the following code blocks returns a two-column DataFrame that contains counts of each 
+department in the df DataFrame?
+A.	 df.count("department").distinct()
+B.	 df.count("department")
+C.	 df.groupBy("department").count()
+D.	 df.groupBy("department").agg(count("department"))
+
+
+Question 59:
+Which of the following code blocks prints the schema of a DataFrame and contains both column 
+names and types?
+A.	 print(df.columns)
+B.	 df.printSchema()
+C.	 df.rdd.printSchema()
+D.	 df.print_schema()
+Question 60:
+Which of the following code blocks creates a new DataFrame with three columns: department, 
+age, and max_salary and has the maximum salary for each employee from each department and 
+each age group from the df DataFrame?
+A.	 df.max(salary)
+B.	 df.groupBy(["department", "age"]).agg(max("salary").alias("max_
+salary"))
+C.	 df.agg(max(salary).alias(max_salary')
+D.	 df.groupby(department).agg(max(salary).alias(max_salary)
+Answers
+1.	
+B
+2.	
+A
+3.	
+D
+4.	
+D
+5.	
+A
+6.	
+D
+7.	
+A
+8.	
+D
+9.	
+C
+10.	 B
+11.	 C
+12.	 A
+13.	 A
+
+
+14.	 A
+15.	 A
+16.	 C
+17.	 B
+18.	 B
+19.	 D
+20.	 D
+21.	 D
+22.	 C
+23.	 C
+24.	 D
+25.	 D
+26.	 C
+27.	 A
+28.	 C
+29.	 E
+30.	 C
+31.	 C
+32.	 D
+33.	 A
+34.	 B
+35.	 D
+36.	 B
+37.	 B
+38.	 C
+39.	 A
+40.	 B
+41.	 B
+42.	 A
+43.	 A
+44.	 A
+45.	 C
+
+
+46.	 D
+47.	 D
+48.	 C
+49.	 B
+50.	 A
+51.	 C
+52.	 C
+53.	 B
+54.	 A
+55.	 A
+56.	 D
+57.	 C
+58.	 C
+59.	 B
+60.	 B
+
