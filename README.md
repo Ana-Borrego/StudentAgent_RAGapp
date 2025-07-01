@@ -40,7 +40,8 @@ Diseñar un asistente inteligente que responda preguntas sobre el temario oficia
 
 +   `notebooks/04_extract_exams.ipynb`: Proceso similar a la fase 1, se lee el pdf fuente recortado sólo a las páginas con los test de estudio que proporciona el temario. La limpieza y procesado de esta parte es distinta, puesto que se finaliza teniendo una lista de prguntas procesadas como un diccionario de python las cuáles recogen entre otras cosas el test al que pertenece la pregunta, la respuesta correcta a dicha pregunta, y un ID identificativo para la comprobación manual del correcto procesado de las mismas.
 +   `notebooks/05_Test2_exams.ipynb`: Este notebook sirve para la evaluación manual del comportamiento de la aplicación RAG al someterla a preguntas de examen. En él, se afinan los prompts para que el modelo no alucine con información no recuperada por el retriever en el contexto, y para que intente justificar con los nodos de contexto la elección de la respuesta final, de esta manera se puede evaluar el comportamiento de la aplicación y si su delimitación al contexto ha sido correcta.
-+   `notebooks/06_FINAL_Simplified_RAG.ipynb`: Es el notebook final con los prompts y los chunks considerados óptimos para el objetivo del proyecto. Esta aplicación final será expuesta a un Test completo del libro para así evaluar la tasa de acierto. 
++   `notebooks/06_FINAL_Simplified_RAG.ipynb`: Es el notebook final con los prompts y los chunks considerados óptimos para el objetivo del proyecto. Esta aplicación final será expuesta a un Test completo del libro para así evaluar la tasa de acierto.
++   Los resultados de esta parte del proyecto, están contenidos en el directorio `data/exams_test2/`. 
 
 ## Consideraciones. 
 
