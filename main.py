@@ -1,6 +1,6 @@
 import os
 from dotenv import load_dotenv
-from llama_index.core import VectorStoreIndex, StorageContext, get_response_synthesizer, load_index_from_storage
+from llama_index.core import StorageContext, get_response_synthesizer, load_index_from_storage
 from llama_index.core.query_engine import RetrieverQueryEngine
 from llama_index.core.prompts import PromptTemplate
 from llama_index.embeddings.openai import OpenAIEmbedding
