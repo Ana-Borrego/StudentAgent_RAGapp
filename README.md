@@ -14,7 +14,8 @@ Diseñar un asistente inteligente que responda preguntas sobre el temario oficia
 + `data/` : contiene la fuente de datos (fichero .pdf) y los archivos generados por los estudios realizados en el proyecto.
 + `notebooks/`: contiene los notebooks enumerados según la realicación del proyecto, finalizando con la aplicación final RAG.
 + `scripts/`: contiene un script .py con todas las funciones definidas y documentadas que se utilizan a lo largo del proyecto.
-+ `requirements.txt`: Dependencias del entorno
++ `requirements.txt`: Dependencias del entorno.
++ `main.py`: fichero para uso interactivo con la terminal. 
 
 ## Fases del proyecto. 
 
@@ -42,6 +43,45 @@ Diseñar un asistente inteligente que responda preguntas sobre el temario oficia
 +   `notebooks/05_Test2_exams.ipynb`: Este notebook sirve para la evaluación manual del comportamiento de la aplicación RAG al someterla a preguntas de examen. En él, se afinan los prompts para que el modelo no alucine con información no recuperada por el retriever en el contexto, y para que intente justificar con los nodos de contexto la elección de la respuesta final, de esta manera se puede evaluar el comportamiento de la aplicación y si su delimitación al contexto ha sido correcta.
 +   `notebooks/06_FINAL_Simplified_RAG.ipynb`: Es el notebook final con los prompts y los chunks considerados óptimos para el objetivo del proyecto. Esta aplicación final será expuesta a un Test completo del libro para así evaluar la tasa de acierto.
 +   Los resultados de esta parte del proyecto, están contenidos en el directorio `data/exams_test2/`. 
+
+6. **Creación de script interactivo para el uso de la aplicación desde la terminal.**
+
++   Una vez se tienen persistido el index_storage, se crea un script `main.py` que permite la interacción del usuario con la configuración final del sistema RAG a través de la terminal. Para ello, se cargan los datos necesarios para el sistema, es decir, se requiere de una API key de OpenAI, y de tener el Index Storage definido óptimo entre los notebooks 02_ y 03_. El script define la configuración y carga una función que es ejecutada al ejecutar el script la cual recibe el input del usuario y muestra la respuesta del modelo. 
+
+## Uso desde la terminal con el fichero `main.py`. 
+
+El asistente RAG puede utilizarse de forma interactiva desde la terminal mediante el script `main.py`, sin necesidad de abrir notebooks. 
+
+### Requisitos previos. 
+
+1. Generar y guardar el índice en `data/index_storage/` ejecutando previamente los notebooks del proyecto, almenos hasta el `02_`. 
+2. Tener disponible una clave API de OpenAI en un archivo `.env` en la raíz del proyecto. 
+
+``` 
+OPENAI_API_KEY=<clave>
+```
+
+3. Instalar las dependencias necesarias definidas en `requirements.txt`
+
+``` {cmd}
+pip install -r requirements.txt
+```
+
+### Ejecución. 
+
+Desde la raíz del proyecto ejecuta por terminal: 
+
+```
+python main.py
+```
+
+Se podrán realizar consultas relacionadas con PySpark, todas las que se deseen. 
+
+Para salir del asistente basta con escribir 'exit', aunque también tolerará 'salir'. 
+
+### Ejemplo de uso
+
+![Ejemplo de uso](imgs/chat_in_terminal.png)
 
 ## Consideraciones. 
 
