@@ -2,6 +2,7 @@ import re
 from llama_index.core.query_engine import RetrieverQueryEngine
 from llama_index.core.base.query_pipeline.query import QueryBundle
 from llama_index.core import get_response_synthesizer
+from pydantic import BaseModel, Field
 
 def format_options(options_dict):
     """
@@ -108,7 +109,69 @@ def ask_question_with_options(question_obj, retriever, response_mode="compact"):
         "is_correct": extract_predicted_letter(predicted_answer) == question_obj["correct_answer"],
         "response_obj": response
     }
-    
+
+# Pydantic implementation for structured question ---------------------------------------------------------------------------------------------------
+class QuestionAnswer(BaseModel):
+    respuesta_correcta: str = Field(
+        ...,
+        regex="^[A-E]$",
+        description="Letra correspondiente a la opción seleccionada por el modelo como respuesta correcta. Debe ser una letra entre A y E."
+    )
+    justificacion: str = Field(
+        ...,
+        description="Explicación textual que justifica por qué se ha seleccionado la respuesta correcta, basándose únicamente en el contexto proporcionado."
+    )
+
+def ask_question_with_options_pydantic(question_obj, retriever, response_mode="compact"):
+    question_text = question_obj["question"]
+    options_text = format_options(question_obj["options"])
+
+    query_str = f"""
+    {question_text}
+
+    Opciones: 
+    {options_text}
+
+    IMPORTANTE:
+    - Usa solo información del contexto.
+    - No respondas con conocimientos externos.
+    - Aunque sepas la respuesta correcta, si no existe esa información en el contexto devuelve "No existe información"
+
+    Responde de la siguiente manera:
+    Respuesta correcta: <LETRA>
+    Justificación: <JUSTIFICACIÓN>
+    """
+
+    query_bundle = QueryBundle(
+        query_str=query_str,
+        custom_embedding_strs=[question_text, options_text]
+    )
+
+    response_synthesizer = get_response_synthesizer(
+        response_mode=response_mode,
+        output_cls=QuestionAnswer  # 👈 aquí está la clave
+    )
+
+    query_engine = RetrieverQueryEngine(
+        retriever=retriever,
+        response_synthesizer=response_synthesizer
+    )
+
+    response = query_engine.query(query_bundle)
+    parsed = response.response  # Ya es un objeto QuestionAnswer
+
+    return {
+        "question_id": question_obj["question_id"],
+        "question": question_obj["question"],
+        "options": options_text,
+        "predicted_answer": parsed.respuesta_correcta,
+        "correct_answer": question_obj["correct_answer"],
+        "is_correct": parsed.respuesta_correcta == question_obj["correct_answer"],
+        "response_obj": response
+    }
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 def ejecutar_test_automatico(query_engine, banco_preguntas, test_exam=1):
     """
     Ejecuta la evaluación automática del modelo RAG sobre un conjunto de preguntas tipo test.
@@ -129,7 +192,7 @@ def ejecutar_test_automatico(query_engine, banco_preguntas, test_exam=1):
 
     for i, pregunta in enumerate(preguntas_test):
         print(f"➡️ Pregunta {i+1}/{total} - ID: {pregunta['question_id']}")
-        result = ask_question_with_options(pregunta, retriever=query_engine.retriever)
+        result = ask_question_with_options_pydantic(pregunta, retriever=query_engine.retriever)
 
         if result["is_correct"]:
             aciertos += 1
