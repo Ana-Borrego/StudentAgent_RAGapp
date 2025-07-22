@@ -10,7 +10,7 @@ from llama_index import (
     SimpleVectorStore,
     Settings
 )
-from llama_index.query_engine import RetrieverQueryEngine
+from llama_index.core.query_engine import RetrieverQueryEngine
 from llama_index.embeddings.openai import OpenAIEmbedding
 
 def get_responses_similarity(query_str, query_engine, top_k):

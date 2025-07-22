@@ -1,4 +1,3 @@
-import os
 from dotenv import load_dotenv
 from llama_index.core import StorageContext, get_response_synthesizer, load_index_from_storage
 from llama_index.core.query_engine import RetrieverQueryEngine
@@ -6,81 +5,118 @@ from llama_index.core.prompts import PromptTemplate
 from llama_index.embeddings.openai import OpenAIEmbedding
 from llama_index.llms.openai import OpenAI
 from llama_index.core.settings import Settings
+import json
+import scripts.question_prompting as evaluation_functions
 
-# Set up --------------------------------------------------------------------------------------------------
-load_dotenv()
+# Configuración --------------------------------------------------------------------------------------------------
 
-# Config LLM w Prompts --------------------------------------------------------------------------------------------------
-system_prompt = """
-Eres un experto en PySpark y Spark, especializado en el temario de la certificación Databricks Certified Associate Developer for Apache Spark.
+def configurar_query_engine(storage_path="data/index_storage/") -> RetrieverQueryEngine:
+    load_dotenv()
 
-Debes responder única y exclusivamente utilizando la información que se encuentra en los documentos proporcionados como contexto. 
+    system_prompt = """
+    Eres un experto en PySpark y Spark, especializado en el temario de la certificación Databricks Certified Associate Developer for Apache Spark.
 
-Si la respuesta a la pregunta no se obtiene claramente del contexto, intenta razonar con el contexto una respuesta útil para responder a la consulta.
+    Debes responder única y exclusivamente utilizando la información que se encuentra en los documentos proporcionados como contexto. 
 
-Si la respuesta a la pregunta no se puede obtener del contexto ni se puede razonar a partir de él, responde exactamente: "No he encontrado información al respecto."
-"""
+    Si la respuesta a la pregunta no se obtiene claramente del contexto, intenta razonar con el contexto una respuesta útil para responder a la consulta.
 
-qa_template_str = """
-Contexto: 
-{context_str}
+    Si la respuesta a la pregunta no se puede obtener del contexto ni se puede razonar a partir de él, responde exactamente: "No he encontrado información al respecto."
+    """
 
-Utiliza exclusivamente la información anterior para responder. 
+    qa_template_str = """
+    Contexto: 
+    {context_str}
 
-Pregunta: {query_str}
+    Utiliza exclusivamente la información anterior para responder. 
 
-Si no encuentras suficiente información para dar una respuesta clara, responde: 'No he encontrado información al respecto.'
+    Pregunta: {query_str}
 
-Respuesta:
-"""
+    Si no encuentras suficiente información para dar una respuesta clara, responde: 'No he encontrado información al respecto.'
 
-qa_template = PromptTemplate(qa_template_str)
+    Respuesta:
+    """
 
-llm = OpenAI(
-    model="gpt-4o-mini",
-    temperature=0,
-    system_prompt=system_prompt
-)
+    qa_template = PromptTemplate(qa_template_str)
 
-Settings.llm = llm
-# Set embedding model
-Settings.embed_model = OpenAIEmbedding(model="text-embedding-3-small")
+    llm = OpenAI(model="gpt-4o-mini", temperature=0, system_prompt=system_prompt)
+    Settings.llm = llm
+    Settings.embed_model = OpenAIEmbedding(model="text-embedding-3-small")
 
-# Load Vector index --------------------------------------------------------------------------------------------------
-storage_path = "data/index_storage/"
-storage_context = StorageContext.from_defaults(persist_dir=storage_path)
-index = load_index_from_storage(storage_context)
+    storage_context = StorageContext.from_defaults(persist_dir=storage_path)
+    index = load_index_from_storage(storage_context)
 
-# Retriever & Query Engine --------------------------------------------------------------------------------------------------
-retriever = index.as_retriever(similarity_top_k=5)
+    retriever = index.as_retriever(similarity_top_k=5)
+    response_synthesizer = get_response_synthesizer(
+        response_mode="tree_summarize",
+        llm=Settings.llm,
+        text_qa_template=qa_template
+    )
 
-response_synthesizer = get_response_synthesizer(
-    response_mode="tree_summarize",
-    llm=Settings.llm,
-    text_qa_template=qa_template
-)
+    query_engine = RetrieverQueryEngine(
+        retriever=retriever,
+        response_synthesizer=response_synthesizer
+    )
 
-query_engine = RetrieverQueryEngine(
-    retriever=retriever,
-    response_synthesizer=response_synthesizer
-)
+    return query_engine
+
+def cargar_preguntas_desde_json(json_path):
+    with open(json_path, "r", encoding="utf-8") as f:
+        preguntas = json.load(f)
+    return preguntas
 
 # Use in terminal --------------------------------------------------------------------------------------------------
 def main():
+    query_engine = configurar_query_engine()
+
     print(" --- Asistente RAG en PySpark. --- ")
-    print("Escribe la pregunta o 'exit' para terminar.\n")
     
     while True:
-        user_input = input("Escribe tu consulta o 'exit': ")
-        if user_input.strip().lower() in ["exit", "salir"]:
+        print("\nSelecciona una opción:")
+        print("1. Preguntar al asistente")
+        print("2. Evaluar automáticamente un test")
+        print("3. Salir")
+        print()
+        print("Para salir en cualquier momento escribe 'exit' o 'salir'.")
+
+        option = input("\nIntroduce 1, 2 o 3: ").strip()
+
+        if option == "1":
+            while True:
+                user_input = input("\nEscribe tu consulta o 'menu' para cambiar de opción: ")
+                if user_input.strip().lower() in ["exit", "salir"]:
+                    print("Cerrando el asistente.")
+                    return
+                if user_input.strip().lower() == "menu":
+                    break
+                try:
+                    response = query_engine.query(user_input)
+                    print(f"\nRespuesta del Asistente:\n{response.response}\n")
+                except Exception as e:
+                    print(f"\nError: {e}\n")
+
+        elif option == "2":
+            try:
+                json_path = "data/exams_test2/clean_questions/questions_all_tests.json"
+                preguntas = cargar_preguntas_desde_json(json_path)
+                test_num = input("Selecciona el test (1 o 2): ").strip()
+                
+                if test_num not in ["1", "2"]:
+                    print("Número de test no válido.")
+                    continue
+                
+                evaluation_functions.ejecutar_test_automatico(query_engine, preguntas, test_exam=int(test_num))
+            
+            except FileNotFoundError:
+                print("❌ No se encontró el archivo JSON con las preguntas.")
+            except Exception as e:
+                print(f"❌ Error durante la evaluación: {e}")
+
+        elif option == "3":
             print("Cerrando el asistente.")
             break
-        
-        try: # trata de hacer la consulta al modelo RAG    
-            response = query_engine.query(user_input)
-            print(f"Respuesta del Asistente:\n{response.response}\n")
-        except Exception as e:
-            print(f"Error: {e}\n")
+
+        else:
+            print("Opción no válida. Por favor, selecciona 1, 2 o 3.")  
             
 if __name__ == "__main__":
     main()

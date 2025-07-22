@@ -1,7 +1,7 @@
 import re
-from llama_index.query_engine import RetrieverQueryEngine
-from llama_index.prompts import QueryBundle
-from llama_index.response_synthesizers import get_response_synthesizer
+from llama_index.core.query_engine import RetrieverQueryEngine
+from llama_index.core.base.query_pipeline.query import QueryBundle
+from llama_index.core import get_response_synthesizer
 
 def format_options(options_dict):
     """
@@ -108,3 +108,31 @@ def ask_question_with_options(question_obj, retriever, response_mode="compact"):
         "is_correct": extract_predicted_letter(predicted_answer) == question_obj["correct_answer"],
         "response_obj": response
     }
+    
+def ejecutar_test_automatico(query_engine, banco_preguntas, test_exam=1):
+    """
+    Ejecuta la evaluación automática del modelo RAG sobre un conjunto de preguntas tipo test.
+
+    Args:
+        query_engine (RetrieverQueryEngine): motor de consulta RAG ya configurado.
+        banco_preguntas (list[dict]): lista de preguntas completas (dicts con keys como 'question_id', 'question', etc.)
+        test_exam (int): número de test a ejecutar (1 o 2).
+
+    Imprime en consola la tasa de acierto.
+    """
+    prefix = f"Test_{test_exam}_"
+    preguntas_test = [q for q in banco_preguntas if q["question_id"].startswith(prefix)]
+
+    total = len(preguntas_test)
+    aciertos = 0
+    print(f"\n🧪 Ejecutando evaluación del Test {test_exam} con {total} preguntas...\n")
+
+    for i, pregunta in enumerate(preguntas_test):
+        print(f"➡️ Pregunta {i+1}/{total} - ID: {pregunta['question_id']}")
+        result = ask_question_with_options(pregunta, retriever=query_engine.retriever)
+
+        if result["is_correct"]:
+            aciertos += 1
+
+    tasa = aciertos / total
+    print(f"\n📊 Tasa de acierto en el Test {test_exam}: {tasa:.2%} ({aciertos}/{total})")
