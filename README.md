@@ -46,6 +46,7 @@ Diseñar un asistente inteligente que responda preguntas sobre el temario oficia
         +   `format_options`
         +   `extract_predicted_letter`
         +   `ask_question_with_options`
+        +   `ejecutar_test_automatico`
 
 +   `scripts/utilities.py`: Contiene funciones utilitarias para depuración y visualización en consola. Sirven como herramientas de apoyo para inspeccionar resultados y verificar cómo responde el sistema RAG a consultas específicas.
     +   **Funciones claves**:
@@ -110,13 +111,15 @@ Desde la raíz del proyecto ejecuta por terminal:
 python main.py
 ```
 
-Se podrán realizar consultas relacionadas con PySpark, todas las que se deseen. 
+Se podrán realizar consultas relacionadas con PySpark, todas las que se deseen. Además, se puede realizar la evaluación de un examen test a elección. 
 
 Para salir del asistente basta con escribir 'exit', aunque también tolerará 'salir'. 
 
 ### Ejemplo de uso
 
 ![Ejemplo de uso](imgs/chat_in_terminal.png)
+
+![Ejemplo de uso](imgs/chat_in_terminal_2.png)
 
 ## Consideraciones. 
 
