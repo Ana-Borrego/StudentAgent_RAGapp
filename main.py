@@ -78,7 +78,7 @@ def main():
         print()
         print("Para salir en cualquier momento escribe 'exit' o 'salir'.")
 
-        option = input("\nIntroduce 1, 2 o 3: ").strip()
+        option = input("\nIntroduce 1, 2 o 3: ").strip().lower()
 
         if option == "1":
             while True:
@@ -111,7 +111,7 @@ def main():
             except Exception as e:
                 print(f"❌ Error durante la evaluación: {e}")
 
-        elif option == "3":
+        elif option == "3" or option in ["exit", "salir"]:
             print("Cerrando el asistente.")
             break
 
