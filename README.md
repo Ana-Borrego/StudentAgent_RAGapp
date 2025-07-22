@@ -13,9 +13,44 @@ Diseñar un asistente inteligente que responda preguntas sobre el temario oficia
 
 + `data/` : contiene la fuente de datos (fichero .pdf) y los archivos generados por los estudios realizados en el proyecto.
 + `notebooks/`: contiene los notebooks enumerados según la realicación del proyecto, finalizando con la aplicación final RAG.
-+ `scripts/`: contiene un script .py con todas las funciones definidas y documentadas que se utilizan a lo largo del proyecto.
++ `scripts/`: contiene scripts .py con todas las funciones definidas y documentadas que se utilizan a lo largo del proyecto.
 + `requirements.txt`: Dependencias del entorno.
 + `main.py`: fichero para uso interactivo con la terminal. 
+
+### Funciones definidas en `scripts/`.
+
++   `scripts/preprocess_data.py`: Contiene funciones de preprocesamiento de texto a partir de documentos PDF de contenido teórico (libro base de estudio). Estas funciones eliminan ruido (como números de página o caracteres raros) y extraen el texto relevante dentro de un rango de páginas.
+    +   **Funciones clave**:
+        +   `delete_lines_w_digits_only`
+        +   `delete_strange_characters`
+        +   `remove_trailing_section_by_keywords`
+        +   `extract_range_of_pages`
+
++   `scripts/preprocess_tests.py`: Contiene funciones especializadas en limpiar y estructurar bloques de texto que provienen de secciones de examen dentro del PDF. Su propósito es preparar los datos para que puedan ser convertidos en preguntas tipo test.
+    +   **Funciones clave**:
+        +  `extract_cleaned_text`
+        +  `delete_lines_w_digits_only` (versión para tests)
+        +  `delete_strange_characters`
+        +  `extract_options`
+        +  `extract_questions_from_text`
+
++   `scripts/scoring_retriever.py`: Contiene funciones para evaluar el comportamiento del sistema RAG en cuanto a recuperación de información (retriever). Permite calcular métricas como similitud entre preguntas y chunks, generar dataframes de puntuaciones y comparar configuraciones de chunking.
+    +   **Funciones claves**:
+        +   `get_responses_similarity`
+        +   `create_score_DataFrame`
+        +   `create_score_DataFrame_v2`
+        +   `analyze_score_retriever_v2`
+
++   `scripts/question_prompting.py`: Incluye funciones responsables de construir prompts para preguntas tipo test, formatear opciones, extraer respuestas del modelo y verificar si la respuesta generada es correcta. Esta capa conecta el motor RAG con la lógica del sistema de evaluación.
+    +   **Funciones claves**:
+        +   `format_options`
+        +   `extract_predicted_letter`
+        +   `ask_question_with_options`
+
++   `scripts/utilities.py`: Contiene funciones utilitarias para depuración y visualización en consola. Sirven como herramientas de apoyo para inspeccionar resultados y verificar cómo responde el sistema RAG a consultas específicas.
+    +   **Funciones claves**:
+        +   `run_query_and_inspect`
+        +   `display_question_result`
 
 ## Fases del proyecto. 
 
